@@ -177,6 +177,7 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { Box } from "@mui/material";
 import { border, borderRadius, height, width } from "@mui/system";
+import promotionLogo from "../../public/promotionLogo/promotion.png"
 // import { backgroundOrigin } from "html2canvas/dist/types/css/property-descriptors/background-origin";
 
 const BottomNavigationArea = () => {
@@ -220,12 +221,12 @@ const BottomNavigationArea = () => {
       height: isSmallScreen ? "20px" : "25px",
     },
     promotionIcon: {
-      width: isSmallScreen ? "60px" : "72px",
-      height: isSmallScreen ? "60px" : "72px",
+      width: isSmallScreen ? "50px" : "50px",
+      height: isSmallScreen ? "50px" : "50px",
     },
     promotionContainer: {
       marginTop: isSmallScreen ? "-10px" : "-40px",
-      backgroundColor:"rgb(245,68,68)",
+      backgroundColor:"white",
       borderRadius:"50px",
       width:"50px",
       height:"50px",
@@ -276,15 +277,15 @@ const BottomNavigationArea = () => {
         }
       />
       <BottomNavigationAction
-        label="Promotion"
         value="/promotion"
         icon={
           <Box style={styles.promotionContainer}>
-            {/* <img
-              src="https://in.piccdn123.com/static/_template_/orange/img/promotionBg.png"
+            <img
+              src={promotionLogo}
               style={styles.promotionIcon}
               alt="promotion"
-            /> */}
+            />
+            <span style={{fontSize:"normal"}}>Promotion</span>
           </Box>
         }
         style={{

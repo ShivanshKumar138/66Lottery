@@ -1154,6 +1154,28 @@ const Home = ({ children }) => {
     }, 300); // Small delay for better user experience
   };
 
+
+  const TransitionContainer = styled('div')(({ theme }) => ({
+    '&.message-h-enter': {
+      transform: 'translateX(100%)',
+      opacity: 0,
+    },
+    '&.message-h-enter-active': {
+      transform: 'translateX(0)',
+      opacity: 1,
+      transition: 'transform 500ms, opacity 500ms',
+    },
+    '&.message-h-exit': {
+      transform: 'translateX(0)',
+      opacity: 1,
+    },
+    '&.message-h-exit-active': {
+      transform: 'translateX(-100%)',
+      opacity: 0,
+      transition: 'transform 500ms, opacity 500ms',
+    }
+  }));
+
   return (
     <div style={{ position: "relative" }}>
       <Mobile>
@@ -1186,7 +1208,7 @@ const Home = ({ children }) => {
             },
           }}
         >
-          <Box flexGrow={1} sx={{ backgroundColor: "F7F8FF" }}>
+          <Box flexGrow={1} sx={{ backgroundColor: "white" ,marginBottom:"10px"}}>
             <Grid
               container
               alignItems="center"
@@ -1195,7 +1217,7 @@ const Home = ({ children }) => {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                backgroundColor: "rgb(245,68,68)",
+                backgroundColor: "white",
                 padding: "0px 1px",
                 color: "white",
               }}
@@ -1203,9 +1225,9 @@ const Home = ({ children }) => {
               {/* Left Side - Logo */}
               <Grid item xs={6} textAlign="left">
                 <img
-                  src="/assets/greenlogo.png"
+                  src="https://www.66lottery9.com/static/manifest/logo-red.png"
                   alt="logo"
-                  style={{ width: "140px", height: "45px" }}
+                  style={{ width: "100px", height: "35px",marginLeft:"10px" }}
                 />
               </Grid>
 
@@ -1233,47 +1255,11 @@ const Home = ({ children }) => {
                     }}
                     onClick={() => navigate("/messages")}
                   >
-                    <svg
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      xmlns="http://www.w3.org/2000/svg"
-                      data-v-715dd0f6=""
-                      class="svg-icon icon-notification"
-                      width="30"
-                      height="30"
-                      viewBox="0 0 60 60"
-                    >
-                      <defs>
-                        <symbol
-                          id="icon-notification"
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 61 60"
-                          fill="#91B3FF"
-                        >
-                          {" "}
-                          <path
-                            opacity="0.2"
-                            d="M43 51.25H18C10.5 51.25 5.5 47.5 5.5 38.75V21.25C5.5 12.5 10.5 8.75 18 8.75H43C50.5 8.75 55.5 12.5 55.5 21.25V38.75C55.5 47.5 50.5 51.25 43 51.25Z"
-                            fill="#91B3FF"
-                          ></path>{" "}
-                          <path
-                            d="M30.4987 32.1818C28.3987 32.1818 26.2737 31.5318 24.6487 30.2068L16.8237 23.9568C16.4598 23.6408 16.2319 23.1966 16.1876 22.7167C16.1433 22.2369 16.286 21.7584 16.5858 21.3812C16.8857 21.0039 17.3196 20.757 17.7971 20.6919C18.2746 20.6268 18.7588 20.7486 19.1487 21.0318L26.9737 27.2818C28.8737 28.8068 32.0987 28.8068 33.9987 27.2818L41.8237 21.0318C42.6237 20.3818 43.8237 20.5068 44.4487 21.3318C45.0987 22.1318 44.9737 23.3318 44.1487 23.9568L36.3237 30.2068C34.7237 31.5318 32.5987 32.1818 30.4987 32.1818Z"
-                            fill="#91B3FF"
-                          ></path>
-                        </symbol>
-                      </defs>
-                      <g>
-                        {" "}
-                        <path
-                          opacity="0.4"
-                          d="M43 51.25H18C10.5 51.25 5.5 47.5 5.5 38.75V21.25C5.5 12.5 10.5 8.75 18 8.75H43C50.5 8.75 55.5 12.5 55.5 21.25V38.75C55.5 47.5 50.5 51.25 43 51.25Z"
-                          fill="#91B3FF"
-                        ></path>{" "}
-                        <path
-                          d="M30.4987 32.1818C28.3987 32.1818 26.2737 31.5318 24.6487 30.2068L16.8237 23.9568C16.4598 23.6408 16.2319 23.1966 16.1876 22.7167C16.1433 22.2369 16.286 21.7584 16.5858 21.3812C16.8857 21.0039 17.3196 20.757 17.7971 20.6919C18.2746 20.6268 18.7588 20.7486 19.1487 21.0318L26.9737 27.2818C28.8737 28.8068 32.0987 28.8068 33.9987 27.2818L41.8237 21.0318C42.6237 20.3818 43.8237 20.5068 44.4487 21.3318C45.0987 22.1318 44.9737 23.3318 44.1487 23.9568L36.3237 30.2068C34.7237 31.5318 32.5987 32.1818 30.4987 32.1818Z"
-                          fill="white"
-                        ></path>
-                      </g>
-                    </svg>
+                   
+                   <img src="https://www.66lottery9.com/static/home/notifyIcon.png" style={{
+                    width:"23px",
+                    height:"23px"
+                   }}/>
                   </IconButton>
                 </Badge>
 
@@ -1284,7 +1270,7 @@ const Home = ({ children }) => {
                   }}
                   onClick={() => navigate("/download")}
                 >
-                  <DownloadIcon sx={{ fontSize: 20, color: "white" }} />
+                  <DownloadIcon sx={{ fontSize: 20, color: "pink" }} />
                 </IconButton>
               </Grid>
             </Grid>
@@ -1299,7 +1285,7 @@ const Home = ({ children }) => {
                     marginTop: "0px",
                     borderRadius: 10,
                     width: "100%",
-                    height: "200px",
+                    height: "155px",
                   }}
                 />
               </ImageWrapper>
@@ -1309,13 +1295,14 @@ const Home = ({ children }) => {
               item
               sx={{
                 backgroundColor: "#FFFFFF",
-                marginTop: "10px",
+                marginTop: "5px",
                 borderRadius: "25px",
                 padding: "2px 5px", // Adjust padding to make room for the button and text
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "space-between",
-                overflow: "hidden", // Ensure content stays within the box
+                overflow: "hidden", // Ensure content stays within the box,
+                marginBottom:"10px"
               }}
             >
               
@@ -1324,33 +1311,38 @@ const Home = ({ children }) => {
                 marginLeft:"10px"
               }}/>
 
-              <Box sx={{ flex: 1, overflow: "hidden", padding: "0 10px" }}>
-                <CSSTransition
-                  in={inProp}
-                  timeout={500}
-                  classNames="message"
-                  unmountOnExit
-                >
-                  <Typography
-                    sx={{
-                      color: "#303A4C",
-
-                      display: "-webkit-box",
-                      WebkitBoxOrient: "vertical",
-                      textAlign: "left",
-                      overflow: "hidden",
-                      fontFamily: "Bahnschrift",
-                      fontWeight: 400,
-                      fontSize: "13px",
-                      WebkitLineClamp: 2, // Limits the text to 2 lines
-                      lineClamp: 2, // Fallback for non-WebKit browsers
-                      textOverflow: "ellipsis", // Adds "..." at the end of overflowed text
-                    }}
-                  >
-                    {textArray[index]}
-                  </Typography>
-                </CSSTransition>
-              </Box>
+<Box sx={{ flex: 1, overflow: "hidden", padding: "0 10px" }}>
+  <CSSTransition
+    in={inProp}
+    timeout={500}
+    classNames={{
+      enter: "message-h-enter",
+      enterActive: "message-h-enter-active",
+      exit: "message-h-exit",
+      exitActive: "message-h-exit-active",
+    }}
+    unmountOnExit
+  >
+    <TransitionContainer>
+      <Typography
+        sx={{
+          color: "#303A4C",
+          display: "block",
+          textAlign: "left",
+          overflow: "hidden",
+          fontFamily: "Bahnschrift",
+          fontWeight: 400,
+          fontSize: "13px",
+          whiteSpace: "nowrap",
+          textOverflow: "ellipsis",
+          width: "100%",
+        }}
+      >
+        {textArray[index]}
+      </Typography>
+    </TransitionContainer>
+  </CSSTransition>
+</Box>
 
               <Button
                 variant="outlined"

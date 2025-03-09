@@ -117,7 +117,7 @@ const TabLayout = () => {
       id: 'wingo', 
       title: 'Win Go',
       subtitle: 'Guess the number',
-      desc: 'Green/Purple/Red to win', 
+      desc: 'Through the platform Win Go  Hash lottery seed as the result of the lottery', 
       img: 'https://www.66lottery9.com/static/gameIcon/lotterycategory_winGo.png?v=2',
       path: "/timer/30sec" 
     },
@@ -125,7 +125,7 @@ const TabLayout = () => {
       id: 'k3', 
       title: 'K3',
       subtitle: 'Guess the number',
-      desc: 'high/low/odd/even', 
+      desc: 'The player predicts 3 DICE numbers,the winning rate is high,the gameplay is simple,and it is easy to win', 
       img: 'https://www.66lottery9.com/static/gameIcon/lotterycategory_k3.png?v=2',
       path: "/k3/1min"
     },
@@ -133,7 +133,7 @@ const TabLayout = () => {
       id: '5d', 
       title: '5D',
       subtitle: 'Guess the number',
-      desc: 'high/low/odd/even', 
+      desc: '5 numbers are used as the result of the lottery,and the palying methods are flexible and diverse', 
       img: 'https://www.66lottery9.com/static/gameIcon/lotterycategory_5d.png?v=2',
       path: "/5d/1min"
     },
@@ -141,7 +141,7 @@ const TabLayout = () => {
       id: 'trxwin', 
       title: 'Trx Win',
       subtitle: 'Guess the number',
-      desc: 'Green/Purple/Red to win', 
+      desc: 'By obtaining the real-time hash value of the TRX blockchain as the result of the lottery', 
       img: '/assets/banners/trx.png',
       path: "/trx/1min"
     },
@@ -149,17 +149,17 @@ const TabLayout = () => {
       id: 'racing', 
       title: 'Racing',
       subtitle: 'Guess the number',
-      desc: 'Big/Small/odd/even', 
+      desc: 'Predict the top three car numbers, with a high winning rate, simple gameplay and easy to win', 
       img: 'https://www.66lottery9.com/static/gameIcon/lotterycategory_racing.png?v=2',
       path: "/racing-game"
     }
   ];
   const gamesByTab = {
     hot_games:[
-      { id: 'popular-1', title: 'Popular 1', gameId: 903, img: 'https://image.0nxq4.cc/game/SPB/Slots/SPB_aviator.png' },
-      { id: 'popular-2', title: 'Popular 2', gameId: 801, img: 'https://image.0nxq4.cc/icon/202502280344359991004.jpg' },
-      { id: 'popular-3', title: 'Popular 3', gameId: 903, img: 'https://image.0nxq4.cc/game/JL/Slots/JL_51.png' },
-      { id: 'popular-9', title: 'Popular 9', gameId: 102, img: 'https://image.0nxq4.cc/icon/202408180914311997003.jpg' },
+      { id: 'popular-1', title: 'Aviator', gameId: 903, img: 'https://image.0nxq4.cc/game/SPB/Slots/SPB_aviator.png' },
+      { id: 'popular-2', title: 'Aviator2', gameId: 801, img: 'https://image.0nxq4.cc/icon/202502280344359991004.jpg' },
+      { id: 'popular-3', title: 'Money', gameId: 903, img: 'https://image.0nxq4.cc/game/JL/Slots/JL_51.png' },
+      { id: 'popular-9', title: 'Cricket', gameId: 102, img: 'https://image.0nxq4.cc/icon/202408180914311997003.jpg' },
     ],
     originals:[
       { id: 'popular-1', title: 'Popular 1', gameId: 903, img: 'https://image.0nxq4.cc/game/SPB/Slots/SPB_mines.png' },
@@ -291,6 +291,65 @@ const TabLayout = () => {
     ],
 
   };
+
+
+
+  const casinoTabs={
+    evoRing:[ 
+      { id: 'roulette_casino1', title: 'EVOLIVE RNG', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240513140303366005.png' ,subtitle:"Roulette",desc:""},
+      { id: 'roulette_casino2', title: 'EVOLIVE LIVE', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/202502051304248271108.png' ,subtitle:"Roulette",desc:""},
+      { id: 'roulette_casino3', title: 'EZUGI', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122338043003.png' ,subtitle:"Roulette",desc:""},
+      { id: 'roulette_casino4', title: 'WINFINITY', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122401590014.png' ,subtitle:"Roulette",desc:""},
+      { id: 'roulette_casino5', title: 'YEEBET', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122455222004.png' ,subtitle:"Roulette",desc:""},
+      { id: 'roulette_casino6', title: 'PRAGMATIC GAME', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122154561001.png' ,subtitle:"Roulette",desc:""},
+      ],
+
+
+      evoLive:[
+        { id: 'roulette_casino1', title: 'EVOLIVE RNG', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240513140303366005.png' ,subtitle:"Roulette",desc:""},
+      { id: 'roulette_casino2', title: 'EVOLIVE LIVE', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/202502051304248271108.png' ,subtitle:"Roulette",desc:""},
+      { id: 'roulette_casino3', title: 'EZUGI', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122338043003.png' ,subtitle:"Roulette",desc:""},
+      { id: 'roulette_casino4', title: 'WINFINITY', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122401590014.png' ,subtitle:"Roulette",desc:""},
+      { id: 'roulette_casino5', title: 'YEEBET', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122455222004.png' ,subtitle:"Roulette",desc:""},
+      { id: 'roulette_casino6', title: 'PRAGMATIC GAME', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122154561001.png' ,subtitle:"Roulette",desc:""},
+      ],
+
+      ezughi:[
+        { id: 'roulette_casino1', title: 'EVOLIVE RNG', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240513140303366005.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino2', title: 'EVOLIVE LIVE', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/202502051304248271108.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino3', title: 'EZUGI', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122338043003.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino4', title: 'WINFINITY', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122401590014.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino5', title: 'YEEBET', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122455222004.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino6', title: 'PRAGMATIC GAME', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122154561001.png' ,subtitle:"Roulette",desc:""},
+      ],
+
+      wify:[
+        { id: 'roulette_casino1', title: 'EVOLIVE RNG', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240513140303366005.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino2', title: 'EVOLIVE LIVE', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/202502051304248271108.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino3', title: 'EZUGI', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122338043003.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino4', title: 'WINFINITY', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122401590014.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino5', title: 'YEEBET', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122455222004.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino6', title: 'PRAGMATIC GAME', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122154561001.png' ,subtitle:"Roulette",desc:""},
+      ],
+
+      yb:[
+        { id: 'roulette_casino1', title: 'EVOLIVE RNG', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240513140303366005.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino2', title: 'EVOLIVE LIVE', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/202502051304248271108.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino3', title: 'EZUGI', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122338043003.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino4', title: 'WINFINITY', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122401590014.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino5', title: 'YEEBET', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122455222004.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino6', title: 'PRAGMATIC GAME', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122154561001.png' ,subtitle:"Roulette",desc:""},
+      ],
+
+      pp:[
+        { id: 'roulette_casino1', title: 'EVOLIVE RNG', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240513140303366005.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino2', title: 'EVOLIVE LIVE', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/202502051304248271108.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino3', title: 'EZUGI', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122338043003.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino4', title: 'WINFINITY', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122401590014.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino5', title: 'YEEBET', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122455222004.png' ,subtitle:"Roulette",desc:""},
+        { id: 'roulette_casino6', title: 'PRAGMATIC GAME', gameId: 'EVOLIVE_pv2zgy42anvdwk3l', img: 'https://image.0nxq4.cc/icon/20240514122154561001.png' ,subtitle:"Roulette",desc:""},
+      ],
+    }
 
   const [firstDepositMade, setFirstDepositMade] = useState(true);
   const [needToDepositFirst, setNeedToDepositFirst] = useState(false);
@@ -474,90 +533,167 @@ const handleTabClick = (index) => {
   
   const SectionHeading = ({ title }) => (
 <Box
-    sx={{
-      fontSize: '15px',
-      fontWeight: 700,
-      fontFamily: 'Arial, sans-serif',
-      color: '#333',
-      mb: 1,
-      borderLeft: '5px solid rgb(245,68,68)',
-      pl: 1, // Add padding to the left
-      lineHeight: '1', // Adjust line height to control border height
-      width: '100%'
-    }}
-  >
-     <div style={{
+  sx={{
+    fontSize: '15px',
+    fontWeight: 700,
+    fontFamily: 'Arial, sans-serif',
+    color: '#333',
+    mb: 1,
+    pl: 0,
+    lineHeight: '1', 
+    width: '100%',
+  }}
+>
+  <div style={{
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center", // This ensures vertical centering
-    width: "100%"
+    alignItems: "center",
+    width: "100%",
+    position: "relative",
+    paddingLeft: "4px"
   }}>
-    <div style={{maringTop:15}}>{title}</div>
+    {/* Border applied to a pseudo-element with controlled height */}
+    <div 
+      style={{
+        marginTop:"10px",
+        position: "absolute",
+        left: 0,
+        top: "50%",
+        transform: "translateY(-50%)",
+        width: "4px",
+        height: "20px", // Control border height here
+        backgroundColor: "rgb(245,68,68)"
+      }}
+    />
+    
+    <div style={{
+      display: "flex",
+      alignItems: "center",
+      height: "32px",
+      marginTop:"20px",
+      marginLeft:"5px"
+    }}>
+      {title}
+    </div>
     <button style={{
-       border: '2px solid rgb(245,68,68)',
-       borderRadius: '25px',
-       background: 'transparent',
-       color: 'rgb(245,68,68)',
-       fontSize: '14px',
-       cursor: 'pointer',
-       padding: '5px 25px',
-       display: 'flex',
-       alignItems: 'center',
-       justifyContent: 'center',
-       fontWeight: 'normal'
-    }}>All</button>
+      border: '2px solid rgb(245,68,68)',
+      borderRadius: '25px',
+      background: 'transparent',
+      color: 'rgb(245,68,68)',
+      fontSize: '12px',
+      cursor: 'pointer',
+      padding: '1px 35px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontWeight: 'normal',
+      height: "32px"
+    }}
+    onClick={()=>{navigate("/all-games")}}
+    >
+      All
+    </button>
   </div>
-  </Box>
+</Box>
 );
 
-  const LotteryItem = ({ title, subtitle, desc, img,onClick }) => (
-    <Box
+const LotteryItem = ({ title, subtitle, desc, img, onClick, amount }) => (
+  <Box
     onClick={onClick}
+    sx={{
+      height: '125px',
+      bgcolor: 'white',
+      borderRadius: '16px',
+      p: 1,
+      mb: 2,
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'stretch',
+      cursor: 'pointer',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+      transition: '0.3s',
+      '&:hover': {
+        transform: 'translateY(-2px)',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.3)'
+      }
+    }}
+  >
+    {/* Left section with red background and image */}
+    <Box 
       sx={{
-        height: '95px',
-        bgcolor: 'rgb(254,167,148)',
-        borderRadius: '16px',
-        p: 1,
-        mb: 2,
+        width: '80px',
+        height: '100%',
+        bgcolor: 'rgb(254,99,99)',
+        borderRadius: '12px',
         display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'stretch',
-        color: 'white',
-        cursor: 'pointer',
-        transition: '0.3s',
-        '&:hover': {
-          transform: 'translateY(-2px)',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-        }
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        mr: 2
       }}
     >
-      <Box sx={{ textAlign: 'left', flex: 1 }}>
-        <Box sx={{ fontSize: '19px', fontWeight: 700, mb: 1,fontFamily: "Arial, sans-serif" }}>
-          {title}
-        </Box>
-        <Box sx={{ fontSize: '12px', fontWeight: 400, opacity: 0.9, mb: 0.5,fontFamily: "Arial, sans-serif" }}>
-          {subtitle}
-        </Box>
-        <Box sx={{ fontSize: '12px', fontWeight: 400, opacity: 0.9, mb: 0.5,fontFamily: "Arial, sans-serif" }}>
-          {desc}
-        </Box>
-      </Box>
-      <Box //This is for the wingo tab
+      <Typography
+        sx={{
+          position: 'absolute',
+          top: '8px',
+          left: '8px',
+          fontSize: '16px',
+          fontWeight: 700,
+          color: 'white',
+          fontFamily: "Arial, sans-serif"
+        }}
+      >
+        {title}
+      </Typography>
+      
+      <Box
         component="img"
         src={img}
         alt={title}
-        sx={{ 
-          width: '110px',
-          height: 'calc(100% + -10px)',
-          objectFit: 'cover',
-          borderRadius: '8px',
-          ml: 2,
-          mt: 1,
-          mb: 1,
+        sx={{
+          width: '60px',
+          height: '60px',
+          objectFit: 'contain'
         }}
       />
     </Box>
-  );
+    
+    {/* Middle section with text content */}
+    <Box sx={{ flex: 1, textAlign: 'left', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+      <Typography sx={{ fontSize: '20px', fontWeight: 700, color: '#333', mb: 0, fontFamily: "Arial, sans-serif" }}>
+        {title}
+      </Typography>
+      
+      <Typography sx={{ fontSize: '11px', color: '#777', fontFamily: "Arial, sans-serif" }}>
+        {desc}
+      </Typography>
+    </Box>
+    
+    {/* Right section with button */}
+    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-end', ml: 1 }}>
+      <Button
+        sx={{
+          bgcolor: 'rgb(254,99,99)',
+          color: 'white',
+          borderRadius: '25px',
+          px: 3,
+          py: 1,
+          textTransform: 'none',
+          fontWeight: 'bold',
+          fontSize: '16px',
+          '&:hover': {
+            bgcolor: 'rgb(235,80,80)'
+          }
+        }}
+      >
+        GO→
+      </Button>
+    </Box>
+  </Box>
+);
+
+// Import these at the top of your file
+// import { Box, Typography, Button } from '@mui/material';
 
   const LotteryItemSports = ({ title, subtitle, desc, img,onClick }) => (
 <Box
@@ -686,7 +822,7 @@ const handleTabClick = (index) => {
 
   return (
     <Box sx={{ width: '100%', maxWidth: '3xl', margin: 'auto' }}>
-      <Box sx={{ position: 'relative', px: 0 }}>
+      <Box sx={{ position: 'relative', px: 0,mt:4,mb:0 }}>
         <Box 
           sx={{
             display: 'flex',
@@ -735,14 +871,29 @@ const handleTabClick = (index) => {
         <div className="flex">
           {tabs.slice(4, 8).map((tab, index) => (
             <div
-              key={tab.id}
-              onClick={() => handleTabClick(index + 4)}
-              className="flex-1 flex flex-col items-center justify-center py-4 cursor-pointer transition-transform hover:scale-105 text-white relative"
-              style={{
-                borderRight: index < 3 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
-                height: '110px'
-              }}
-            >
+            key={tab.id}
+            onClick={() => handleTabClick(index + 4)}
+            className="flex-1 flex flex-col items-center justify-center py-4 cursor-pointer transition-transform hover:scale-105 text-white relative"
+            style={{
+              // Remove the border from here
+              height: '110px',
+              position: 'relative' // Add position relative for absolute positioning inside
+            }}
+          >
+            {/* Add a pseudo border element with controlled height */}
+    {index < 3 && (
+      <div
+        style={{
+          position: 'absolute',
+          right: 0,
+          top: '50%',
+          transform: 'translateY(-50%)',
+          width: '3px',
+          height: '60px', // Control border height here (adjust as needed)
+          backgroundColor: 'rgba(255, 255, 255, 0.1)'
+        }}
+      />
+    )}
               <div className="flex items-center justify-center mb-2">
                 <img 
                   src={tab.img} 
@@ -760,7 +911,7 @@ const handleTabClick = (index) => {
         </Box>
       </Box>
 
-      <Box sx={{ mt: 3, px: 2 }}>
+      <Box sx={{ mt: 0, px: 1 }}>
         {activeTab === 1 && (
           <Box>
             <SectionHeading title="Lottery" />
@@ -796,14 +947,7 @@ const handleTabClick = (index) => {
   {lotteryGames.slice(0, 4).map((game, index) => (
     <Box
       key={index}
-      onClick={() => {
-        if (!hasDeposit && !isDepositCheckLoading) {
-          setSelectedGame({ game: 'Flash Game' });
-          setOpenDialog(true);
-          return;
-        }
-        jili(game.gameId);
-      }}
+      onClick={() => handleItemClick(game.path)}
       sx={{
         cursor: 'pointer',
         transition: 'transform 0.2s',
@@ -865,50 +1009,91 @@ const handleTabClick = (index) => {
     </Box>
   ))}
 </Box>
-  <SectionHeading title="Hot Games" />
-  <Box
-    sx={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(4, 1fr)',
-      gap: 1,
-      mb: 4,
+<SectionHeading title="Hot Games" />
+<Box
+  sx={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: 2,
+    mb: 4,
+    width: '100%',
+    '& > *': {
       width: '100%',
-      '& > *': {
-        width: '100%',
-        minWidth: 0,
-      }
-    }}
-  >
-    {gamesByTab.hot_games.slice(0, 4).map((game, index) => (
-      <Box 
-        key={index}
-        onClick={() => {
-          if (!hasDeposit && !isDepositCheckLoading) {
-            setSelectedGame({ game: 'Flash Game' });
-            setOpenDialog(true);
-            return;
-          }
-          topbet(game.gameId);
-        }}
+      minWidth: 0,
+    }
+  }}
+>
+  {gamesByTab.hot_games.slice(0, 4).map((game, index) => (
+    <Box
+      key={index}
+      onClick={() => {
+        if (!hasDeposit && !isDepositCheckLoading) {
+          setSelectedGame({ game: 'Flash Game' });
+          setOpenDialog(true);
+          return;
+        }
+        topbet(game.gameId);
+      }}
+      sx={{
+        cursor: 'pointer',
+        transition: 'transform 0.2s',
+        '&:hover': { transform: 'scale(1.02)' },
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      {/* Game Image */}
+      <Box
         sx={{
-          cursor: 'pointer',
-          transition: 'transform 0.2s',
-          '&:hover': { transform: 'scale(1.02)' },
+          width: '100%',
+          height: '95px',
+          borderRadius: '12px',
+          overflow: 'hidden',
+          mb: 1,
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
         }}
       >
-        <img 
-          src={game.img} 
+        <img
+          src={game.img}
           alt={game.title}
-          style={{ 
-            width: '110px', 
-            height: '90px',
-            borderRadius: '8px',
-          }} 
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            borderRadius: '12px',
+          }}
         />
-       
       </Box>
-    ))}
-  </Box>
+      
+      {/* Game Title Background */}
+      <Box
+        sx={{
+          width: '100%',
+          py: 1,
+          px: 1,
+          bgcolor: '#f0f0f0',
+          borderRadius: '12px',
+          textAlign: 'center',
+        }}
+      >
+        {/* Game Title */}
+        <Typography
+          variant="body1"
+          sx={{
+            fontWeight: 100,
+            color: '#333',
+            fontSize: '12px',
+            fontFamily: 'Arial, sans-serif',
+          }}
+        >
+          {game.title}
+        </Typography>
+      </Box>
+    </Box>
+  ))}
+</Box>
+
   <SectionHeading title="Original Games" />
   <Box
     sx={{
@@ -1141,16 +1326,190 @@ const handleTabClick = (index) => {
 {activeTab === 4 && (
           <Box>
             <SectionHeading title="Casino" />
-            {gamesByTab.casino.map((game) => (
-              <LotteryItem
-                key={game.id}
-                title={game.title}
-                subtitle={game.subtitle}
-                desc={game.desc}
-                img={game.img}
-              
-              />
-            ))}
+            <Box
+    sx={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: 1,
+      mb: 4,
+      width: '100%',
+      '& > *': {
+        width: '100%',
+        minWidth: 0,
+      }
+    }}
+  >
+    {casinoTabs.evoLive.slice(0, 6).map((game, index) => (
+      <Box 
+        key={index}
+        onClick={() => {
+          if (!hasDeposit && !isDepositCheckLoading) {
+            setSelectedGame({ game: 'Flash Game' });
+            setOpenDialog(true);
+            return;
+          }
+          jili(game.gameId);
+        }}
+        sx={{
+          cursor: 'pointer',
+          transition: 'transform 0.2s',
+          '&:hover': { transform: 'scale(1.02)' },
+        }}
+      >
+        <img 
+          src={game.img} 
+          alt={game.title}
+          style={{ 
+            width: '100%', 
+            height: 'auto',
+            borderRadius: '8px',
+          }} 
+        />
+       
+      </Box>
+    ))}
+  </Box>
+
+
+
+  <SectionHeading title="EVO-RNG" />
+            <Box
+    sx={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: 1,
+      mb: 4,
+      width: '100%',
+      '& > *': {
+        width: '100%',
+        minWidth: 0,
+      }
+    }}
+  >
+    {casinoTabs.evoRing.slice(0, 6).map((game, index) => (
+      <Box 
+        key={index}
+        onClick={() => {
+          if (!hasDeposit && !isDepositCheckLoading) {
+            setSelectedGame({ game: 'Flash Game' });
+            setOpenDialog(true);
+            return;
+          }
+          jili(game.gameId);
+        }}
+        sx={{
+          cursor: 'pointer',
+          transition: 'transform 0.2s',
+          '&:hover': { transform: 'scale(1.02)' },
+        }}
+      >
+        <img 
+          src={game.img} 
+          alt={game.title}
+          style={{ 
+            width: '100%', 
+            height: 'auto',
+            borderRadius: '8px',
+          }} 
+        />
+       
+      </Box>
+    ))}
+  </Box>
+
+
+
+  <SectionHeading title="EZUGI" />
+            <Box
+    sx={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: 1,
+      mb: 4,
+      width: '100%',
+      '& > *': {
+        width: '100%',
+        minWidth: 0,
+      }
+    }}
+  >
+    {casinoTabs.ezughi.slice(0, 6).map((game, index) => (
+      <Box 
+        key={index}
+        onClick={() => {
+          if (!hasDeposit && !isDepositCheckLoading) {
+            setSelectedGame({ game: 'Flash Game' });
+            setOpenDialog(true);
+            return;
+          }
+          jili(game.gameId);
+        }}
+        sx={{
+          cursor: 'pointer',
+          transition: 'transform 0.2s',
+          '&:hover': { transform: 'scale(1.02)' },
+        }}
+      >
+        <img 
+          src={game.img} 
+          alt={game.title}
+          style={{ 
+            width: '100%', 
+            height: 'auto',
+            borderRadius: '8px',
+          }} 
+        />
+       
+      </Box>
+    ))}
+  </Box>
+
+
+
+  <SectionHeading title="WIFY" />
+            <Box
+    sx={{
+      display: 'grid',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gap: 1,
+      mb: 4,
+      width: '100%',
+      '& > *': {
+        width: '100%',
+        minWidth: 0,
+      }
+    }}
+  >
+    {casinoTabs.wify.slice(0, 6).map((game, index) => (
+      <Box 
+        key={index}
+        onClick={() => {
+          if (!hasDeposit && !isDepositCheckLoading) {
+            setSelectedGame({ game: 'Flash Game' });
+            setOpenDialog(true);
+            return;
+          }
+          jili(game.gameId);
+        }}
+        sx={{
+          cursor: 'pointer',
+          transition: 'transform 0.2s',
+          '&:hover': { transform: 'scale(1.02)' },
+        }}
+      >
+        <img 
+          src={game.img} 
+          alt={game.title}
+          style={{ 
+            width: '100%', 
+            height: 'auto',
+            borderRadius: '8px',
+          }} 
+        />
+       
+      </Box>
+    ))}
+  </Box>
           </Box>
  )}
 
@@ -1158,7 +1517,7 @@ const handleTabClick = (index) => {
   <Box>
     <SectionHeading title="Sports Games" />
     {gamesByTab.sports.map((game) => (
-              <LotteryItem
+              <LotteryItemSports
                 key={game.id}
                 title={game.title}
                 subtitle={game.subtitle}

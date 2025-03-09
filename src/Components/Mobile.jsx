@@ -283,11 +283,11 @@ const Mobile = ({ children }) => {
                 {/* Customer Service Button */}
                 <IconButton
                   sx={{
-                    bgcolor: "rgb(245,68,68)",
-                    width: 60,
-                    height: 60,
+                    bgcolor: "transparent",
+                    width: 70,
+                    height: 70,
                     "&:hover": {
-                      bgcolor: "rgb(245,68,68)",
+                      bgcolor: "transparent",
                     },
                   }}
                   onClick={handleButtonClick(handleCustomerServiceClick)}
@@ -296,8 +296,8 @@ const Mobile = ({ children }) => {
                   <img
                     src="https://www.66lottery9.com/static/common/india_icon_sevice_new.png"
                     alt="Customer Service"
-                    width={60}
-                    height={60}
+                    width={80}
+                    height={80}
                     draggable="false"
                   />
                 </IconButton>
