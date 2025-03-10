@@ -45,7 +45,7 @@
     gap: 18px;
     align-items: center;
     width: 46%;
-    height: 35px;
+    height: 45px;
     margin-bottom: 0.21333rem;
     padding: 0.61333rem 0.41333rem 0.61333rem 0.14667rem;
     color: #f54645;
@@ -82,7 +82,7 @@
     font-weight: bold;
 }
 .cardbox{
-    width: 95%;
+    width: 100%;
     padding: 20px  10px;
     display: flex;
     justify-content: space-around;

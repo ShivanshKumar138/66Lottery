@@ -312,6 +312,7 @@ const InvitationBonusComponent = () => {
               alignItems: "center",
               gap: 1,
             }}
+            onClick={()=>{navigate("/invitationBonusPage")}}
           >
             <Box
               sx={{
@@ -346,6 +347,7 @@ const InvitationBonusComponent = () => {
               alignItems: "center",
               gap: 1,
             }}
+            onClick={()=>{navigate("/invitationBonusPage")}}
           >
             <Box
               sx={{

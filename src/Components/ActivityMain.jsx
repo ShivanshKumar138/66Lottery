@@ -20,22 +20,22 @@ const cardData = [
   {
     image: "../assets/banners/b4.jpg",
     text: "First Deposit Bonus",
-    url: "#",
+    url: "/banners",
   },
   {
     image: "../assets/banners/b3.jpg",
     text: "Activity Bonus",
-    url: "#",
+    url: "/banners",
   },
   {
     image: "../assets/banners/b2.jpg",
     text: "Weekly Bonus",
-    url: "#",
+    url: "/banners",
   },
   {
     image: "../assets/banners/b1.jpg",
     text: "VIP Bonus",
-    url: "#",
+    url: "/banners",
   },
 
 ];
@@ -182,44 +182,67 @@ const ActivityMain = ({ children }) => {
 
             {/* //content */}
 
-            <Grid
-              container
-              spacing={{ xs: 4, sm: 2 }}
-              justifyContent="center"
-              alignItems="flex-start" // Ensures alignment at the start of the container
-              sx={{ marginTop: 2, overflow: "hidden", gap:6 }}
-            >
-              {rewards.map((reward, index) => (
-                <Grid item key={index}>
-                  <Button
-                    onClick={() => navigate(reward.link)}
-                    sx={{ textAlign: "center", padding: 0, minWidth: 0 }}
-                  >
-                    <Box textAlign="center">
-                      <img
-                        src={reward.image}
-                        alt={reward.label}
-                        style={{ width: "40px", height: "40px" }}
-                      />
-                      <Typography
-                        sx={{
-                          color: "#768096",
-                          textTransform: "initial",
-                          fontSize: "11px",
-                        }}
-                      >
-                        {reward.label.split(" ").map((word, i) => (
-                          <span key={i}>
-                            {word}
-                            <br />
-                          </span>
-                        ))}
-                      </Typography>
-                    </Box>
-                  </Button>
-                </Grid>
-              ))}
-            </Grid>
+            <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+        gap: { xs: 2, sm: 3, md: 4 },
+        mt: 2,
+        overflowX: 'auto',  // Enable horizontal scrolling if needed
+        pb: 1,              // Add padding bottom for scrollbar
+        width: '100%',
+        '&::-webkit-scrollbar': {
+          height: '4px',
+        },
+        '&::-webkit-scrollbar-thumb': {
+          backgroundColor: 'rgba(0,0,0,0.2)',
+          borderRadius: '4px',
+        }
+      }}
+    >
+      {rewards.map((reward, index) => (
+        <Box
+          key={index}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            flexShrink: 0,      // Prevent items from shrinking
+            cursor: 'pointer',
+            px: 1
+          }}
+          onClick={() => navigate(reward.link)}
+        >
+          <img
+            src={reward.image}
+            alt={reward.label}
+            style={{ 
+              width: "40px", 
+              height: "40px",
+              minWidth: "40px"  // Ensure image doesn't shrink
+            }}
+          />
+          <Typography
+            sx={{
+              color: "#768096",
+              fontSize: "11px",
+              textAlign: "center",
+              width: 'max-content',
+              maxWidth: '80px'
+            }}
+          >
+            {reward.label.split(" ").map((word, i) => (
+              <span key={i}>
+                {word}
+                <br />
+              </span>
+            ))}
+          </Typography>
+        </Box>
+      ))}
+    </Box>
             <Grid
               mt={0.5}
               container

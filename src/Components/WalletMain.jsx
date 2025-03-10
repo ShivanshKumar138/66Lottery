@@ -513,51 +513,94 @@ const WalletMain = ({ children }) => {
               </Grid>
               {/* Third Grid */}
               <Grid container item xs={12} spacing={1} mt={1} mb={1}>
-                <Grid item xs={3} onClick={() => navigate("/recharge")}>
-                  <img
-                    src="https://bdgacting.com/assets/png/rechargeIcon-efb79f43.png"
-                    alt="1"
-                    width={40}
-                    height={40}
-                  />
-                  <Typography sx={{ color: "#768096", fontSize: "0.8rem" }}>
-                    Deposit{" "}
-                  </Typography>
-                </Grid>
-                <Grid item xs={3} onClick={() => navigate("/withdraw")}>
-                  <img
-                    src="https://bdgacting.com/assets/png/widthdrawBlue-5fcf62bd.png"
-                    alt="2"
-                    width={40}
-                    height={40}
-                  />
-                  <Typography sx={{ color: "#768096", fontSize: "0.8rem" }}>
-                    Withdraw
-                  </Typography>
-                </Grid>
-                <Grid item xs={3} onClick={() => navigate("/deposit-history")}>
-                  <img
-                    src="https://bdgacting.com/assets/png/rechargeHistory-28b45ebe.png"
-                    alt=" 3"
-                    width={40}
-                    height={40}
-                  />
-                  <Typography sx={{ color: "#768096", fontSize: "0.8rem" }}>
-                    Deposit history
-                  </Typography>
-                </Grid>
-                <Grid item xs={3} onClick={() => navigate("/withdraw-history")}>
-                  <img
-                    src="https://bdgacting.com/assets/png/withdrawHistory-033a34f8.png"
-                    alt="4"
-                    width={40}
-                    height={40}
-                  />
-                  <Typography sx={{ color: "#768096", fontSize: "0.8rem" }}>
-                    Withdraw History
-                  </Typography>
-                </Grid>
-              </Grid>
+  <Grid 
+    item 
+    xs={3} 
+    onClick={() => navigate("/recharge")}
+    sx={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center',
+      textAlign: 'center'
+    }}
+  >
+    <img
+      src="https://bdgacting.com/assets/png/rechargeIcon-efb79f43.png"
+      alt="1"
+      width={40}
+      height={40}
+    />
+    <Typography sx={{ color: "#768096", fontSize: "0.8rem" }}>
+      Deposit
+    </Typography>
+  </Grid>
+  
+  <Grid 
+    item 
+    xs={3} 
+    onClick={() => navigate("/withdraw")}
+    sx={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center',
+      textAlign: 'center'
+    }}
+  >
+    <img
+      src="https://bdgacting.com/assets/png/widthdrawBlue-5fcf62bd.png"
+      alt="2"
+      width={40}
+      height={40}
+    />
+    <Typography sx={{ color: "#768096", fontSize: "0.8rem" }}>
+      Withdraw
+    </Typography>
+  </Grid>
+  
+  <Grid 
+    item 
+    xs={3} 
+    onClick={() => navigate("/deposit-history")}
+    sx={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center',
+      textAlign: 'center'
+    }}
+  >
+    <img
+      src="https://bdgacting.com/assets/png/rechargeHistory-28b45ebe.png"
+      alt=" 3"
+      width={40}
+      height={40}
+    />
+    <Typography sx={{ color: "#768096", fontSize: "0.8rem" }}>
+      Deposit history
+    </Typography>
+  </Grid>
+  
+  <Grid 
+    item 
+    xs={3} 
+    onClick={() => navigate("/withdraw-history")}
+    sx={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center',
+      textAlign: 'center'
+    }}
+  >
+    <img
+      src="https://bdgacting.com/assets/png/withdrawHistory-033a34f8.png"
+      alt="4"
+      width={40}
+      height={40}
+    />
+    <Typography sx={{ color: "#768096", fontSize: "0.8rem" }}>
+      Withdraw History
+    </Typography>
+  </Grid>
+</Grid>
             </Grid>
 
             <Box sx={{ p: 2, borderRadius: 1, marginBottom: "100px" }}>

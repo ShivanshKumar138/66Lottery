@@ -48,7 +48,7 @@ const AttendanceMain = ({ children }) => {
           position="relative"
         >
           <Box flexGrow={1} sx={{ backgroundColor: "rgb(245,70,69)" }}>
-            <Grid
+          <Grid
               container
               alignItems="center"
               justifyContent="space-between"

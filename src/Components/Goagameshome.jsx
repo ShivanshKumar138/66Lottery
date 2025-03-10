@@ -152,7 +152,7 @@ const TabLayout = () => {
       subtitle: 'Guess the number',
       desc: 'Predict the top three car numbers, with a high winning rate, simple gameplay and easy to win', 
       img: 'https://www.66lottery9.com/static/gameIcon/lotterycategory_racing.png?v=2',
-      path: "/racing-game"
+      path: "/racing-game/30sec"
     }
   ];
   const gamesByTab = {
@@ -939,12 +939,14 @@ const LotteryItem = ({ title, subtitle, desc, img, onClick, amount }) => (
   <SectionHeading  title="Lottery Games" />
   <Box
   sx={{
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: 0,
-    mt: 0,
+    display: 'flex',  // Changed to flex instead of grid
+    flexDirection: 'row',
+    flexWrap: 'nowrap', // Prevent wrapping to new lines
+    justifyContent: 'space-between', // Distribute items evenly
+    gap: 1,
     width: '100%',
     padding: '0px',
+    overflow: 'auto', // Allow horizontal scrolling if needed on very small screens
   }}
 >
   {lotteryGames.slice(0, 4).map((game, index) => (
@@ -959,16 +961,17 @@ const LotteryItem = ({ title, subtitle, desc, img, onClick, amount }) => (
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         borderRadius: '8px',
-        width: "85px",
-        height: '110px',
+        width: 'calc(25% - 8px)', // Take up 25% of parent width minus gap
+        maxWidth: '85px', // Maximum width
+        aspectRatio: '85/110', // Maintain aspect ratio
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        position: 'relative', // Added this line to fix the GO button positioning
+        position: 'relative',
         overflow: 'hidden',
         boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-        marginRight:1,
+        flex: '1 0 auto', // Allow growing but not shrinking
       }}
     >
       <span className="font-bold text-sm text-white py-1 -mt-9">{game.title}</span>

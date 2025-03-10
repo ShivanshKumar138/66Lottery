@@ -485,17 +485,19 @@ const AccountMain = ({ children }) => {
                     Total Balance
                   </Typography>
                 </Grid>
-
                 <Grid item xs={12} align="Left">
-                  <Typography
-                    variant="caption"
-                    align="center"
-                    sx={{
-                      color: "#1e2637",
-                      fontWeight: "bold",
-                      fontSize: "19px",
-                    }}
-                  >
+  <Typography
+    variant="caption"
+    align="center"
+    sx={{
+      color: "#1e2637",
+      fontWeight: "bold",
+      fontSize: "19px",
+      display: "flex",    // Add this
+      alignItems: "center", // Add this
+      justifyContent: "flex-start" // Add this
+    }}
+  >
                     {`\u20B9${user ? user.walletAmount.toFixed(2) : "Loading"}`}
 
                     <svg
