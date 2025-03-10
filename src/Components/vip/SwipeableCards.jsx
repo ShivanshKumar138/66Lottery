@@ -268,7 +268,7 @@ const SwipeableCards = () => {
                 position: "relative",
                 padding: "10px",
                 overflow: "hidden",
-                height: "170px",
+                height: "190px",
                 width:"80%",
                 marginLeft:"7%"
               }}
@@ -854,7 +854,7 @@ const SwipeableCards = () => {
               ) : (
                 <p>No VIP history available.</p>
               )}
-              <button className="mybtn! view-all-btn">View All</button>
+              <button className="mybtn! view-all-btn" style={{backgroundColor:"#F95959"}}>View All</button>
             </div>
           )}
           {activeTab === "rules" && (

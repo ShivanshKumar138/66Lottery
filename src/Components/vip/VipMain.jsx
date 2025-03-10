@@ -105,30 +105,33 @@ function VipMain() {
 
   return (
     <div>
-      <div className="topbox" style={{backgroundColor:"#F95959"}}>
-      
-        <div className="top-left">
-          <div className="image-box">
-            <img src={avatar} alt="" />
-          </div>
-        </div>
-        
-        <div className="top-right">
-          <div className="top-right-top">
-            <div className="top-image-box">
-              <img
-                src={getImageForAchievement()}
-                alt="Achievement"
-                width="30%"
-                height="80%"
-              />
-            </div>
-          </div>
-          <div className="top-right-bottom" style={{ marginBottom: "35%" }}>
-            {userData.username}
-          </div>
-        </div>
+   <div className="topbox" style={{
+  backgroundColor: "#F95959",
+  width: "100%",  // This makes it take full width
+  boxSizing: "border-box" // This ensures padding doesn't add to the width
+}}>
+  <div className="top-left">
+    <div className="image-box">
+      <img src={avatar} alt="" />
+    </div>
+  </div>
+  
+  <div className="top-right">
+    <div className="top-right-top">
+      <div className="top-image-box">
+        <img
+          src={getImageForAchievement()}
+          alt="Achievement"
+          width="30%"
+          height="80%"
+        />
       </div>
+    </div>
+    <div className="top-right-bottom" style={{ marginBottom: "35%" }}>
+      {userData.username}
+    </div>
+  </div>
+</div>
       <div className="bottom-box">
         <div className="exp-box">
           <div className="exp">
@@ -160,7 +163,7 @@ function VipMain() {
           </div>
         </div>
         <div className="notice-mid" style={{ marginTop: "-5%" }}>
-          <div className="n-box">
+          <div className="n-box" style={{color:"black"}}>
             VIP level rewards are settled at 2:00 am on the 1st of every month
           </div>
         </div>
