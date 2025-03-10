@@ -40,10 +40,10 @@ import CasinoIconOF from "../../public/GameHistory/CasionUnLight.png";
 import GameON from "../../public/GameHistory/gameON.png"
 import GameOF from "../../public/GameHistory/gameOF.png"
 const buttons = [
-  { label: "Lottery", iconOn: LotteryIcon , backgroundColor:"#e4911d" ,iconOf:LotteryIconOF},
-  { label: "Casino", iconOn: CasinoIconON , backgroundColor:"#e4911d" ,iconOf:CasinoIconOF},
-  { label: "Fishing",iconOn: GameON, backgoundColor:"#e4911d" ,iconOf:GameOF},
-  // { label: "Run", icon:iconOn: LotteryIcon , backgroundColor:"#e4911d" ,iconOf:LotteryIconOF},
+  { label: "Lottery", iconOn: LotteryIcon , backgroundColor:"#F95959" ,iconOf:LotteryIconOF},
+  { label: "Casino", iconOn: CasinoIconON , backgroundColor:"#F95959" ,iconOf:CasinoIconOF},
+  { label: "Fishing",iconOn: GameON, backgoundColor:"#F95959" ,iconOf:GameOF},
+  // { label: "Run", icon:iconOn: LotteryIcon , backgroundColor:"#F95959" ,iconOf:LotteryIconOF},
 ]
 
 const filterOptions = {
@@ -305,7 +305,7 @@ const BetHistoryMain = () => {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                backgroundColor: "rgb(255,149,42)",
+                backgroundColor: "#F95959",
                 padding: "7px 4px",
                 color: "white",
               }}
@@ -361,7 +361,7 @@ const BetHistoryMain = () => {
                   flex: "0 0 auto",
                   scrollSnapAlign: "start",
                   marginRight: "8px",
-                  backgroundColor:"rgb(255,149,42)"
+                  backgroundColor:"#F95959"
                 }}
               >
                 <IconButton
@@ -373,14 +373,14 @@ const BetHistoryMain = () => {
                     justifyContent: "center",
                     width: "100%",
                     backgroundColor:
-                      activeButton === button.label ? "rgb(255,149,42)" : "#ffffff",
+                      activeButton === button.label ? "#F95959" : "#ffffff",
                     color: activeButton === button.label ? "white" : "black",
                     borderRadius: 1,
                     padding: "2px 0",
                     transition: "background-color 0.3s ease",
                     "&:hover": {
                       backgroundColor:
-                        activeButton === button.label ? "rgb(255,149,42)" : "#ffffff",
+                        activeButton === button.label ? "#F95959" : "#ffffff",
                     },
                   }}
                 >

@@ -37,7 +37,7 @@ import {
         >
           <Box
             sx={{
-              bgcolor: "#FE8123",
+              bgcolor: "#F95959",
               padding: "8px 10px",
               display: "flex",
               alignItems: "center",

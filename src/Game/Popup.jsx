@@ -22,7 +22,7 @@ const Popup = ({ isOpen, onClose }) => {
       {" "}
       <div
         style={{
-          background: "linear-gradient(90deg, #FF952A 0%, #FF952A 100%)",
+          background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
           borderTopLeftRadius: "10px",
           borderTopRightRadius: "10px",
           padding: "15px",
@@ -154,7 +154,7 @@ const Popup = ({ isOpen, onClose }) => {
       </div>
       <div
         style={{
-          background: "linear-gradient(90deg, #FF952A 0%, #FF952A 100%)",
+          background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
           borderBottomLeftRadius: "10px",
           borderBottomRightRadius: "10px",
           padding: "20px",
@@ -168,7 +168,7 @@ const Popup = ({ isOpen, onClose }) => {
             width: "fit-content",
             margin: "0 auto",
             textAlign: "center",
-            color: "#FF952A",
+            color: "#F95959",
             cursor: "pointer",
             borderRadius: "5px", // Make it look more like a button
             fontWeight:"bold"

@@ -96,7 +96,7 @@ const VipMain = ({ children }) => {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                background: "#FE8123",
+                background: "#F95959",
                 padding: "4px 8px",
                 color: "black",
               }}

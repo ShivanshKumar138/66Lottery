@@ -117,11 +117,11 @@ const CustomPagination = styled(Pagination)({
     color: "#A8A5A1",
   },
   "& .MuiPaginationItem-ellipsis": {
-    color: "#FF952A",
-    background: "linear-gradient(90deg, #FF952A 0%, #FF952A 100%)",
+    color: "#F95959",
+    background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
   },
   "& .MuiPaginationItem-previousNext": {
-    background: "linear-gradient(90deg, #FF952A 0%, #FF952A 100%)",
+    background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
     color: "#ffffff",
     padding: "3px",
     width: "auto", // Ensure it doesn't stretch
@@ -159,7 +159,7 @@ const CustomTable = ({ data }) => {
         item
         direction="row"
         justifyContent="space-evenly"
-        backgroundColor="rgb(255,142,40)"
+        backgroundColor="#F95959"
       >
         {columns.map((column) => (
           <Grid
@@ -176,7 +176,7 @@ const CustomTable = ({ data }) => {
               width: "100%",
               borderRadius: "5px",
               fontSize: "1rem",
-              bgcolor:"rgb(255,142,40)"
+              bgcolor:"#F95959"
             }}
           >
             {column.label}
@@ -431,7 +431,7 @@ const RowVisualization = ({ data }) => {
 // // Styled component for individual digits
 // const Digit = styled(Box)(({ theme }) => ({
 //   backgroundColor: "white", // White background for digits
-//   color: "#FF952A", // Text color
+//   color: "#F95959", // Text color
 //   padding: "0 20px",
 //   borderRadius: "8px",
 //   display: "flex",
@@ -1882,7 +1882,7 @@ try {
                 }}
               >
                 <AccountBalanceWallet
-                  sx={{ marginRight: "10px", color: "#FF952A" }}
+                  sx={{ marginRight: "10px", color: "#F95959" }}
                 />
                 <Typography variant="subtitle2">Wallet Balance</Typography>
               </Grid>
@@ -1919,9 +1919,9 @@ try {
                   fullWidth
                   sx={{
                     marginLeft: "10px",
-                    backgroundColor: "rgb(255,142,40)",
+                    backgroundColor: "#F95959",
                     "&:hover": {
-                      backgroundColor: "rgb(255,142,40)",
+                      backgroundColor: "#F95959",
                     },
                     borderRadius: "50px",
                   }}
@@ -1946,7 +1946,7 @@ try {
               }}
             >
               <IconButton>
-                <VolumeUpIcon sx={{ color: "rgb(255,142,40)" }} />
+                <VolumeUpIcon sx={{ color: "#F95959" }} />
               </IconButton>
 
               <Box sx={{ flex: 1, overflow: "hidden", padding: "0 10px" }}>
@@ -2093,14 +2093,14 @@ try {
                 <Button
                   variant="outlined"
                   sx={{
-                    border: "1px solid #FF952A",
+                    border: "1px solid #F95959",
                     borderRadius: "15px",
                     padding: "1.5px 17px",
                     fontSize: "0.6rem",
                     textTransform: "initial",
                     display: "inline-flex", // Use inline-flex to align items in a line
                     alignItems: "center", // Center items vertically
-                    color: "#FF952A",
+                    color: "#F95959",
                   }}
                   startIcon={<NoteIcon />}
                   onClick={handleOpenPopup}
@@ -2141,7 +2141,7 @@ try {
                       height: "22px",
                       marginTop: "12px",
                       backgroundColor: "#f2f2f1",
-                      color: "#FF952A",
+                      color: "#F95959",
                       textAlign: "center",
                       fontWeight: "bold",
                       lineHeight: "25px",
@@ -2157,7 +2157,7 @@ try {
                       height: "22px",
                       marginTop: "8px",
                       backgroundColor: "#f2f2f1",
-                      color: "#FF952A",
+                      color: "#F95959",
                       fontWeight: "bold",
                       textAlign: "center",
                       lineHeight: "25px",
@@ -2172,7 +2172,7 @@ try {
                       width: "16px",
                       height: "22px",
                       backgroundColor: "#f2f2f1",
-                      color: "#FF952A",
+                      color: "#F95959",
                       marginTop: "8px",
                       fontWeight: "bold",
                       textAlign: "center",
@@ -2188,7 +2188,7 @@ try {
                       width: "16px",
                       height: "22px",
                       backgroundColor: "#f2f2f1",
-                      color: "#FF952A",
+                      color: "#F95959",
                       marginTop: "10px",
                       fontWeight: "bold",
                       textAlign: "center",
@@ -2204,7 +2204,7 @@ try {
                       width: "16px",
                       height: "22px",
                       backgroundColor: "#f2f2f1",
-                      color: "#FF952A",
+                      color: "#F95959",
                       fontWeight: "bold",
                       marginTop: "8px",
                       textAlign: "center",
@@ -2269,7 +2269,7 @@ try {
                   alignItems: "center",
                   justifyContent: "center",
                   overflow: "hidden",
-                  color: "#FF952A",
+                  color: "#F95959",
                   fontWeight: "bold",
                   textAlign: "center",
                   position: "absolute",
@@ -2320,7 +2320,7 @@ try {
                   <Tab
                     label="Total"
                     style={{
-                      backgroundColor: values === 0 ? "rgb(255,142,41)" : "#f2f2f1",
+                      backgroundColor: values === 0 ? "#F95959" : "#f2f2f1",
                       color: values === 0 ? "#ffffff" : "grey",
                       borderBottom: values === 0 ? "none" : "",
                       borderRadius: "5px",
@@ -2332,7 +2332,7 @@ try {
                   <Tab
                     label="2 same"
                     style={{
-                      backgroundColor: values === 1 ? "rgb(255,142,41)" : "#f2f2f1",
+                      backgroundColor: values === 1 ? "#F95959" : "#f2f2f1",
                       color: values === 1 ? "#ffffff" : "grey",
                       borderBottom: values === 1 ? "none" : "",
                       borderRadius: "5px",
@@ -2344,7 +2344,7 @@ try {
                   <Tab
                     label="3 same"
                     style={{
-                      backgroundColor: values === 2 ? "rgb(255,142,41)" : "#f2f2f1",
+                      backgroundColor: values === 2 ? "#F95959" : "#f2f2f1",
                       color: values === 2 ? "#ffffff" : "grey",
                       borderBottom: values === 2 ? "none" : "",
                       borderRadius: "5px",
@@ -2356,7 +2356,7 @@ try {
                   <Tab
                     label="Different"
                     style={{
-                      backgroundColor: values === 3 ? "rgb(255,142,41)" : "#f2f2f1",
+                      backgroundColor: values === 3 ? "#F95959" : "#f2f2f1",
                       color: values === 3 ? "#ffffff" : "grey",
                       borderBottom: values === 3 ? "none" : "",
                       borderRadius: "5px",
@@ -2456,7 +2456,7 @@ try {
                       variant="contained"
                       style={{
                         backgroundColor:
-                          activeBetAmount === 1 ? "#FF952A" : "#f2f2f1",
+                          activeBetAmount === 1 ? "#F95959" : "#f2f2f1",
                         color: activeBetAmount === 1 ? "#ffffff" : "black",
                       }}
                       onClick={() => {
@@ -2470,7 +2470,7 @@ try {
                       variant="contained"
                       style={{
                         backgroundColor:
-                          activeBetAmount === 10 ? "#FF952A" : "#f2f2f1",
+                          activeBetAmount === 10 ? "#F95959" : "#f2f2f1",
                         color: activeBetAmount === 10 ? "#ffffff" : "black",
                       }}
                       onClick={() => {
@@ -2484,7 +2484,7 @@ try {
                       variant="contained"
                       style={{
                         backgroundColor:
-                          activeBetAmount === 100 ? "#FF952A" : "#f2f2f1",
+                          activeBetAmount === 100 ? "#F95959" : "#f2f2f1",
                         color: activeBetAmount === 100 ? "#ffffff" : "black",
                       }}
                       onClick={() => {
@@ -2498,7 +2498,7 @@ try {
                       variant="contained"
                       style={{
                         backgroundColor:
-                          activeBetAmount === 1000 ? "#FF952A" : "#f2f2f1",
+                          activeBetAmount === 1000 ? "#F95959" : "#f2f2f1",
                         color: activeBetAmount === 1000 ? "#ffffff" : "black",
                       }}
                       onClick={() => {
@@ -2559,7 +2559,7 @@ try {
                         onClick={() =>
                           setMultiplier(multiplier > 1 ? multiplier - 1 : 1)
                         }
-                        style={{ background: "linear-gradient(90deg, #FF952A 0%, #59adff 100%)", color: "#ffffff" }}
+                        style={{ background: "linear-gradient(90deg, #F95959 0%, #59adff 100%)", color: "#ffffff" }}
                       >
                         -
                       </div>
@@ -2567,9 +2567,9 @@ try {
                       <Typography
                         variant="body1"
                         style={{
-                          border: "1px solid #FF952A",
+                          border: "1px solid #F95959",
                           width: "50px",
-                          background: "linear-gradient(90deg, #FF952A 0%, #59adff 100%)",
+                          background: "linear-gradient(90deg, #F95959 0%, #59adff 100%)",
                           color: "white",
                         }}
                       >
@@ -2578,7 +2578,7 @@ try {
                       <div
                         className="button1"
                         onClick={() => setMultiplier(multiplier + 1)}
-                        style={{ background: "linear-gradient(90deg, #FF952A 0%, #59adff 100%)", color: "#ffffff" }}
+                        style={{ background: "linear-gradient(90deg, #F95959 0%, #59adff 100%)", color: "#ffffff" }}
                       >
                         +
                       </div>
@@ -2595,7 +2595,7 @@ try {
                       }}
                       style={
                         activeButton === 1
-                          ? { background: "linear-gradient(90deg, #FF952A 0%, #59adff 100%)", color: "white" }
+                          ? { background: "linear-gradient(90deg, #F95959 0%, #59adff 100%)", color: "white" }
                           : { backgroundColor: "#f2f2f1", color: "black" }
                       }
                     >
@@ -2609,7 +2609,7 @@ try {
                       }}
                       style={
                         activeButton === 5
-                          ? { background: "linear-gradient(90deg, #FF952A 0%, #59adff 100%)", color: "white" }
+                          ? { background: "linear-gradient(90deg, #F95959 0%, #59adff 100%)", color: "white" }
                           : { backgroundColor: "#f2f2f1", color: "black" }
                       }
                     >
@@ -2625,7 +2625,7 @@ try {
                       }}
                       style={
                         activeButton === 10
-                          ? { background: "linear-gradient(90deg, #FF952A 0%, #59adff 100%)", color: "white" }
+                          ? { background: "linear-gradient(90deg, #F95959 0%, #59adff 100%)", color: "white" }
                           : { backgroundColor: "#f2f2f1", color: "black" }
                       }
                     >
@@ -2641,7 +2641,7 @@ try {
                       }}
                       style={
                         activeButton === 20
-                          ? { background: "linear-gradient(90deg, #FF952A 0%, #59adff 100%)", color: "white" }
+                          ? { background: "linear-gradient(90deg, #F95959 0%, #59adff 100%)", color: "white" }
                           : { backgroundColor: "#f2f2f1", color: "black" }
                       }
                     >
@@ -2657,7 +2657,7 @@ try {
                       }}
                       style={
                         activeButton === 50
-                          ? { background: "linear-gradient(90deg, #FF952A 0%, #59adff 100%)", color: "white" }
+                          ? { background: "linear-gradient(90deg, #F95959 0%, #59adff 100%)", color: "white" }
                           : { backgroundColor: "#f2f2f1", color: "black" }
                       }
                     >
@@ -2673,7 +2673,7 @@ try {
                       }}
                       style={
                         activeButton === 100
-                          ? { background: "linear-gradient(90deg, #FF952A 0%, #59adff 100%)", color: "white" }
+                          ? { background: "linear-gradient(90deg, #F95959 0%, #59adff 100%)", color: "white" }
                           : { backgroundColor: "#f2f2f1", color: "black" }
                       }
                     >
@@ -2699,7 +2699,7 @@ try {
                     <Button
                       onClick={handlePlaceBet}
                       fullWidth
-                      style={{ background: "linear-gradient(90deg, #FF952A 0%, #59adff 100%)", color: "#ffffff" }}
+                      style={{ background: "linear-gradient(90deg, #F95959 0%, #59adff 100%)", color: "#ffffff" }}
                       variant="contained"
                     >{`Total Bet: ${betAmount * multiplier}`}</Button>
                   </Grid>
@@ -2953,7 +2953,7 @@ try {
                       sx={{
                         height: "40px",
                         backgroundColor:
-                          activeTab === index ? "rgb(255,142,40)" : "#ffffff",
+                          activeTab === index ? "#F95959" : "#ffffff",
                         color: activeTab === index ? "#ffffff" : "grey",
                         borderRadius: 1,
                         display: "flex",
@@ -2963,7 +2963,7 @@ try {
                         transition: "all 0.3s",
                         "&:hover": {
                           backgroundColor:
-                            activeTab === index ? "rgb(255,142,40)" : "#f5f5f5",
+                            activeTab === index ? "#F95959" : "#f5f5f5",
                         },
                       }}
                     >
@@ -3058,7 +3058,7 @@ try {
                                         if (item === "Small") return "#6ea8f4";
                                         if (item === "Odd") return "#fb5b5b";
                                         if (item === "Even") return "#19b660";
-                                        return "#FF952A"; // Default color if none of the conditions match
+                                        return "#F95959"; // Default color if none of the conditions match
                                       })(),
                                       display: "flex",
                                       justifyContent: "center",

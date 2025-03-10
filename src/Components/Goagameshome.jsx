@@ -14,6 +14,7 @@ import { domain } from "./config";
 import axios from "axios";
 import { styled } from "@mui/material/styles";
 import { sub } from 'date-fns';
+import { fontFamily, fontSize, fontWeight } from '@mui/system';
 // import { Grid } from '@mui/system';
 
 // Styled components remain the same
@@ -28,7 +29,7 @@ const StyledDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 const StyledDialogTitle = styled(DialogTitle)(({ theme }) => ({
-  backgroundColor: "#4781ff",
+  backgroundColor: "#F95959",
   color: "white",
   padding: theme.spacing(1.5),
 }));
@@ -77,7 +78,7 @@ const RechargeDialog = memo(({ open, onClose, onConfirm, selectedGame }) => {
         <StyledButton
           onClick={onConfirm}
           variant="contained"
-          style={{ backgroundColor: "#4781ff", color: "white" }}
+          style={{ backgroundColor: "#F95959", color: "white" }}
         >
           Recharge Now
         </StyledButton>
@@ -102,7 +103,7 @@ const TabLayout = () => {
   const tabs = [
     {id: 'sports', label: 'Popular', img: 'https://ossimg.goa999.vip/GoaGame/gamecategory/gamecategory_20240127134718aedk.png', bgImage:"url(https://goagameb.com/assets/png/lottery_bg-1edd950a.png)" },
     
-    {id: 'lobby', label: 'Lottry', img: 'https://ossimg.goa999.vip/GoaGame/gamecategory/gamecategory_20240127134331wkt7.png',bgImage:"url(https://goagameb.com/assets/png/lottery_bg-1edd950a.png)" },
+    {id: 'lobby', label: 'Lottery', img: 'https://ossimg.goa999.vip/GoaGame/gamecategory/gamecategory_20240127134331wkt7.png',bgImage:"url(https://goagameb.com/assets/png/lottery_bg-1edd950a.png)" },
     {id: 'slot', label: 'Slots', img: 'https://ossimg.goa999.vip/GoaGame/gamecategory/gamecategory_20240127160211wyu9.png', bgImage:"rgb(87,199,221)" },
     { id: 'cards', label: 'Sport', img: 'https://ossimg.goa999.vip/GoaGame/gamecategory/gamecategory_20240127171151ol6s.png', bgcolor: "transparent" },
     {id: 'casino', label: 'Casino', img: 'https://www.66lottery9.com/static/gameIcon/video_icon.png?v=1.0.0', bgcolor: "transparent" },
@@ -542,6 +543,7 @@ const handleTabClick = (index) => {
     pl: 0,
     lineHeight: '1', 
     width: '100%',
+    marginTop:"-20px"
   }}
 >
   <div style={{
@@ -571,23 +573,24 @@ const handleTabClick = (index) => {
       alignItems: "center",
       height: "32px",
       marginTop:"20px",
-      marginLeft:"5px"
+      marginLeft:"5px",
+      
     }}>
       {title}
     </div>
     <button style={{
-      border: '2px solid rgb(245,68,68)',
-      borderRadius: '25px',
+      border: '2px solid #afafaf',
+      borderRadius: '5px',
       background: 'transparent',
-      color: 'rgb(245,68,68)',
+      color: '#afafaf',
       fontSize: '12px',
       cursor: 'pointer',
-      padding: '1px 35px',
+      padding: '1px 30px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       fontWeight: 'normal',
-      height: "32px"
+      height: "20px"
     }}
     onClick={()=>{navigate("/all-games")}}
     >
@@ -804,7 +807,7 @@ const LotteryItem = ({ title, subtitle, desc, img, onClick, amount }) => (
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              bgcolor: 'rgb(255,142,41)',
+              bgcolor: '#F95959',
               borderRadius: '8px',
               cursor: 'pointer',
               color: '#fff',
@@ -822,7 +825,7 @@ const LotteryItem = ({ title, subtitle, desc, img, onClick, amount }) => (
 
   return (
     <Box sx={{ width: '100%', maxWidth: '3xl', margin: 'auto' }}>
-      <Box sx={{ position: 'relative', px: 0,mt:4,mb:0 }}>
+      <Box sx={{ position: 'relative', px: 0,mb:0 }}>
         <Box 
           sx={{
             display: 'flex',
@@ -836,23 +839,24 @@ const LotteryItem = ({ title, subtitle, desc, img, onClick, amount }) => (
         >
 <div className="p-1 w-full max-w-3xl mx-auto">
       {/* First row - 4 distinct boxes with small gap */}
-      <div className="grid grid-cols-4 gap-2 mb-3">
+      <div className="grid grid-cols-4 gap-2 mb-3" >
         {tabs.slice(0, 4).map((tab, index) => (
           <div 
             ref={contentRef}
             key={tab.id} 
             onClick={() => handleTabClick(index)}
-            className="relative rounded-2xl overflow-hidden cursor-pointer transition-transform hover:scale-105 flex flex-col items-center"
+            className="relative overflow-hidden cursor-pointer  flex flex-col items-center"
             style={{
-              background: index === 0 ? '#4895EF' : 
-                         index === 1 ? '#FFA33C' : 
-                         index === 2 ? '#8B5CF6' : 
-                         '#FF4B6E',
+              background: index === 0 ? '#54ABE5' : 
+                         index === 1 ? '#FFA735' : 
+                         index === 2 ? '#8163EA' : 
+                         '#FF5F74',
               padding: '5px',
-              height: '105px'
+              height: '105px',
+              borderRadius: '11px',
             }}
           >
-            <div className="text-white font-bold text-lg pb-1">{tab.label}</div>
+         <div className="text-white font-bold text-lg pb-1" style={{ fontFamily: 'Arial', fontWeight: 700, fontSize: '12px' }}>{tab.label}</div>
             <div className="flex-grow flex items-center justify-center w-full">
               <img 
                 src={tab.img} 
@@ -867,16 +871,16 @@ const LotteryItem = ({ title, subtitle, desc, img, onClick, amount }) => (
       </div>
 
       {/* Second row - Purple bar with 4 sections */}
-      <div className="rounded-xl overflow-hidden" style={{ backgroundImage: 'url(https://www.66lottery9.com/static/gameIcon/di_new.png?v=1.0.0)' }}>
+      <div className=" overflow-hidden" style={{ backgroundImage: 'url(https://www.66lottery9.com/static/gameIcon/di_new.png?v=1.0.0)', borderRadius: '8px',backgroundClip: 'padding-box', backgroundSize: 'cover', backgroundPosition: 'center', height: '100px', }}>
         <div className="flex">
           {tabs.slice(4, 8).map((tab, index) => (
             <div
             key={tab.id}
             onClick={() => handleTabClick(index + 4)}
-            className="flex-1 flex flex-col items-center justify-center py-4 cursor-pointer transition-transform hover:scale-105 text-white relative"
+            className="flex-1 flex flex-col items-center justify-center py-4 cursor-pointer  text-white relative"
             style={{
               // Remove the border from here
-              height: '110px',
+              height: '100px',
               position: 'relative' // Add position relative for absolute positioning inside
             }}
           >
@@ -901,7 +905,7 @@ const LotteryItem = ({ title, subtitle, desc, img, onClick, amount }) => (
                   className="w-12 h-12 object-contain"
                 />
               </div>
-              <span className="font-bold text-lg">{tab.label}</span>
+              <span className="font-bold text-lg" style={{ fontFamily: 'Arial', fontWeight: 700, fontSize: '12px' }}>{tab.label}</span>
             </div>
           ))}
         </div>
@@ -931,14 +935,13 @@ const LotteryItem = ({ title, subtitle, desc, img, onClick, amount }) => (
 
 
 {activeTab === 0 && (
-  <Box sx={{ width: '100%', overflow: 'hidden' }}>
-  <SectionHeading title="Lottery Games" />
+  <Box sx={{ width: '100%', overflow: 'hidden', }}>
+  <SectionHeading  title="Lottery Games" />
   <Box
   sx={{
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
     gap: 0,
-    mb: 2,
     mt: 0,
     width: '100%',
     padding: '0px',
@@ -1015,7 +1018,6 @@ const LotteryItem = ({ title, subtitle, desc, img, onClick, amount }) => (
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
     gap: 2,
-    mb: 4,
     width: '100%',
     '& > *': {
       width: '100%',
@@ -1079,7 +1081,7 @@ const LotteryItem = ({ title, subtitle, desc, img, onClick, amount }) => (
       >
         {/* Game Title */}
         <Typography
-          variant="body1"
+          variant="h1"
           sx={{
             fontWeight: 100,
             color: '#333',
@@ -1100,7 +1102,6 @@ const LotteryItem = ({ title, subtitle, desc, img, onClick, amount }) => (
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
       gap: 1,
-      mb: 4,
       width: '100%',
       '& > *': {
         width: '100%',

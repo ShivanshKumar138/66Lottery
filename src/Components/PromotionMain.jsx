@@ -33,20 +33,20 @@ const depositOptions = [
 ];
 
 const options = [
-  { label: "Copy invitation code", image: "/assets/banners/su1.png" },
-  { label: "Subordinate data", image: "/assets/banners/su2.png" },
+  { label: "Copy invitation code", image: "/assets/promotion/4.png" },
+  { label: "Subordinate data", image: "/assets/promotion/svgexport-7.png" },
   {
     label: "Commission details",
-    image: "/assets/banners/su3.png",
+    image: "/assets/promotion/2.png",
   },
-  { label: "Invitation rules", image: "/assets/banners/su4.png" },
+  { label: "Invitation rules", image: "/assets/promotion/3.png" },
   {
     label: "New Subordinates",
-    image: "/assets/banners/su5.png",
+    image: "/assets/promotion/svgexport-4.png",
   },
   {
     label: "Agent line customer service",
-    image: "/assets/banners/su6.png",
+    image: "/assets/promotion/6.png",
   },
 ];
 
@@ -346,7 +346,7 @@ const PromotionMain = ({ children }) => {
     position: "sticky",
     top: 0,
     zIndex: 1000,
-    background: "linear-gradient(90deg, #FF962C 0%, #FD5810 100%)",
+    background: "linear-gradient(to right, rgba(250, 91, 91, 1) 0%, rgba(250, 91, 91, 0.5) 100%)",
     padding: "12px 16px",
     color: "#1e2637",
   }}
@@ -358,7 +358,7 @@ const PromotionMain = ({ children }) => {
       </span>
       <Box position="absolute" right={0}>
         <img
-          src="/assets/banners/Frame.png" // Replace with the actual path to your icon
+          src="/assets/promotion/svgexport-3.png" // Replace with the actual path to your icon
           alt="icon"
           style={{ width: "24px", height: "24px", marginLeft: "8px" }}
         />
@@ -386,7 +386,7 @@ const PromotionMain = ({ children }) => {
                 xs={12}
                 sx={{
                   borderRadius: "0px 0px 0 0",
-                  background: 'linear-gradient(#FF952A, #FF952A), url("https://goagamea.com/assets/png/promotionbg-13880556.png")',
+                  background: 'linear-gradient(to right, rgba(250, 91, 91, 1) 0%, rgba(250, 91, 91, 0.5) 100%), url("https://goagamea.com/assets/png/promotionbg-13880556.png")',
                   backgroundBlendMode: "overlay",
                   backgroundSize: "cover",
                   backgroundPosition: "center",
@@ -410,7 +410,7 @@ const PromotionMain = ({ children }) => {
 
                 <Typography
                   variant="body2"
-                  color="#FF952A"
+                  color="#F95959"
                   backgroundColor="#FFFFFF"
                   align="center"
                   mt="3px"
@@ -447,8 +447,8 @@ const PromotionMain = ({ children }) => {
                     xs={12}
                     sx={{
                       borderRadius: "8px 8px 0 0",
-                      background: "#FF952A",
-                      borderRight: "1px solid #FF952A",
+                      background: "#F95959",
+                      borderRight: "1px solid #F95959",
                       padding: "0.6rem",
                     }}
                   >
@@ -551,9 +551,9 @@ const PromotionMain = ({ children }) => {
                 marginRight: "auto",
                 marginTop: "10px", // Adjust as needed
                 marginBottom: "10px",
-                background: "linear-gradient(180deg, #FF952A 0%, #FF952A 30%, #FF952A 100%)",
+                background: "linear-gradient(180deg, #F95959 0%, #F95959 30%, #F95959 100%)",
                 "&:hover": {
-                  background: "linear-gradient(180deg, #FF952A 0%, #FF952A 30%, #FF952A 100%)",
+                  background: "linear-gradient(180deg, #F95959 0%, #F95959 30%, #F95959 100%)",
                 },
                 color: "#ffffff",
                 borderRadius: "20px", // Adjust as needed
@@ -586,7 +586,7 @@ const PromotionMain = ({ children }) => {
                     <img
                       src={option.image}
                       alt="icon"
-                      style={{ width: 24, height: 24, marginRight: 8, backgroundImage:"#e4911d"}}
+                      style={{ width: 24, height: 24, marginRight: 8, backgroundImage:"#F95959"}}
                     />
                   </ListItemIcon>
                   <Typography
@@ -656,7 +656,7 @@ const PromotionMain = ({ children }) => {
               <Grid container alignItems="center" sx={{ marginBottom: "5px" }}>
                 <Grid item>
                 <img
-    src="/assets/banners/su7.png" // Replace with your image path
+    src="/assets/promotion/7.png" // Replace with your image path
     alt="Promotion icon"
     style={{
       width: '25px',

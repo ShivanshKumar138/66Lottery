@@ -337,7 +337,7 @@
 //               position: "sticky",
 //               top: 0,
 //               zIndex: 5000,
-//               background: "rgb(255,149,42)",
+//               background: "#F95959",
 //               padding: "2px 4px",
 //               color: "white",
 //             }}
@@ -376,7 +376,7 @@
 //     maxWidth: { xs: "100%", sm: "400px", md: "500px" }, // Control maximum width at different breakpoints
 //     width: "100%", // Use full available width
 //     margin: "0 auto", // Center the grid horizontally
-//     background: "rgb(255,149,42)",
+//     background: "#F95959",
 //     borderRadius: { xs: "0 0 40px 40px", sm: "0 0 70px 70px" }, // Smaller radius on mobile
 //     textAlign: "center",
 //   }}
@@ -455,7 +455,7 @@
 //       }}
 //     >
 //       <AccountBalanceWallet
-//         sx={{ marginRight: "10px", color: "rgb(255,142,41)", fontSize: { xs: "1rem", sm: "1.25rem" } }}
+//         sx={{ marginRight: "10px", color: "#F95959", fontSize: { xs: "1rem", sm: "1.25rem" } }}
 //       />
 //       <Typography variant="subtitle2" sx={{ fontSize: { xs: "0.75rem", sm: "0.875rem" } }}>
 //         Wallet Balance
@@ -525,7 +525,7 @@
 //     }}
 //   >
 //     <IconButton sx={{ padding: { xs: "6px", sm: "8px" } }}>
-//       <VolumeUpIcon sx={{ color: "rgb(255,142,41)", fontSize: { xs: "1rem", sm: "1.25rem" } }} />
+//       <VolumeUpIcon sx={{ color: "#F95959", fontSize: { xs: "1rem", sm: "1.25rem" } }} />
 //     </IconButton>
 
 //     <Box sx={{ flex: 1, overflow: "hidden", padding: { xs: "0 6px", sm: "0 10px" } }}>
@@ -660,7 +660,7 @@
 //         height:"105px",
 //         maxWidth: "90%",
 //         margin: "auto",
-//         background: "rgb(255,142,41)",
+//         background: "#F95959",
 //         borderRadius: "15px",
 //         padding: "3px",
 //         display: "flex",
@@ -2117,7 +2117,7 @@ useEffect(() => {
               position: "sticky",
               top: 0,
               zIndex: 5000,
-              background: "rgb(255,149,42)",
+              background: "#F95959",
               padding: "8px 16px",
               color: "white",
             }}
@@ -2156,7 +2156,7 @@ useEffect(() => {
     maxWidth: { xs: "100%", sm: "500px", md: "600px" }, // Control maximum width at different breakpoints
     width: "100%", // Use full available width
     margin: "0 auto", // Center the grid horizontally
-    background: "rgb(255,149,42)",
+    background: "#F95959",
     borderRadius: { xs: "0 0 40px 40px", sm: "0 0 70px 70px" }, // Smaller radius on mobile
     textAlign: "center",
   }}
@@ -2235,7 +2235,7 @@ useEffect(() => {
       }}
     >
       <AccountBalanceWallet
-        sx={{ marginRight: "10px", color: "rgb(255,142,41)", fontSize: { xs: "1rem", sm: "1.25rem" } }}
+        sx={{ marginRight: "10px", color: "#F95959", fontSize: { xs: "1rem", sm: "1.25rem" } }}
       />
       <Typography variant="subtitle2" sx={{ fontSize: { xs: "0.75rem", sm: "0.875rem" } }}>
         Wallet Balance
@@ -2305,7 +2305,7 @@ useEffect(() => {
     }}
   >
     <IconButton sx={{ padding: { xs: "6px", sm: "8px" } }}>
-      <VolumeUpIcon sx={{ color: "rgb(255,142,41)", fontSize: { xs: "1rem", sm: "1.25rem" } }} />
+      <VolumeUpIcon sx={{ color: "#F95959", fontSize: { xs: "1rem", sm: "1.25rem" } }} />
     </IconButton>
 
     <Box sx={{ flex: 1, overflow: "hidden", padding: { xs: "0 6px", sm: "0 10px" } }}>
@@ -2447,7 +2447,7 @@ useEffect(() => {
         height:"105px",
         maxWidth: "90%",
         margin: "auto",
-        background: "rgb(255,142,41)",
+        background: "#F95959",
         borderRadius: "15px",
         padding: "3px",
         display: "flex",
@@ -2727,7 +2727,7 @@ useEffect(() => {
                          alignItems: "center",
                          justifyContent: "center",
                          overflow: "hidden",
-                         color: "rgb(255,142,41)",
+                         color: "#F95959",
                          fontWeight: "bold",
                          textAlign: "center",
                          position: "absolute",
@@ -3122,7 +3122,7 @@ useEffect(() => {
                       sx={{
                         height: "40px", // Adjust this value to change the tab height
                         backgroundColor:
-                          activeTab === index ? "rgb(255,142,41)" : "#ffffff",
+                          activeTab === index ? "#F95959" : "#ffffff",
                         color: activeTab === index ? "#ffffff" : "grey",
                         borderRadius: 1,
                         display: "flex",
@@ -3132,7 +3132,7 @@ useEffect(() => {
                         transition: "all 0.3s",
                         "&:hover": {
                           backgroundColor:
-                            activeTab === index ? "rgb(255,142,41)" : "#f5f5f5",
+                            activeTab === index ? "#F95959" : "#f5f5f5",
                         },
                       }}
                     >
@@ -3217,10 +3217,10 @@ useEffect(() => {
                                             "small"
                                           ? "#1876d2" // Background color for "small"
                                           : Number(bet.selectedItem) === 0
-                                          ? "rgb(255,142,41)"
+                                          ? "#F95959"
                                           : Number(bet.selectedItem) === 5
-                                          ? "rgb(255,142,41)"
-                                          : "rgb(255,142,41)",
+                                          ? "#F95959"
+                                          : "#F95959",
                                       color: "white",
                                       height: "40px",
                                       width: "40px",

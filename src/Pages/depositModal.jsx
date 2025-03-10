@@ -51,7 +51,7 @@ const DepositModal = ({ open, onClose }) => {
         <Box
           sx={{
             position: "relative",
-            background: "rgb(245,68,68)",
+            background: "linear-gradient(to right, rgba(250, 91, 91, 1) 0%, rgba(250, 91, 91, 0.5) 100%)",
             padding: "16px",
             textAlign: "center",
             color: "white",
@@ -82,7 +82,7 @@ const DepositModal = ({ open, onClose }) => {
         </Box>
 
         {/* Scrollable Bonuses Section */}
-        <Box sx={{ maxHeight: "400px", overflowY: "auto", backgroundColor: "#f9f9f9", padding: "10px" }}>
+        <Box sx={{ overflowY: "auto", backgroundColor: "#f9f9f9", padding: "10px",height:"auto",maxHeight:"75vh" }}>
           {depositBonuses.map((bonus) => (
             <Card
               key={bonus._id}
@@ -94,15 +94,15 @@ const DepositModal = ({ open, onClose }) => {
                 backgroundColor: "white",
               }}
             >
-              <CardContent sx={{ padding: "12px 16px" }}>
+              <CardContent sx={{ padding: "8px 8px",height:"115px" }}>
                 <Box display="flex" justifyContent="space-between" alignItems="center" mb={0.5}>
                   <Typography sx={{ fontSize: "14px", fontWeight: "bold" }}>
                     First deposit{" "}
-                    <Typography component="span" sx={{ color: "#FF8C00", fontWeight: "bold" }}>
+                    <Typography component="span" sx={{ color: "#F95959", fontWeight: "bold" }}>
                       ₹{bonus.minimumDeposit}
                     </Typography>
                   </Typography>
-                  <Typography sx={{ color: "#FF8C00", fontWeight: "bold", fontSize: "14px" }}>
+                  <Typography sx={{ color: "#F95959", fontWeight: "bold", fontSize: "14px" }}>
                     + ₹{bonus.bonus}
                   </Typography>
                 </Box>
@@ -119,11 +119,11 @@ const DepositModal = ({ open, onClose }) => {
                       borderRadius: 3,
                       backgroundColor: "#e0e0e0",
                       "& .MuiLinearProgress-bar": {
-                        background: "linear-gradient(90deg, #FF8C00, #FF8C00)",
+                        background: "linear-gradient(90deg, #F95959, #F95959)",
                       }
                     }}
                   />
-                  <Typography sx={{ fontSize: "10px", fontWeight: "bold", color: "#FF8C00", marginLeft: "8px" }}>
+                  <Typography sx={{ fontSize: "10px", fontWeight: "bold", color: "#F95959", marginLeft: "8px" }}>
                     0/{bonus.minimumDeposit}
                   </Typography>
                   <Button

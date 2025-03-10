@@ -79,27 +79,27 @@ const ImageSubtitleGrid = ({ imageSrc, subtitle1, subtitle2, onClick }) => (
 );
 const images = [
   {
-    url: "https://in.piccdn123.com/static/_template_/orange/img/my/service_settingCenter.png",
+    url: "https://www.66lottery9.com/static/wallet/settingCenter-779783db.png",
     caption: "Settings",
   },
   {
-    url: "https://in.piccdn123.com/static/_template_/orange/img/my/service_feedback.png",
+    url: "https://www.66lottery9.com/static/wallet/withdrawHistory-12d183a9.png",
     caption: "Feedback",
   },
   {
-    url: "https://in.piccdn123.com/static/_template_/orange/img/my/service_notification.png",
+    url: "https://www.66lottery9.com/static/wallet/notificationCenter-7c9bf6f3.png",
     caption: "Notifications",
   },
   {
-    url: "https://in.piccdn123.com/static/_template_/orange/img/my/service_Center.png",
+    url: "https://www.66lottery9.com/static/wallet/serviceCenter-ed250156.png",
     caption: "24/7 Customer service",
   },
   {
-    url: "https://in.piccdn123.com/static/_template_/orange/img/my/service_guide.png",
+    url: "https://www.66lottery9.com/static/wallet/guide-4c5e16b0.png",
     caption: "Beginers's Guide",
   },
   {
-    url: "https://in.piccdn123.com/static/_template_/orange/img/my/service_about.png",
+    url: "https://www.66lottery9.com/static/wallet/about-f4c85138.png",
     caption: "About Us",
   },
 ];
@@ -192,29 +192,29 @@ const AccountMain = ({ children }) => {
   const options = [
     {
       label: "Notifications",
-      icon: "https://in.piccdn123.com/static/_template_/orange/img/my/notification.png",
+      icon: "/assets/account/notification.png",
       subLabel: null,
       onClick: () => navigate("/messages"),
     },
     {
       label: "Gifts",
-      icon: "https://in.piccdn123.com/static/_template_/orange/img/my/gifts.png",
+      icon: "https://www.66lottery9.com/static/wallet/giftIcon-17a26471.png",
       subLabel: null,
       onClick: () => navigate("/coupen-user"),
     },
     {
       label: "Game Statistics",
-      icon: "https://in.piccdn123.com/static/_template_/orange/img/my/gamestatistics.png",
+      icon: "https://www.66lottery9.com/static/wallet/statsIcon-bd106515.png",
       subLabel: null,
       onClick: () => navigate("/game-statistics"),
     },
 
-    {
-      label: "Language",
-      icon: "https://in.piccdn123.com/static/_template_/orange/img/my/languageIcon.png",
-      subLabel: "English",
-      onClick: () => navigate("/language"),
-    },
+    // {
+    //   label: "Language",
+    //   icon: "https://in.piccdn123.com/static/_template_/orange/img/my/languageIcon.png",
+    //   subLabel: "English",
+    //   onClick: () => navigate("/language"),
+    // },
   ].filter(Boolean);
 
   const { logout } = useAuth();
@@ -299,7 +299,7 @@ const AccountMain = ({ children }) => {
             <Grid
               container
               sx={{
-                background: "rgb(255,149,42)",
+                background: "linear-gradient(to right, rgba(250, 91, 91, 1) 0%, rgba(250, 91, 91, 0.5) 100%)",
                 borderRadius: "0 0 20px 20px",
                 padding: "20px",
               }}
@@ -343,22 +343,26 @@ const AccountMain = ({ children }) => {
                 direction="column"
                 justifyContent="space-between"
               >
-                <Grid item align="left">
-                  <Typography
-                    variant="caption"
-                    align="center"
-                    color="white"
-                    fontSize={14}
-                  >
-                    {user ? user.username : "Loading.."}
-                  </Typography>{" "}
-                  <img
-                    src={getImageForAchievement()}
-                    alt="Achievement"
-                    width="20%"
-                    height="80%"
-                  />
-                </Grid>
+              <Grid container item alignItems="center">
+  <Grid item>
+    <Typography
+      variant="caption"
+      align="center"
+      color="white"
+      fontSize={14}
+    >
+      {user ? user.username : "Loading.."}
+    </Typography>
+  </Grid>
+  <Grid item>
+    <img
+      src={getImageForAchievement()}
+      alt="Achievement"
+      width="40%"
+      height="80%"
+    />
+  </Grid>
+</Grid>
                 <Grid
                   item
                   container
@@ -823,7 +827,7 @@ const AccountMain = ({ children }) => {
               onClick={handleLogout}
               sx={{
                 width: "80%",
-                border: "1px solid rgb(255,149,42)",
+                border: "1px solid #F95959",
                 borderRadius: "50px",
                 marginTop: "8%",
                 marginBottom: "25%",
@@ -831,12 +835,12 @@ const AccountMain = ({ children }) => {
             >
               <Grid container alignItems="center">
                 <Grid item>
-                  <ExitToAppIcon style={{ color: "rgb(255,149,42)" }} />
+                  <ExitToAppIcon style={{ color: "#F95959" }} />
                 </Grid>
                 <Grid item xs={10}>
                   <Typography
                     variant="body1"
-                    sx={{ marginLeft: "8px", color: "rgb(255,149,42)" }}
+                    sx={{ marginLeft: "8px", color: "#F95959" }}
                   >
                     Log Out
                   </Typography>

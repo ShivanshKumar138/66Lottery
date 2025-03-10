@@ -582,7 +582,7 @@ export default Mobile;
 //             fontWeight: "bold",
 //             borderRadius: "50px",
 //             boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-//             backgroundColor:"rgb(255,149,42)",
+//             backgroundColor:"#F95959",
           
 //           }}
 //         >
@@ -683,7 +683,7 @@ export default Mobile;
 //             variant="contained"
 //             className="fixed bottom-24 left-1/2 transform -translate-x-1/2 z-50 px-3 py-1 text-sm font-bold rounded-full"
 //             sx={{
-//               backgroundColor: "rgb(255,149,42)",
+//               backgroundColor: "#F95959",
 //               boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
 //             }}
 //           >

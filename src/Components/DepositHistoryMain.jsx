@@ -218,7 +218,7 @@ const DepositHistoryMain = () => {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                backgroundColor: "rgb(255,149,42)",
+                backgroundColor: "#F95959",
                 padding: "4px 8px",
                 color: "black",
               }}
@@ -273,7 +273,7 @@ const DepositHistoryMain = () => {
                       height: "2.5rem",
                       backgroundColor:
                         state.selectedMethod === method.name
-                          ? "rgb(255,149,42)"
+                          ? "#F95959"
                           : "#FFFFFF",
 
                       textTransform: "none",
@@ -289,7 +289,7 @@ const DepositHistoryMain = () => {
                       fontWeight: "normal",
                       fontSize: "0.75rem",
                       "&:hover": {
-                        background: "rgb(255,149,42)",
+                        background: "#F95959",
                         color: "black",
                       },
                     }}
@@ -410,7 +410,7 @@ const DepositHistoryMain = () => {
                         <Grid container xs={6}>
                           <Box
                             sx={{
-                              backgroundColor:" #FF952A",
+                              backgroundColor:" #F95959",
                               color: "white",
                               fontWeight: "bold",
                               borderRadius: "5px",
@@ -1084,7 +1084,7 @@ const DepositHistoryMain = () => {
               >
                 Cancel
               </Button>
-              <Button sx={{ color: "#FF952A", fontWeight: "bold" }}>
+              <Button sx={{ color: "#F95959", fontWeight: "bold" }}>
                 Confirm
               </Button>
             </Box>

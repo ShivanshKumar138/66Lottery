@@ -225,7 +225,7 @@ function GameStatisticsMain({ children }) {
           <AppBar
             position="sticky"
             sx={{
-              bgcolor: "#FE8123", // Green background color
+              bgcolor: "#F95959", // Green background color
               boxShadow: "none",
               borderBottom: "1px solid #",
             }}
@@ -270,7 +270,7 @@ function GameStatisticsMain({ children }) {
                 sx={{
                   flex: 1,
                   height: "30px",
-                  bgcolor: activeButton === label ? "#FE8123" : "white",
+                  bgcolor: activeButton === label ? "#F95959" : "white",
                   color: activeButton === label ? "white" : "black",
 
                   borderRadius: "20px",
@@ -308,7 +308,7 @@ function GameStatisticsMain({ children }) {
           >
             <Typography
               variant="h5"
-              sx={{ color: "#e4911d", fontWeight: "bold" }}
+              sx={{ color: "#F95959", fontWeight: "bold" }}
             >
               ₹{stats.totalAmountBet.toFixed(2)}
             </Typography>

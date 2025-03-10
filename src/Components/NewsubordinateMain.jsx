@@ -19,7 +19,7 @@ const Navbar = () => {
     position: "sticky",
     top: 0,
     zIndex: 1000,
-    background: "linear-gradient(90deg, rgb(255,142,41) 0%, #FF952A 100%)", // Updated background color
+    background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)", // Updated background color
     padding: "4px 8px",
     color: "white", // Updated text color
   }}
@@ -68,7 +68,7 @@ const DateOptions = ({ selectedOption, setSelectedOption }) => {
           key={option}
           onClick={() => setSelectedOption(option)}
           sx={{
-            backgroundColor: selectedOption === option ? "rgb(255,142,41)" : "#ffffff",
+            backgroundColor: selectedOption === option ? "#F95959" : "#ffffff",
             color: selectedOption === option ? "#ffffff" : "#000000",
             borderRadius: "10px",
             padding: "8px 16px",
@@ -77,7 +77,7 @@ const DateOptions = ({ selectedOption, setSelectedOption }) => {
             textTransform: "none",
             "&:hover": {
               backgroundColor:
-                selectedOption === option ? "rgb(255,142,41)" : "#ffffff",
+                selectedOption === option ? "#F95959" : "#ffffff",
               color: selectedOption === option ? "#ffffff" : "#000000",
             },
             "&:not(:last-child)": {

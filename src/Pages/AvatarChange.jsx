@@ -88,7 +88,7 @@ const AvatarChange = () => {
             container
             alignItems="center"
             justifyContent="center"
-            sx={{ bgcolor: "#FF952A", py: 1 }} // Background color for the header
+            sx={{ bgcolor: "#F95959", py: 1 }} // Background color for the header
           >
             <Grid item xs={2}>
               <IconButton
@@ -122,7 +122,7 @@ const AvatarChange = () => {
                     position: "relative",
                     borderRadius: "8px",
                     overflow: "hidden",
-                    border: selectedAvatar === image.split('/').pop() ? "4px solid #FF952A" : "none", // Highlight selected avatar by file name
+                    border: selectedAvatar === image.split('/').pop() ? "4px solid #F95959" : "none", // Highlight selected avatar by file name
                     cursor: "pointer",
                   }}
                   onClick={() => handleImageClick(image)}
@@ -139,7 +139,7 @@ const AvatarChange = () => {
                         position: "absolute",
                         bottom: 6,
                         right: 6,
-                        color: "#FF952A",
+                        color: "#F95959",
                         fontSize: 22,
                         backgroundColor: "white",
                         borderRadius: "50%",

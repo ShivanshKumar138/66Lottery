@@ -53,10 +53,10 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     marginRight: theme.spacing(2),
-    color: "rgb(255,142,41)",
+    color: "#F95959",
   },
   selectBank: {
-    background: "linear-gradient(90deg, rgb(255,142,41) 0%, #FF952A 100%)",
+    background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
     padding: theme.spacing(2),
     display: "flex",
     justifyContent: "space-between",
@@ -68,14 +68,14 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: "0px 3px 5px rgba(0, 0, 0, 0.2)",
   },
   saveButton: {
-    background: "linear-gradient(90deg, rgb(255,142,41) 0%, #FF952A 100%)",
+    background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
     color: "#ffffff",
     borderRadius: "24px",
     padding: "8px",
     marginBottom: "3rem",
     marginTop: theme.spacing(1),
     "&:hover": {
-      background: "linear-gradient(90deg, rgb(255,142,41) 0%, #FF952A 100%)",
+      background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
     },
     textTransform: "uppercase",
   },

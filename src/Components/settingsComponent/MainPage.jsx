@@ -185,7 +185,7 @@ const clearCache = () => {
 
     <div className="settingpage-main-container">
       <div style={{
-        backgroundColor:"#FE8123",
+        backgroundColor:"#F95959",
         marginBottom:"20px"
       }}>
         <div className="settingpage-info">
@@ -363,7 +363,7 @@ const clearCache = () => {
         borderRadius: '10px',
         px: 3,
         py: 1,
-        backgroundColor: '#FE8123',
+        backgroundColor: '#F95959',
         '&:hover': {
           backgroundColor: '#3361d8'
         }
@@ -392,7 +392,7 @@ const clearCache = () => {
       <div className="bottom-page">
         <div
           className="bottom-heading"
-          style={{ textAlign: "left", color: "black" }}
+          style={{ textAlign: "left", color: "black",marginTop:"20px" }}
         >
           <h3>Safety Information</h3>
         </div>
@@ -454,7 +454,7 @@ const clearCache = () => {
 
         <div className="bottom-box-container">
           <SettingBottomBox
-            settingBottomImage="https://in.piccdn123.com/static/_template_/orange/img/my/editPswIcon.png"
+            settingBottomImage="https://www.66lottery9.com/static/setting/editPswIcon.png"
             bottomBoxName="Login Password"
             bottomGoto="Edit"
             onClick={handleOpenResetPassword}
@@ -472,7 +472,7 @@ const clearCache = () => {
                         bottomGoto='Edit' /> */}
 
           <SettingBottomBox
-            settingBottomImage="https://in.piccdn123.com/static/_template_/orange/img/my/versionUpdate.png"
+            settingBottomImage="https://www.66lottery9.com/static/setting/versionUpdate.png"
             bottomBoxName="Updated Version"
             bottomGoto="1.0.1"
           />
@@ -485,14 +485,14 @@ const clearCache = () => {
     width: '100%',
     mt: 2,
     py: 1.5,
-    backgroundColor: '#FE8123',
+    backgroundColor: '#F95959',
     color: 'white',
     borderRadius: '12px',
     textTransform: 'none',
     fontSize: '1rem',
     boxShadow: '0 4px 12px rgba(71, 130, 255, 0.2)',
     '&:hover': {
-      backgroundColor: '#FE8123',
+      backgroundColor: '#F95959',
       boxShadow: '0 6px 16px rgba(71, 130, 255, 0.3)',
     }
   }}

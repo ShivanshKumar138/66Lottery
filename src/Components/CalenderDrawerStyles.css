@@ -91,7 +91,7 @@
   
   .date-grid .date.selected-start,
   .date-grid .date.selected-end {
-    background-color: #FF952A;
+    background-color: #F95959;
     color: #fff;
     font-weight: 600;
   }
@@ -125,7 +125,7 @@
   
   /* Confirm button styling */
   .confirm-button {
-    background-color: #FF952A;
+    background-color: #F95959;
     color: #fff;
     font-size: 16px;
     font-weight: 600;
@@ -136,7 +136,7 @@
   }
   
   .confirm-button:hover {
-    background-color: #FF952A;
+    background-color: #F95959;
   }
   
   .confirm-button:disabled {

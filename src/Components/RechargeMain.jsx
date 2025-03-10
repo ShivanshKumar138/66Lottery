@@ -796,8 +796,13 @@ const PromotionMain = ({ children }) => {
     // Fetching deposit history data from the API
     const fetchDepositHistory = async () => {
       try {
+        const token = sessionStorage.getItem('token'); // Retrieve token from session storage
         const response = await axios.get(`${domain}/deposit-history`, {
           withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in Authorization header
+            'Content-Type': 'application/json'
+          }
         });
         console.log("MY DATA ISSSSSSS--->", response.data);
         const latestFiveHistories = response.data.depositHistory.slice(-5);
@@ -806,10 +811,9 @@ const PromotionMain = ({ children }) => {
         console.error("Error fetching deposit history:", error);
       }
     };
-
+  
     fetchDepositHistory();
   }, []);
-
   const handleUtrChange = (event) => {
     setUtr(event.target.value);
   };
@@ -875,9 +879,13 @@ const PromotionMain = ({ children }) => {
 
     // Call your createDeposit endpoint
     try {
+      const token = sessionStorage.getItem('token'); // Retrieve token from session storage
       const response = await fetch(`${domain}/createDeposit`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`, // Include the token in Authorization header
+        },
         credentials: "include",
         body: JSON.stringify({
           amount,
@@ -967,7 +975,10 @@ const PromotionMain = ({ children }) => {
   
       if (paymentMode === "UPIxPAYTM" || paymentMode === "UPIxLGPay") {
         console.log(`Starting BTCash payment process for ${paymentMode}...`);
-  
+      
+        // Get the authentication token from sessionStorage
+        const token = sessionStorage.getItem('token');
+      
         // Call the create-btcash-order API for both UPIxPAYTM and UPIxLGPay
         response = await axios.post(
           `${domain}/create-btcash-order`,
@@ -976,11 +987,17 @@ const PromotionMain = ({ children }) => {
             amount: currentAmount,
             order_number: orderNumber,
             url: `${domain}/callback-btcash`,
-            redirect_url: `${domain}/redirect`
+            redirect_url: `${domain}/home`
           },
-          { withCredentials: true }
+          { 
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${token}`, // Include the token in Authorization header
+              'Content-Type': 'application/json'
+            }
+          }
         );
-  
+      
         console.log("API call to /create-btcash-order completed. Response:", response);
   
         // Check if the order creation was successful
@@ -1018,19 +1035,26 @@ const PromotionMain = ({ children }) => {
         );
   
         // Handle other payment modes
-        response = await axios
-          .post(
-            `${domain}/deposit`,
-            {
-              am: currentAmount,
-              user: user.username,
-              orderid: orderNumber,
-              depositMethod: paymentMode,
-            },
-            { withCredentials: true }
-          );
-  
-        console.log("API call to /deposit completed. Response:", response);
+      // Handle other payment modes
+const token = sessionStorage.getItem('token'); // Retrieve token from session storage
+response = await axios.post(
+  `${domain}/deposit`,
+  {
+    am: currentAmount,
+    user: user.username,
+    orderid: orderNumber,
+    depositMethod: paymentMode,
+  },
+  { 
+    withCredentials: true,
+    headers: {
+      Authorization: `Bearer ${token}`, // Include the token in Authorization header
+      'Content-Type': 'application/json'
+    }
+  }
+);
+
+console.log("API call to /deposit completed. Response:", response);
   
         if (response.status === 200 && response.data.paymentResponse) {
           const payUrl = response.data.paymentResponse.payParams.payUrl;
@@ -1214,18 +1238,23 @@ const PromotionMain = ({ children }) => {
     }
   };
 
-  const fetchUserData = async () => {
-    try {
-      const response = await axios.get(`${domain}/user`, {
-        withCredentials: true,
-      });
-      console.log("coming data is --->", response.data);
-      setUser(response.data.user);
-      setWalletAmount(response.data.user.walletAmount); // Assuming response.data contains user details including walletAmount
-    } catch (err) {
-      console.error(err);
-    }
-  };
+
+const fetchUserData = async () => {
+  try {
+    const token = sessionStorage.getItem('token'); // Retrieve token from session storage
+    const response = await axios.get(`${domain}/user`, {
+      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+      },
+    });
+    console.log("coming data is --->", response.data);
+    setUser(response.data.user);
+    setWalletAmount(response.data.user.walletAmount); // Assuming response.data contains user details including walletAmount
+  } catch (err) {
+    console.error(err);
+  }
+};
 
   useEffect(() => {
     fetchUserData();
@@ -1240,8 +1269,16 @@ const PromotionMain = ({ children }) => {
   const [get2, setGet2] = useState("");
   useEffect(() => {
     const handleGet = () => {
+      const token = sessionStorage.getItem('token'); // Retrieve token from session storage
+      
       axios
-        .get(`${domain}/Getid`, { withCredentials: true })
+        .get(`${domain}/Getid`, {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in Authorization header
+            'Content-Type': 'application/json'
+          }
+        })
         .then((res) => {
           console.log("res-->", res.data);
           setGet1(res.data.Upi);
@@ -1280,7 +1317,7 @@ const PromotionMain = ({ children }) => {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                backgroundColor: "rgb(255,149,42)",
+                backgroundColor: "#FA6C62",
                 padding: "7px 4px",
                 color: "white",
               }}
@@ -1328,8 +1365,8 @@ const PromotionMain = ({ children }) => {
               container
               mt={0}
               style={{
-                backgroundImage: `url('/assets/bgblue2.png')`,
-                background: "rgb(255,149,42)",
+                backgroundImage: `url('https://www.66lottery9.com/static/deposit/diban.png')`,
+                background: "#FA6C62",
                 borderRadius: 8,
                 padding: 8,
                 backgroundSize: "cover",
@@ -1399,57 +1436,98 @@ const PromotionMain = ({ children }) => {
                 </Grid>
               </Grid>
             </Grid>
-
+            
             <Grid
-              container
-              spacing={1}
-              mt={0}
-              style={{
-                width: "97%",
-                marginLeft: "auto",
-                marginRight: "10px",
-                alignItems: "center",
-              }}
-            >
-              {Object.keys(paymentModes).map((mode) => (
-                <Grid item xs={4} key={mode} sx={{boxShadow: "none" }}>
-                  <div
-                    style={{
-                      background:
-                        paymentMode === mode
-                          ? "rgb(255,149,42)"
-                          : "#ffffff",
-                      borderRadius: 8,
-                      color: paymentMode === mode ? "#ffffff" : "black",
-                      padding: 16,
-                     
-                    }}
-                    onClick={() => {
-                      setPaymentMode(mode);
-                      setSelectedChannel(null); // Reset selected channel when changing mode
-                    }}
-                  >
-                    <img
-                      src={`assets/images/${mode}.png`}
-                      alt={mode}
-                      style={{
-                        display: "block",
-                        margin: "0 auto",
-                        maxWidth: "50%",
-                        borderRadius: "50%",
-                      }}
-                    />
-                    <Typography
-                      variant="caption"
-                      align="center"
-                      style={{ marginTop: 8 }}
-                    >
-                      {mode}
-                    </Typography>
-                  </div>
-                </Grid>
-              ))}
-            </Grid>
+  container
+  spacing={1}
+  mt={0}
+  style={{
+    width: "97%",
+    marginLeft: "auto",
+    marginRight: "10px",
+    alignItems: "center",
+  }}
+>
+  {Object.keys(paymentModes).map((mode) => (
+    <Grid item xs={4} key={mode} sx={{ boxShadow: "none", position: "relative" }}>
+      <Box
+  sx={{
+    position: "absolute",
+    top:5,
+    right: -3,
+    zIndex: 1,
+    width: "35px",
+    height: "35px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center"
+  }}
+>
+  <Box
+    sx={{
+      bgcolor: "#FD3B3D",
+      width: "35px",
+      height: "35px",
+      clipPath: "polygon(0 0, 100% 0, 100% 40%, 85% 100%, 15% 100%, 0 40%)", // Modified clipPath
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center", 
+      justifyContent: "center",
+      gap: "2px"
+    }}
+  >
+    <img 
+      src="https://www.66lottery9.com/static/deposit/gift.png" 
+      alt="arrow" 
+      height={30} 
+      width={30}
+      style={{ marginBottom: "-2px" }} // Adjust space between image and text
+    />
+    <Typography
+      variant="caption"
+      sx={{
+        color: "#ffffff",
+        fontSize: "10px",
+        fontWeight: "bold",
+        lineHeight: 1 // Reduce line height to bring text closer
+      }}
+    >
+      +8%
+    </Typography>
+  </Box>
+</Box>
+      <div
+        style={{
+          background: paymentMode === mode ? "#FDA496" : "#ffffff",
+          borderRadius: 8,
+          color: paymentMode === mode ? "#ffffff" : "black",
+          padding: 16,
+        }}
+        onClick={() => {
+          setPaymentMode(mode);
+          setSelectedChannel(null); // Reset selected channel when changing mode
+        }}
+      >
+        <img
+          src={`assets/images/${mode}.png`}
+          alt={mode}
+          style={{
+            display: "block",
+            margin: "0 auto",
+            maxWidth: "50%",
+          }}
+        />
+        <Typography
+          variant="caption"
+          align="center"
+          style={{ marginTop: 8 }}
+        >
+          {mode}
+        </Typography>
+      </div>
+    </Grid>
+  ))}
+</Grid>
 
             {/* Channels Based on Payment Mode */}
             <Box
@@ -1467,7 +1545,7 @@ const PromotionMain = ({ children }) => {
             >
               <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
                 <img
-                  src="assets/channel1.png"
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAsCAYAAAAATWqyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LmRhYmFjYmIsIDIwMjEvMDQvMTQtMDA6Mzk6NDQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMi40IChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjRCMDJCMEMwRDQ0QTExRUVCRDlGODM3OUNEMTcxRkY0IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjVBNzVFMTgwRDQ0QTExRUVCRDlGODM3OUNEMTcxRkY0Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NEIwMkIwQkVENDRBMTFFRUJEOUY4Mzc5Q0QxNzFGRjQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NEIwMkIwQkZENDRBMTFFRUJEOUY4Mzc5Q0QxNzFGRjQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7Mv87hAAACT0lEQVR42ryYMU8CMRSAC2FhI46wGGHUyCBsIi6yCWw6KaNO8A8w0R/Aoiv+A1ddBFYdIODGqQPgRpxgPC3acEL7+nqv+JKb7l3ytX39XnsB13WZMq5vHlm/n2V+4/ioxFKpOiY1CL6lQPCIxxvYVDVI36FBrK29zx4yiEOcjUSiYZIOgLzu0ZZlo0kHmU4jyvoIhz9ZZremnXaD+lCDDEdJ5ReFfIUVCmWWO7iwVR9qkF63oPwiGm3/wA6TQE7HdCXlIKOPbeVIY7G2toa2Nu/oIFB9iJHyHHhG2nQQB/CHGCmU4501EghkUzFSOKfjZ7cH0f7A1kfCbNuKCC3Vh2rthSl19fH0fMJ6L3k0QWrnljfGELo+hCkdTQ+CIGWz/Cu+v0sDjUSYktqRvRDnZ/tCfEHUaLympPYg0SZKp0Wvfecg4/G6tj6gHJMolYqLW3wOMgL6i6gPKMfk1CbZWUFUfQh/mOwGWfBGqTg6hlAiu3+ozkbRBZohBiKXq6peB2aHZ772l1dvbFWRydS+jw9lvVkdJ7syiHS6roPwgFjYkrLgOyN/WMH3GluSkgmLOwMRAXcyiYBHQx6tVpn1enljCIPjYgC86fm58fmA0N/0TG98EnXbAzG58UnUbQ9khOwtCnXbA8FoHVC3PRBdt9Wo2w4Ih+BHQ0jdFiD0IFDbR6rbDohK/Qbqtrc0RHXTQWTXhhVBaH7ULIjMp7rpIF6tE9RNB/H+miCo296MENVNAxGNzoK60cHPI0vPYJB0m82y9N2KHtzB6B/iS4ABAKtOdrwIcBs5AAAAAElFTkSuQmCC"
                   alt="Placeholder"
                   width={25}
                   height={25}
@@ -1488,7 +1566,7 @@ const PromotionMain = ({ children }) => {
                       sx={{
                         borderRadius: "8px",
                         backgroundColor:
-                          selectedChannel === index ? "rgb(254,134,37)" : "#f5f5f5",
+                          selectedChannel === index ? "#FDBCA1" : "#f5f5f5",
                         cursor: "pointer",
                         height: "65px",
                         display: "flex",
@@ -1497,7 +1575,7 @@ const PromotionMain = ({ children }) => {
                         padding: 1,
                         "&:hover": {
                           backgroundColor:
-                            selectedChannel === index ? "rgb(254,134,37)" : "#eeeeee",
+                            selectedChannel === index ? "#FDBCA1" : "#eeeeee",
                         },
                         boxShadow: "none",
                       }}
@@ -1565,9 +1643,11 @@ const PromotionMain = ({ children }) => {
               sx={{ bgcolor: "#FFFFFF", p: 2, borderRadius: 2, margin: "10px" }}
             >
               <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
-               <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" data-v-9e03166f="" class="svg-icon icon-saveWallet"  width="40"
-                  height="40"
-                  viewBox="0 0 70 70"><defs><symbol id="icon-saveWallet" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M29.7 15.4996V7.89961C29.7 5.71961 27.9 4.09961 25.9 4.09961C25.46 4.09961 25 4.17961 24.56 4.33961L8.68004 10.3396C6.46004 11.1796 5.00004 13.2996 5.00004 15.6796V23.0196C5.00004 20.5596 6.18004 18.3796 8.00004 17.0196V15.6796C8.00004 14.5396 8.68004 13.5396 9.74004 13.1396L25.6 7.15961C25.7 7.11961 25.8 7.09961 25.9 7.09961C26.22 7.09961 26.7 7.35961 26.7 7.89961V15.4996H29.7ZM43 30.9996V28.9996C43 28.4596 42.58 28.0196 42 27.9996H38.98C38.7194 27.9951 38.4606 28.0442 38.2197 28.144C37.9789 28.2438 37.7611 28.3921 37.58 28.5796C37.18 28.9796 36.94 29.5596 37 30.1796C37.08 31.2196 38.04 31.9996 39.1 31.9996H42.02C42.2818 31.9944 42.531 31.8867 42.7142 31.6997C42.8975 31.5128 43.0001 31.2614 43 30.9996ZM5.00004 31.7596C6.38004 30.6596 8.12004 29.9996 10 29.9996C14.42 29.9996 18 33.5796 18 37.9996C18 39.4996 17.58 40.9196 16.84 42.1196C16.42 42.8396 15.88 43.4796 15.26 43.9996C13.86 45.2596 12.02 45.9996 10 45.9996C8.62116 46.0025 7.26531 45.6462 6.06596 44.9659C4.86661 44.2855 3.8651 43.3046 3.16004 42.1196C2.42004 40.9196 2.00004 39.4996 2.00004 37.9996C1.99643 36.8005 2.26448 35.6161 2.78406 34.5354C3.30363 33.4547 4.06125 32.5057 5.00004 31.7596ZM7.62669 34.2867C7.24931 33.8621 6.59918 33.8238 6.17459 34.2012C5.75 34.5786 5.71173 35.2287 6.08911 35.6533L8.22438 38.0557L6.08892 40.4581C5.71152 40.8826 5.74976 41.5328 6.17434 41.9102C6.59892 42.2876 7.24905 42.2493 7.62645 41.8248L10.3693 38.739C10.7157 38.3493 10.7157 37.7621 10.3693 37.3724L7.62669 34.2867ZM11.741 34.2867C11.3636 33.8621 10.7135 33.8238 10.2889 34.2012C9.86428 34.5786 9.82601 35.2287 10.2034 35.6533L12.3387 38.0557L10.2032 40.4581C9.8258 40.8826 9.86405 41.5328 10.2886 41.9102C10.7132 42.2876 11.3633 42.2493 11.7407 41.8248L14.4836 38.739C14.83 38.3493 14.83 37.7621 14.4836 37.3724L11.741 34.2867Z" fill="#FF952A"></path><path d="M38.96 25.9H41C42.1 25.9 43 25 43 23.9V23.02C43 18.88 39.62 15.5 35.48 15.5H12.52C10.82 15.5 9.26 16.06 8 17.02C6.18 18.38 5 20.56 5 23.02V26.58C5 27.34 5.8 27.82 6.52 27.58C7.64 27.2 8.82 27 10 27C16.06 27 21 31.94 21 38C21 39.44 20.62 41.02 20.02 42.42C19.7 43.14 20.2 44 20.98 44H35.48C39.62 44 43 40.62 43 36.48V36.1C43 35 42.1 34.1 41 34.1H39.26C37.34 34.1 35.5 32.92 35 31.06C34.6 29.54 35.08 28.06 36.08 27.1C36.82 26.34 37.84 25.9 38.96 25.9V25.9ZM28 25.5H18C17.18 25.5 16.5 24.82 16.5 24C16.5 23.18 17.18 22.5 18 22.5H28C28.82 22.5 29.5 23.18 29.5 24C29.5 24.82 28.82 25.5 28 25.5Z" fill="#FF952A"></path></symbol></defs><g><path fill-rule="evenodd" clip-rule="evenodd" d="M29.7 15.4996V7.89961C29.7 5.71961 27.9 4.09961 25.9 4.09961C25.46 4.09961 25 4.17961 24.56 4.33961L8.68004 10.3396C6.46004 11.1796 5.00004 13.2996 5.00004 15.6796V23.0196C5.00004 20.5596 6.18004 18.3796 8.00004 17.0196V15.6796C8.00004 14.5396 8.68004 13.5396 9.74004 13.1396L25.6 7.15961C25.7 7.11961 25.8 7.09961 25.9 7.09961C26.22 7.09961 26.7 7.35961 26.7 7.89961V15.4996H29.7ZM43 30.9996V28.9996C43 28.4596 42.58 28.0196 42 27.9996H38.98C38.7194 27.9951 38.4606 28.0442 38.2197 28.144C37.9789 28.2438 37.7611 28.3921 37.58 28.5796C37.18 28.9796 36.94 29.5596 37 30.1796C37.08 31.2196 38.04 31.9996 39.1 31.9996H42.02C42.2818 31.9944 42.531 31.8867 42.7142 31.6997C42.8975 31.5128 43.0001 31.2614 43 30.9996ZM5.00004 31.7596C6.38004 30.6596 8.12004 29.9996 10 29.9996C14.42 29.9996 18 33.5796 18 37.9996C18 39.4996 17.58 40.9196 16.84 42.1196C16.42 42.8396 15.88 43.4796 15.26 43.9996C13.86 45.2596 12.02 45.9996 10 45.9996C8.62116 46.0025 7.26531 45.6462 6.06596 44.9659C4.86661 44.2855 3.8651 43.3046 3.16004 42.1196C2.42004 40.9196 2.00004 39.4996 2.00004 37.9996C1.99643 36.8005 2.26448 35.6161 2.78406 34.5354C3.30363 33.4547 4.06125 32.5057 5.00004 31.7596ZM7.62669 34.2867C7.24931 33.8621 6.59918 33.8238 6.17459 34.2012C5.75 34.5786 5.71173 35.2287 6.08911 35.6533L8.22438 38.0557L6.08892 40.4581C5.71152 40.8826 5.74976 41.5328 6.17434 41.9102C6.59892 42.2876 7.24905 42.2493 7.62645 41.8248L10.3693 38.739C10.7157 38.3493 10.7157 37.7621 10.3693 37.3724L7.62669 34.2867ZM11.741 34.2867C11.3636 33.8621 10.7135 33.8238 10.2889 34.2012C9.86428 34.5786 9.82601 35.2287 10.2034 35.6533L12.3387 38.0557L10.2032 40.4581C9.8258 40.8826 9.86405 41.5328 10.2886 41.9102C10.7132 42.2876 11.3633 42.2493 11.7407 41.8248L14.4836 38.739C14.83 38.3493 14.83 37.7621 14.4836 37.3724L11.741 34.2867Z" fill="rgb(255,142,41)"></path><path d="M38.96 25.9H41C42.1 25.9 43 25 43 23.9V23.02C43 18.88 39.62 15.5 35.48 15.5H12.52C10.82 15.5 9.26 16.06 8 17.02C6.18 18.38 5 20.56 5 23.02V26.58C5 27.34 5.8 27.82 6.52 27.58C7.64 27.2 8.82 27 10 27C16.06 27 21 31.94 21 38C21 39.44 20.62 41.02 20.02 42.42C19.7 43.14 20.2 44 20.98 44H35.48C39.62 44 43 40.62 43 36.48V36.1C43 35 42.1 34.1 41 34.1H39.26C37.34 34.1 35.5 32.92 35 31.06C34.6 29.54 35.08 28.06 36.08 27.1C36.82 26.34 37.84 25.9 38.96 25.9V25.9ZM28 25.5H18C17.18 25.5 16.5 24.82 16.5 24C16.5 23.18 17.18 22.5 18 22.5H28C28.82 22.5 29.5 23.18 29.5 24C29.5 24.82 28.82 25.5 28 25.5Z" fill="rgb(255,142,41)"></path></g></svg>
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAYAAADFw8lbAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LmRhYmFjYmIsIDIwMjEvMDQvMTQtMDA6Mzk6NDQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMi40IChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjgwQjY2RjcyRDQ0QTExRUVCRDlGODM3OUNEMTcxRkY0IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjgwQjY2RjczRDQ0QTExRUVCRDlGODM3OUNEMTcxRkY0Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NUE3NUUxODlENDRBMTFFRUJEOUY4Mzc5Q0QxNzFGRjQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NUE3NUUxOEFENDRBMTFFRUJEOUY4Mzc5Q0QxNzFGRjQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz498ZRuAAALUElEQVR42sRZ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"
+                  alt="Your Image"
+                  style={{ width: "20px", height: "20px" }}
+                />
                 <Typography variant="h7" sx={{ fontWeight: "bold", color:"#1e2637" }}>
                   Deposit amount
                 </Typography>
@@ -1598,7 +1678,7 @@ const PromotionMain = ({ children }) => {
                       sx={{
                         width: "100%",
                         bgcolor: "white",
-                        color: "orange",
+                        color: "#FA6C62",
                         borderColor: "lightgray",
                         justifyContent: "center",
                         "&:hover": {
@@ -1728,7 +1808,7 @@ const PromotionMain = ({ children }) => {
                 sx={{
                   mt: 2,
                   textTransform: "initial",
-                  bgcolor: "rgb(255,149,42)",
+                  bgcolor: "#FA6C62",
                   borderRadius: "20px",
                   color: "white",
                   "&:hover": { bgcolor: "#4782ff" },
@@ -2081,7 +2161,7 @@ const PromotionMain = ({ children }) => {
                           <Grid item xs={3}>
                             <Box
                               sx={{
-                                backgroundColor:"rgb(255,149,42)",
+                                backgroundColor:"#FA6C62",
                                 color: "#FFFFFF",
                                 fontWeight: "bold",
                                 borderRadius: "5px",
@@ -2102,7 +2182,7 @@ const PromotionMain = ({ children }) => {
                                 right: "16px",
                                 top: "13px",
                                 fontSize: "14px",
-                                color:"rgb(255,149,42)",
+                                color:"#FA6C62",
                                 fontWeight: "bold",
                               }}
                             >

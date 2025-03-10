@@ -56,7 +56,7 @@ const SettingsMain = ({ children }) => {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                backgroundColor: "#FE8123",
+                backgroundColor: "#F95959",
                 padding: "7px 4px",
                 color: "white",
               }}

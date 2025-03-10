@@ -26,7 +26,7 @@ const GameHistory = ({ data }) => {
           key={column.id}
           sx={{
             width: column.width,
-            background: "rgb(255,142,40)", // Changed to a golden yellow color
+            background: "#F95959", // Changed to a golden yellow color
             color: "white",
             padding: "2.5% 5.8%",
             borderTopLeftRadius: index === 0 ? "10px" : "0",
@@ -121,7 +121,7 @@ const GameHistory = ({ data }) => {
                 color: "white",
                 borderRadius: "50%",
                 mb: 2,
-                background: " #FF952A",
+                background: " #F95959",
                 aspectRatio: "1 / 1",
               }}
             >
@@ -167,7 +167,7 @@ const GameHistory = ({ data }) => {
             },
             "& .MuiPaginationItem-page.Mui-selected": {
               color: "#fff",
-              backgroundColor: "#FF952A",
+              backgroundColor: "#F95959",
               fontWeight: "bold",
               "&:hover": {
                 backgroundColor: "#0a4f11",
@@ -178,7 +178,7 @@ const GameHistory = ({ data }) => {
               backgroundColor: "transparent",
             },
             "& .MuiPaginationItem-previousNext": {
-              backgroundColor: "#FF952A",
+              backgroundColor: "#F95959",
               color: "#ffffff",
               borderRadius: "4px",
               minWidth: { xs: "24px", sm: "28px" },

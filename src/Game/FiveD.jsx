@@ -142,7 +142,7 @@ const SumCircle = styled(Box)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  background: "linear-gradient(90deg, #FF952A 0%,#FF952A 100%)",
+  background: "linear-gradient(90deg, #F95959 0%,#F95959 100%)",
   color: "#ffffff",
 });
 
@@ -196,7 +196,7 @@ const FiveD = ({ timerKey }) => {
   const [value, setValue] = useState(0);
   const [statisticsData, setStatisticsData] = useState([]);
   const [bets, setBets] = useState([]);
-  const [selectedColor, setSelectedColor] = useState("#FF952A");
+  const [selectedColor, setSelectedColor] = useState("#F95959");
   const [winloss, setWinLoss] = useState(0);
   const [popupperiod, setPopupPeriod] = useState(0);
   const [popupresult, setPopupResult] = useState(0);
@@ -853,7 +853,7 @@ const randomString = randomNumber.toString();
         setSelectedColor("rgb(254,170,87)");
         break;
       default:
-        setSelectedColor("#FF952A");
+        setSelectedColor("#F95959");
     }
   };
 
@@ -1086,7 +1086,7 @@ const randomString = randomNumber.toString();
               position: "sticky",
               top: 0,
               zIndex: 5000,
-              background: "rgb(255,142,40)",
+              background: "#F95959",
               padding: "8px 16px",
               color: "white",
             }}
@@ -1122,7 +1122,7 @@ const randomString = randomNumber.toString();
             direction="column"
             sx={{
               height: "300px",
-              background: "rgb(255,142,40)",
+              background: "#F95959",
               borderRadius: "0 0 70px 70px",
               textAlign: "center",
             }}
@@ -1200,7 +1200,7 @@ const randomString = randomNumber.toString();
                 }}
               >
                 <AccountBalanceWallet
-                  sx={{ marginRight: "10px", color: "#FF952A" }}
+                  sx={{ marginRight: "10px", color: "#F95959" }}
                 />
                 <Typography variant="subtitle2">Wallet Balance</Typography>
               </Grid>
@@ -1264,7 +1264,7 @@ const randomString = randomNumber.toString();
               }}
             >
               <IconButton>
-                <VolumeUpIcon sx={{ color: "#FF952A" }} />
+                <VolumeUpIcon sx={{ color: "#F95959" }} />
               </IconButton>
 
               <Box sx={{ flex: 1, overflow: "hidden", padding: "0 10px" }}>
@@ -1295,9 +1295,9 @@ const randomString = randomNumber.toString();
               <Button
                 variant="contained"
                 sx={{
-                  background: "rgb(255,142,40)",
+                  background: "#F95959",
                   "&:hover": {
-                    background: "rgb(255,142,40)",
+                    background: "#F95959",
                   },
                   borderRadius: "50px",
                   fontSize: "11px",
@@ -1702,7 +1702,7 @@ const randomString = randomNumber.toString();
                   alignItems: "center",
                   justifyContent: "center",
                   overflow: "hidden",
-                  color: "#FF952A",
+                  color: "#F95959",
                   fontWeight: "bold",
                   textAlign: "center",
                   position: "absolute",
@@ -1828,7 +1828,7 @@ const randomString = randomNumber.toString();
                         backgroundColor: "transparent",
                         cursor: "pointer",
                         "&:active": {
-                          background: "linear-gradient(90deg, #FF952A 0%, #59adff 100%)",
+                          background: "linear-gradient(90deg, #F95959 0%, #59adff 100%)",
                         },
                         opacity: isSum ? 0 : 1,
                         pointerEvents: isSum ? "none" : "auto",
@@ -2354,7 +2354,7 @@ const randomString = randomNumber.toString();
                       sx={{
                         height: "40px", // Adjust this value to change the tab height
                         backgroundColor:
-                          activeTab === index ? "rgb(255,142,40)" : "#ffffff",
+                          activeTab === index ? "#F95959" : "#ffffff",
                         color: activeTab === index ? "#ffffff" : "grey",
                         borderRadius: 1,
                         display: "flex",
@@ -2364,7 +2364,7 @@ const randomString = randomNumber.toString();
                         transition: "all 0.3s",
                         "&:hover": {
                           backgroundColor:
-                            activeTab === index ? "rgb(255,142,40)" : "#f5f5f5",
+                            activeTab === index ? "#F95959" : "#f5f5f5",
                         },
                       }}
                     >
@@ -2442,7 +2442,7 @@ const randomString = randomNumber.toString();
                                                 value.numberBet &&
                                                 value.numberBet.length > 0
                                             )
-                                            ? "#FF952A" // Color for sectionBets with numberBet
+                                            ? "#F95959" // Color for sectionBets with numberBet
                                             : Object.entries(bet.sectionBets)
                                                 .map(
                                                   ([, value]) =>
@@ -2454,11 +2454,11 @@ const randomString = randomNumber.toString();
                                                       ? "rgb(200,111,255)" // Color for even
                                                       : value.parity === "Odd"
                                                       ? "rgb(251,91,91)" // Color for odd
-                                                      : "#FF952A" // Default color for sectionBets without numberBet
+                                                      : "#F95959" // Default color for sectionBets without numberBet
                                                 )
                                                 .find(
                                                   (color) => color !== undefined
-                                                ) || "#FF952A" // Default fallback color
+                                                ) || "#F95959" // Default fallback color
                                           : typeof bet.totalSum !==
                                               "undefined" &&
                                             typeof bet.totalSum === "object"
@@ -2470,8 +2470,8 @@ const randomString = randomNumber.toString();
                                             ? "rgb(251,91,91)" // Color for Odd
                                             : bet.totalSum.parity === "Even"
                                             ? "rgb(200,111,255)" // Color for Even
-                                            : "#FF952A" // Default color for totalSum
-                                          : "#FF952A", // Default color
+                                            : "#F95959" // Default color for totalSum
+                                          : "#F95959", // Default color
                                       color: "white",
                                       height: "40px",
                                       width: "40px",

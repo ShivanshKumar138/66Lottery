@@ -148,7 +148,7 @@ const WithdrawHistoryMain = () => {
             position: "sticky",
             top: 0,
             zIndex: 1000,
-            backgroundColor: "rgb(255,149,42)",
+            backgroundColor: "#F95959",
             padding: "4px 8px",
             color: "black",
           }}
@@ -201,7 +201,7 @@ const WithdrawHistoryMain = () => {
               sx={{
                 display: "flex",
                 alignItems: "center",
-                backgroundColor: selectedType === label ? "rgb(255,149,42)" : "white",
+                backgroundColor: selectedType === label ? "#F95959" : "white",
                 color: selectedType === label ? "black" : "#333",
                 borderColor: selectedType === label ? "transparent" : "#E0E0E0",
                 borderRadius: 2,
@@ -214,7 +214,7 @@ const WithdrawHistoryMain = () => {
                 textTransform: "none",
                 "&:hover": {
                   backgroundColor:
-                    selectedType === label ? "rgb(255,149,42)" : "#FFFFFF",
+                    selectedType === label ? "#F95959" : "#FFFFFF",
                   borderColor:
                     selectedType === label ? "transparent" : "#E0E0E0",
                 },
@@ -293,7 +293,7 @@ const WithdrawHistoryMain = () => {
               }}
             >
               <CardContent sx={{ padding: 0, mb: -2, backgroundColor: "#FFFFFF" }}>
-                <Box sx={{ padding: 1, borderBottom: "1px solid #e0e0e0" , backgroundColor: "rgb(255,149,42)"}}>
+                <Box sx={{ padding: 1, borderBottom: "1px solid #e0e0e0" , backgroundColor: "#F95959"}}>
                   <Grid container alignItems="center">
                     <Grid item xs={6} sx={{ textAlign: "left" }}>
                       <Chip
@@ -528,7 +528,7 @@ const WithdrawHistoryMain = () => {
                 Cancel
               </Typography>
               <Typography
-                sx={{ color: "rgb(255,142,41)", fontWeight: "bold", cursor: "pointer" }}
+                sx={{ color: "#F95959", fontWeight: "bold", cursor: "pointer" }}
               >
                 Confirm
               </Typography>

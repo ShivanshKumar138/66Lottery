@@ -101,7 +101,7 @@ const Rebate = () => {
       >
         <AppBar
           position="static"
-          sx={{ bgcolor: "rgb(255,142,41)", color: "white" }}
+          sx={{ bgcolor: "#F95959", color: "white" }}
           elevation={0}
         >
           <Toolbar>
@@ -154,7 +154,7 @@ const Rebate = () => {
                 minWidth: 0,
                 "&.Mui-selected": { color: "black" },
                 "&:hover": {
-                  bgcolor: tabValue === index ? "rgb(255,142,41)" : "#f0f0f0",
+                  bgcolor: tabValue === index ? "#F95959" : "#f0f0f0",
                   color: tabValue === index ? "#ffffff" : "#666",
                 },
               }}
@@ -173,7 +173,7 @@ const Rebate = () => {
           >
             <Typography
               variant="h6"
-              sx={{ fontWeight: "bold", mb: 2, color: "rgb(255,142,41)", textAlign: "left" }}
+              sx={{ fontWeight: "bold", mb: 2, color: "#F95959", textAlign: "left" }}
             >
               {tabsData[tabValue].title}
             </Typography>
@@ -182,7 +182,7 @@ const Rebate = () => {
                 <Box
                   component="span"
                   sx={{
-                    border: "1px solid rgb(255,142,41)",
+                    border: "1px solid #F95959",
                     borderRadius: "5px",
                     px: 1,
                     py: 0.5,
@@ -191,10 +191,10 @@ const Rebate = () => {
                     alignItems: "center",
                   }}
                 >
-                  <VerifiedUserIcon sx={{ color: "rgb(255,142,41)", mr: 0.5 }} />
+                  <VerifiedUserIcon sx={{ color: "#F95959", mr: 0.5 }} />
                   <Typography
                     variant="caption"
-                    sx={{ color: "rgb(255,142,41)", fontWeight: "bold" }}
+                    sx={{ color: "#F95959", fontWeight: "bold" }}
                   >
                     Real-time count
                   </Typography>
@@ -202,7 +202,7 @@ const Rebate = () => {
               </Box>
               <Typography
                 variant="h5"
-                sx={{ fontWeight: "bold", color: "rgb(255,142,41)", mb: 2, textAlign: "left"
+                sx={{ fontWeight: "bold", color: "#F95959", mb: 2, textAlign: "left"
                  }}
               >
                 <AccountBalanceWalletOutlinedIcon
@@ -256,7 +256,7 @@ const Rebate = () => {
                 variant="contained"
                 fullWidth
                 sx={{
-                  bgcolor: "rgb(255,142,41)",
+                  bgcolor: "#F95959",
                   color: "#fff",
                   borderRadius: "25px",
                   textTransform: "none",
@@ -284,7 +284,7 @@ const Rebate = () => {
             <Box
               component="span"
               sx={{
-                bgcolor: "rgb(255,142,41)",
+                bgcolor: "#F95959",
                 mr: 1,
                 borderRadius: "2px",
                 width: "4px",
@@ -315,7 +315,7 @@ const Rebate = () => {
                       </Typography>
                       <Typography
                         variant="h6"
-                        sx={{ fontWeight: "bold", color: "rgb(255,142,41)" }}
+                        sx={{ fontWeight: "bold", color: "#F95959" }}
                       >
                         {record.rebateAmount.toFixed(2)}
                       </Typography>
@@ -326,7 +326,7 @@ const Rebate = () => {
                       </Typography>
                       <Typography
                         variant="h6"
-                        sx={{ fontWeight: "bold", color: "rgb(255,142,41)" }}
+                        sx={{ fontWeight: "bold", color: "#F95959" }}
                       >
                         {record.walletAmountAfterRebate.toFixed(2)}
                       </Typography>

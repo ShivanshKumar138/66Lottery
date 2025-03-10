@@ -154,7 +154,7 @@ const WinningDetails = () => {
                   height: '40px',
                   objectFit: 'cover',
                   borderRadius: '4px',
-                  backgroundColor: '#FF952A'
+                  backgroundColor: '#F95959'
                 }}
               />
               <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>

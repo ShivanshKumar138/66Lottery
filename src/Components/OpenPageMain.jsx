@@ -11,7 +11,7 @@ const OpenPageMain = () => {
           flexDirection: "column",
           alignItems: "center",
           height: "100vh",
-          background: "linear-gradient(90deg, rgb(255,142,41) 0%, rgb(255,142,41) 100%)",
+          background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
           color: "white",
           textAlign: "center",
         }}

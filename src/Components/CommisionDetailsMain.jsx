@@ -167,7 +167,7 @@ const CommisionDetailsMain = () => {
     position: "sticky",
     top: 0,
     zIndex: 1000,
-    background: "linear-gradient(90deg, rgb(255,142,41) 0%, rgb(255,142,41) 100%)", // Green background color
+    background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)", // Green background color
     padding: "4px 8px",
     color: "white", // White text color
   }}

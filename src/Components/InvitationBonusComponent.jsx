@@ -190,7 +190,7 @@ const InvitationBonusComponent = () => {
       return {
         text: "Claim",
         disabled: false,
-        color: "rgb(255,142,41)",
+        color: "#F95959",
       };
     }
 
@@ -214,7 +214,7 @@ const InvitationBonusComponent = () => {
         <Button
           variant="contained"
           onClick={fetchEligibilityStatus}
-          sx={{ bgcolor: "rgb(255,142,41)" }}
+          sx={{ bgcolor: "#F95959" }}
         >
           Retry
         </Button>
@@ -242,7 +242,7 @@ const InvitationBonusComponent = () => {
           mx: "auto",
         }}
       >
-        <AppBar position="static" sx={{ bgcolor: "rgb(255,142,41)" }}>
+        <AppBar position="static" sx={{ bgcolor: "#F95959" }}>
           <Toolbar>
             <Grid item xs={2} textAlign="left">
               <IconButton color="inherit" onClick={handleBackClick}>
@@ -547,7 +547,7 @@ const InvitationBonusComponent = () => {
                         <Typography
                             variant="body1"
                             fontWeight="bold"
-                            sx={{ color: "#ffa500" }}
+                            sx={{ color: "#F95959" }}
                         >
                             {bonus.progress.referrals.total} / {bonus.progress.referrals.required}
                         </Typography>

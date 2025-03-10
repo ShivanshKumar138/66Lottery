@@ -65,7 +65,7 @@ const WinningStar = () => {
     <div>
       <Mobile>
         <Box sx={{ bgcolor: '#f0f0f0', minHeight: '100vh' }}>
-          <AppBar position="static" sx={{ bgcolor: 'rgb(255,142,41)', color: 'white' }} elevation={0}>
+          <AppBar position="static" sx={{ bgcolor: '#F95959', color: 'white' }} elevation={0}>
             <Toolbar>
               <IconButton edge="start" color="inherit" aria-label="back" onClick={() => navigate('/superjackpot')}>
                 <ArrowBackIosOutlinedIcon />

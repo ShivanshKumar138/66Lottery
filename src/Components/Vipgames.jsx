@@ -845,7 +845,7 @@ return (
       padding: '6px',
       margin: '0',
       '&.Mui-selected': {
-        backgroundColor: '#FF952A',
+        backgroundColor: '#F95959',
         color: '#fff',
       },
     },

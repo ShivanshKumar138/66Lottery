@@ -26,7 +26,7 @@ const CustomTable = ({ data }) => {
         key={column.id}
         sx={{
           width: column.width,
-          background: "rgb(255,142,41)", // Changed to a golden yellow color
+          background: "#F95959", // Changed to a golden yellow color
           color: "white",
           padding: "2.5% 5.8%",
           borderTopLeftRadius: index === 0 ? "10px" : "0",
@@ -204,7 +204,7 @@ const CustomTable = ({ data }) => {
       },
       "& .MuiPaginationItem-page.Mui-selected": {
         color: "#fff",
-        backgroundColor: "rgb(255,142,41)",
+        backgroundColor: "#F95959",
         fontWeight: "bold",
         "&:hover": {
           backgroundColor: "#0a4f11",
@@ -215,7 +215,7 @@ const CustomTable = ({ data }) => {
         backgroundColor: "transparent",
       },
       "& .MuiPaginationItem-previousNext": {
-        backgroundColor: "rgb(255,142,41)",
+        backgroundColor: "#F95959",
         color: "#ffffff",
         borderRadius: "4px",
         minWidth: { xs: "24px", sm: "28px" },

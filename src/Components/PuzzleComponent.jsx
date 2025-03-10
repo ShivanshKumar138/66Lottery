@@ -194,7 +194,7 @@ const puzzleShapes = [
             style={{
               filter:
                 Math.abs(puzzlePieceLeft - puzzleGapPosition) < snapTolerance
-                  ? "drop-shadow(0 0 5px #FF952A)"
+                  ? "drop-shadow(0 0 5px #F95959)"
                   : "none",
             }}
           />
@@ -259,7 +259,7 @@ const puzzleShapes = [
           style={{
             width: `${puzzlePieceLeft + puzzlePieceWidth / 2}px`,
             height: "100%",
-            background: "linear-gradient(90deg, #FF952A, #FF952A)",
+            background: "linear-gradient(90deg, #F95959, #F95959)",
             position: "absolute",
             top: 0,
             left: 0,
@@ -326,7 +326,7 @@ const puzzleShapes = [
             width: "100%",
             height: `${sliderHeight + drawerHeight}px`,
             background:
-              "linear-gradient(45deg, #FF952A, #FF952A)",
+              "linear-gradient(45deg, #F95959, #F95959)",
             borderRadius: "10px",
             zIndex: 4,
           }}

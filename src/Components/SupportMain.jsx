@@ -64,7 +64,7 @@ const RaiseTicketForm = ({
       variant="h5"
       gutterBottom
       sx={{
-        color: "#FF952A",
+        color: "#F95959",
         fontWeight: "bold",
         textAlign: "center",
         mb: 2,
@@ -88,7 +88,7 @@ const RaiseTicketForm = ({
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SubjectIcon sx={{ color: "#FF952A" }} />
+                <SubjectIcon sx={{ color: "#F95959" }} />
               </InputAdornment>
             ),
           }}
@@ -97,13 +97,13 @@ const RaiseTicketForm = ({
               borderRadius: "10px",
               background: "#fff",
               "& fieldset": {
-                borderColor: "#FF952A",
+                borderColor: "#F95959",
               },
               "&:hover fieldset": {
-                borderColor: "#FF952A",
+                borderColor: "#F95959",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#FF952A",
+                borderColor: "#F95959",
               },
             },
           }}
@@ -130,13 +130,13 @@ const RaiseTicketForm = ({
                 borderRadius: "10px",
                 background: "#fff",
                 "& fieldset": {
-                  borderColor: "#FF952A",
+                  borderColor: "#F95959",
                 },
                 "&:hover fieldset": {
-                  borderColor: "#FF952A",
+                  borderColor: "#F95959",
                 },
                 "&.Mui-focused fieldset": {
-                  borderColor: "#FF952A",
+                  borderColor: "#F95959",
                 },
               },
             }}
@@ -157,7 +157,7 @@ const RaiseTicketForm = ({
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <DescriptionIcon sx={{ color: "#FF952A" }} />
+                <DescriptionIcon sx={{ color: "#F95959" }} />
               </InputAdornment>
             ),
           }}
@@ -166,13 +166,13 @@ const RaiseTicketForm = ({
               borderRadius: "10px",
               background: "#fff",
               "& fieldset": {
-                borderColor: "#FF952A",
+                borderColor: "#F95959",
               },
               "&:hover fieldset": {
-                borderColor: "#FF952A",
+                borderColor: "#F95959",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#FF952A",
+                borderColor: "#F95959",
               },
             },
           }}
@@ -191,7 +191,7 @@ const RaiseTicketForm = ({
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <PriorityHighIcon sx={{ color: "#FF952A" }} />
+                <PriorityHighIcon sx={{ color: "#F95959" }} />
               </InputAdornment>
             ),
           }}
@@ -200,13 +200,13 @@ const RaiseTicketForm = ({
               borderRadius: "10px",
               background: "#fff",
               "& fieldset": {
-                borderColor: "#FF952A",
+                borderColor: "#F95959",
               },
               "&:hover fieldset": {
-                borderColor: "#FF952A",
+                borderColor: "#F95959",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#FF952A",
+                borderColor: "#F95959",
               },
             },
           }}
@@ -232,7 +232,7 @@ const RaiseTicketForm = ({
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SmsIcon sx={{ color: "#FF952A" }} />
+                <SmsIcon sx={{ color: "#F95959" }} />
               </InputAdornment>
             ),
           }}
@@ -241,13 +241,13 @@ const RaiseTicketForm = ({
               borderRadius: "10px",
               background: "#fff",
               "& fieldset": {
-                borderColor: "#FF952A",
+                borderColor: "#F95959",
               },
               "&:hover fieldset": {
-                borderColor: "#FF952A",
+                borderColor: "#F95959",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "#FF952A",
+                borderColor: "#F95959",
               },
             },
           }}
@@ -264,11 +264,11 @@ const RaiseTicketForm = ({
             fontSize: "16px",
             fontWeight: "bold",
             color: "#fff",
-            background: "linear-gradient(to right, #FF952A, #FF952A)",
-            boxShadow: "0px 4px 15px #FF952A",
+            background: "linear-gradient(to right, #F95959, #F95959)",
+            boxShadow: "0px 4px 15px #F95959",
             "&:hover": {
-              background: "linear-gradient(to right, #FF952A, #FF952A)",
-              boxShadow: "0px 6px 20px #FF952A",
+              background: "linear-gradient(to right, #F95959, #F95959)",
+              boxShadow: "0px 6px 20px #F95959",
             },
           }}
         >
@@ -300,10 +300,10 @@ const ViewTickets = ({ tickets }) => {
             // boxShadow: 6,
             backgroundColor: '#ffffff',
             // transition: 'box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out',
-            // border: `1px solid #FF952A`,
+            // border: `1px solid #F95959`,
             '&:hover': {
               // boxShadow: 8,
-              borderColor: '#FF952A',
+              borderColor: '#F95959',
             },
           }}
         >
@@ -313,7 +313,7 @@ const ViewTickets = ({ tickets }) => {
               sx={{
                 mb: 1,
                 fontWeight: 'bold',
-                color: '#FF952A',
+                color: '#F95959',
                 textAlign: 'left',
               }}
             >
@@ -333,7 +333,7 @@ const ViewTickets = ({ tickets }) => {
               variant="body2"
               sx={{
                 mb: 1,
-                color: '#FF952A',
+                color: '#F95959',
                 textAlign: 'left',
               }}
             >
@@ -343,7 +343,7 @@ const ViewTickets = ({ tickets }) => {
               variant="body2"
               sx={{
                 mb: 1,
-                color: '#FF952A',
+                color: '#F95959',
                 textAlign: 'left',
               }}
             >
@@ -364,10 +364,10 @@ const ViewTickets = ({ tickets }) => {
                 alignSelf: 'flex-start',
                 mt: 2,
                 textTransform:"initial",
-                backgroundColor: '#FF952A',
+                backgroundColor: '#F95959',
                 color: '#ffffff',
                 '&:hover': {
-                  backgroundColor: '#FF952A',
+                  backgroundColor: '#F95959',
                 },
               }}
               onClick={() => handleChatClick(ticket._id)}
@@ -493,7 +493,7 @@ const ActivityMain = () => {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                background: "linear-gradient(90deg, #FF952A 0%, #59adff 100%)", // Green theme color
+                background: "linear-gradient(90deg, #F95959 0%, #59adff 100%)", // Green theme color
                 padding: "8px 16px",
                 color: "#ffffff", // White text color for contrast
               }}
@@ -531,29 +531,29 @@ const ActivityMain = () => {
                 variant="fullWidth"
                 sx={{
                   bgcolor: "", // Light green background for Tabs
-                  color: "#FF952A", // Dark green text color
+                  color: "#F95959", // Dark green text color
                   "& .MuiTabs-indicator": {
-                    bgcolor: "#FF952A", // Green indicator for active tab
+                    bgcolor: "#F95959", // Green indicator for active tab
                   },
                 }}
               >
                 <Tab
                   label="Raise Ticket"
                   sx={{
-                    color: "#FF952A", // Dark green text color for Tab
+                    color: "#F95959", // Dark green text color for Tab
                     "&.Mui-selected": {
-                      color: "#FF952A", // White text color when selected
-                      // bgcolor: "#FF952A", // Dark green background when selected
+                      color: "#F95959", // White text color when selected
+                      // bgcolor: "#F95959", // Dark green background when selected
                     },
                   }}
                 />
                 <Tab
                   label="View Tickets"
                   sx={{
-                    color: "#FF952A", // Dark green text color for Tab
+                    color: "#F95959", // Dark green text color for Tab
                     "&.Mui-selected": {
-                      color: "#FF952A", // White text color when selected
-                      // bgcolor: "#FF952A", // Dark green background when selected
+                      color: "#F95959", // White text color when selected
+                      // bgcolor: "#F95959", // Dark green background when selected
                     },
                   }}
                 />

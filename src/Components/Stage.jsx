@@ -26,7 +26,7 @@ const RankingCard = () => {
         fontFamily: 'Arial, sans-serif',
         color: '#333',
         mb: 3,
-        borderLeft: '3px solid #FF952A',
+        borderLeft: '3px solid #F95959',
         pl: 1,
         lineHeight: '1.5',
         width: 'fit-content',
@@ -124,7 +124,7 @@ const RankingCard = () => {
                 {player.name}
               </Typography>
             </Box>
-            <Typography variant="h6" sx={{ color: 'secondary',fontSize: '13px',fontWeight: 400, fontFamily: 'bahnschrift',backgroundColor: '#FF952A',color: 'white',borderRadius: '12px',textTransform: 'lowercase',padding:"5px" }}> 
+            <Typography variant="h6" sx={{ color: 'secondary',fontSize: '13px',fontWeight: 400, fontFamily: 'bahnschrift',backgroundColor: '#F95959',color: 'white',borderRadius: '12px',textTransform: 'lowercase',padding:"5px" }}> 
               {player.income}
             </Typography>
           </Box>

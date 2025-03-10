@@ -214,8 +214,8 @@ width: 100%;
 }
 
 .wallet {
-  border: 1px solid #ffa500;
-  color: #ffa500;
+  border: 1px solid #F95959;
+  color: #F95959;
 }
 
 
@@ -235,7 +235,7 @@ width: 100%;
   align-items: center;
   margin-bottom: 10px;
   font-size: 18px;
-  color: #e4911d;
+  color: #F95959;
   border-bottom: 1px solid #eee;
   padding-bottom: 8px;
 }
@@ -439,7 +439,7 @@ background: linear-gradient(90deg, #4782ff 0%, #59adff 100%);
 
 .history-item-title {
   font-weight: bold;
-  color:#e4911d;
+  color:#F95959;
 }
 
 .history-item-description {

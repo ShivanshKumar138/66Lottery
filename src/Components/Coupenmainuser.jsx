@@ -106,13 +106,13 @@ const Coupenmainuser = ({ children }) => {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                background: "#FE8123",
+                background: "#F95959",
                 padding: "8px 16px",
                 color: "white",
               }}
             >
               <Grid item container alignItems="center" justifyContent="center" style={{
-                backgroundColor:"#FE8123"
+                backgroundColor:"#F95959"
               }}>
                 <Grid item xs={2}>
                   <IconButton
@@ -215,10 +215,10 @@ const Coupenmainuser = ({ children }) => {
                       sx={{
                         borderRadius: "20px",
                         background:
-                          "#FE8123",
+                          "#F95959",
                         "&:hover": {
                           background:
-                            "#FE8123",
+                            "#F95959",
                         },
                       }}
                     >

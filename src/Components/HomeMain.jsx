@@ -481,7 +481,7 @@
 //                 position: "sticky",
 //                 top: 0,
 //                 zIndex: 1000,
-//                 backgroundColor: "rgb(255,149,42)",
+//                 backgroundColor: "#F95959",
 //                 padding: "0px 1px",
 //                 color: "white",
 //               }}
@@ -640,11 +640,11 @@
 //               <Button
 //                 variant="outlined"
 //                 sx={{
-//                   borderColor: "rgb(255,142,41)",
+//                   borderColor: "#F95959",
 //                   color: "white",
-//                   background: "rgb(255,149,42)",
+//                   background: "#F95959",
 //                   "&:hover": {
-//                     borderColor: "rgb(255,142,41)",
+//                     borderColor: "#F95959",
 //                     background: "transparent",
 //                   },
 //                   borderRadius: "50px",
@@ -681,7 +681,7 @@
 //                 fontFamily: "Arial, sans-serif",
 //                 color: "#333",
 //                 mb: 3,
-//                 borderLeft: "3px solid rgb(255,142,41)",
+//                 borderLeft: "3px solid #F95959",
 //                 pl: 1, // Add padding to the left
 //                 lineHeight: "1.5", // Adjust line height to control border height
 //                 width: "fit-content",
@@ -1049,6 +1049,7 @@ const Home = ({ children }) => {
     position: "relative",
     paddingLeft: "10px",
     paddingRight: "10px",
+    marginTop: "-15px",
   }));
   const ImageWrapper = styled(Box)(({ theme }) => ({
     display: "flex",
@@ -1225,7 +1226,7 @@ const Home = ({ children }) => {
               {/* Left Side - Logo */}
               <Grid item xs={6} textAlign="left">
                 <img
-                  src="https://www.66lottery9.com/static/manifest/logo-red.png"
+                  src="/assets/banners/white.png"
                   alt="logo"
                   style={{ width: "100px", height: "35px",marginLeft:"10px" }}
                 />
@@ -1302,7 +1303,7 @@ const Home = ({ children }) => {
                 alignItems: "center",
                 justifyContent: "space-between",
                 overflow: "hidden", // Ensure content stays within the box,
-                marginBottom:"10px"
+                marginBottom:"3px"
               }}
             >
               
@@ -1385,7 +1386,7 @@ const Home = ({ children }) => {
                 fontFamily: "Arial, sans-serif",
                 color: "#333",
                 mb: 3,
-                borderLeft: "3px solid rgb(255,142,41)",
+                borderLeft: "3px solid #F95959",
                 pl: 1, // Add padding to the left
                 lineHeight: "1.5", // Adjust line height to control border height
                 width: "fit-content",

@@ -117,7 +117,7 @@ const MessagesMain = ({ children }) => {
           <AppBar
             position="sticky"
             sx={{
-              bgcolor: "#FE8123", // Green background color
+              bgcolor: "#F95959", // Green background color
               boxShadow: "none",
             }}
           >
@@ -173,7 +173,7 @@ const MessagesMain = ({ children }) => {
                     >
                       {/* Title with Email Icon */}
                       <Grid item sx={{ display: "flex", alignItems: "center" }}>
-                        <EmailIcon sx={{ mr: 1, color: "#FE8123" }} />
+                        <EmailIcon sx={{ mr: 1, color: "#F95959" }} />
                         <Typography
                           variant="h6"
                           component="div"
@@ -216,7 +216,7 @@ const MessagesMain = ({ children }) => {
                           }
                           sx={{ minWidth: "unset", padding: 0 }}
                         >
-                          <DeleteIcon sx={{ color: "#FE8123" }} />
+                          <DeleteIcon sx={{ color: "#F95959" }} />
                         </Button>
                       </Grid>
                     </Grid>

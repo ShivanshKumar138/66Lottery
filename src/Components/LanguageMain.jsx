@@ -36,7 +36,7 @@ import {
         >
           <Box
             sx={{
-              bgcolor: "#FE8123",
+              bgcolor: "#F95959",
               padding: "8px 10px",
               display: "flex",
               alignItems: "center",
@@ -73,7 +73,7 @@ import {
                   borderRadius: "4px",
                   mb: 1,
                   p: 1,
-                  bgcolor: i18n.language === "en" ? "#FE8123" : "white", // Change background if selected
+                  bgcolor: i18n.language === "en" ? "#F95959" : "white", // Change background if selected
                   display: "flex",
                   justifyContent: "space-between", // Align items to the right
                   alignItems: "center",
@@ -94,7 +94,7 @@ import {
                   borderRadius: "4px",
                   mb: 1,
                   p: 1,
-                  bgcolor: i18n.language === "hi" ? "#FE8123" : "white", // Change background if selected
+                  bgcolor: i18n.language === "hi" ? "#F95959" : "white", // Change background if selected
                   display: "flex",
                   justifyContent: "space-between", // Align items to the right
                   alignItems: "center",

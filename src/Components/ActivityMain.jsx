@@ -42,6 +42,11 @@ const cardData = [
 
 const rewards = [
   {
+    image: "https://www.66lottery9.com/static/activity/activity.png",
+    label: "Invitation Bonus",
+    link: "/activityaward",
+  },
+  {
     image: "../assets/invitationBonus.png",
     label: "Invitation Bonus",
     link: "/invitation-bonus",
@@ -114,7 +119,7 @@ const ActivityMain = ({ children }) => {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                backgroundColor: "rgb(255,149,42) ",
+                backgroundColor: "#F95959 ",
                 padding: "8px 16px",
                 color: "white",
                 mb: 2,
@@ -152,7 +157,7 @@ const ActivityMain = ({ children }) => {
               position: "sticky",
               top: 0,
               zIndex: 5000,
-              background: "rgb(255,149,42)",
+              background: "linear-gradient(to right, rgba(250, 91, 91, 1) 0%, rgba(250, 91, 91, 0.5) 100%)",
               padding: "8px 16px",
               color: "white",
             }}

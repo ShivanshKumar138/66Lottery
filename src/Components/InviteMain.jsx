@@ -104,7 +104,7 @@ const InviteMain = ({ children }) => {
                 position: 'sticky',
                 top: 0,
                 zIndex: 1000,
-                backgroundColor: '#FF952A',
+                backgroundColor: '#F95959',
                 padding: '8px 16px',
                 color: 'white'
               }}
@@ -182,12 +182,12 @@ const InviteMain = ({ children }) => {
               marginBottom: "150px"
             }}>
               <Grid item xs={12}>
-                <Button variant="contained" fullWidth onClick={handleDownload} style={{ backgroundColor: '#FF952A', color: "white", borderRadius: "20px" }}>
+                <Button variant="contained" fullWidth onClick={handleDownload} style={{ backgroundColor: '#F95959', color: "white", borderRadius: "20px" }}>
                   Invitation Link
                 </Button>
               </Grid>
               <Grid item xs={12}>
-                <Button variant="outlined" fullWidth onClick={handleCopyLink} style={{ color: '#FF952A', borderColor: "#FF952A", borderRadius: "20px" }}>
+                <Button variant="outlined" fullWidth onClick={handleCopyLink} style={{ color: '#F95959', borderColor: "#F95959", borderRadius: "20px" }}>
                   Copy Invitation Link
                 </Button>
               </Grid>

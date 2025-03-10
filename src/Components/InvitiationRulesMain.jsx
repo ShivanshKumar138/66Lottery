@@ -113,7 +113,7 @@ const InvitationRulesMain = ({ children }) => {
       {/* Header Section */}
       <Box
       sx={{
-        bgcolor: 'rgb(255,142,41)',
+        bgcolor: '#F95959',
         padding: '8px 10px',
         display: 'flex',
         alignItems: 'center',
@@ -177,7 +177,7 @@ const InvitationRulesMain = ({ children }) => {
           >
             <Box
               sx={{
-                backgroundColor: 'rgb(255,142,41)',
+                backgroundColor: '#F95959',
                 borderRadius: '50%',
                 width: 30,
                 height: 30,
@@ -203,7 +203,7 @@ const InvitationRulesMain = ({ children }) => {
         <TableContainer component={Paper} elevation={3}>
           <Table sx={{ minWidth: 350 }} aria-label="simple table">
             <TableHead>
-              <TableRow sx={{ bgcolor: 'rgb(255,142,41)' }}>
+              <TableRow sx={{ bgcolor: '#F95959' }}>
                 <TableCell sx={{ color: 'white', fontWeight: 'bold' }}>Rebate level</TableCell>
                 <TableCell sx={{ color: 'white', fontWeight: 'bold' }} align="center">Team Number</TableCell>
                 <TableCell sx={{ color: 'white', fontWeight: 'bold' }} align="center">Team Betting</TableCell>
@@ -219,7 +219,7 @@ const InvitationRulesMain = ({ children }) => {
                         width: 30,
                         height: 30,
                         borderRadius: '50%',
-                        bgcolor: 'rgb(255,142,41)',
+                        bgcolor: '#F95959',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',

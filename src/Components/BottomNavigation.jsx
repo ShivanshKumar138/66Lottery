@@ -215,6 +215,9 @@ const BottomNavigationArea = () => {
     navItem: {
       minWidth: isSmallScreen ? "50px" : "80px",
       padding: isSmallScreen ? "4px 0" : "6px 12px",
+       fontWeight: 400,
+          fontFamily: "Arial",
+          fontSize:"12px",
     },
     icon: {
       width: isSmallScreen ? "20px" : "25px",
@@ -225,8 +228,7 @@ const BottomNavigationArea = () => {
       height: isSmallScreen ? "50px" : "50px",
     },
     promotionContainer: {
-      marginTop: isSmallScreen ? "-10px" : "-40px",
-      backgroundColor:"white",
+      marginTop: isSmallScreen ? "-30px" : "-40px",
       borderRadius:"50px",
       width:"50px",
       height:"50px",
@@ -281,11 +283,11 @@ const BottomNavigationArea = () => {
         icon={
           <Box style={styles.promotionContainer}>
             <img
-              src={promotionLogo}
+              src="/assets/banners/icon_promotion.png"
               style={styles.promotionIcon}
               alt="promotion"
             />
-            <span style={{fontSize:"normal"}}>Promotion</span>
+            <span style={{fontSize:"normal"}}>Agent</span>
           </Box>
         }
         style={{

@@ -185,14 +185,14 @@ const CalendarDrawer = ({ isOpen, onClose, onRangeSelect }) => {
             onClick={handleApply}
             disabled={!startDate}
             sx={{
-              background: "linear-gradient(90deg, #FF952A 0%, #FF952A 100%)",
+              background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
               color: "#fff",
               fontSize: "12px",
               fontWeight: "400",
               padding: "6px 14px",
               borderRadius: "8px",
               "&:hover": {
-                background: "linear-gradient(90deg, #FF952A 0%, #FF952A 100%)",
+                background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
               },
             }}
           >

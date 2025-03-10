@@ -70,7 +70,7 @@ const ActivityDetails = () => {
             sx={{
               p: 2,
               mb: 2,
-              backgroundImage: `url("../../assets/box-5efaaed8.png"), linear-gradient(45deg, #FFA500, #FF6347)`,
+              backgroundImage: `url("../../assets/box-5efaaed8.png"), linear-gradient(45deg, #F95959, #FF6347)`,
               backgroundPosition: "center",
               backgroundSize: "cover", // Ensures the image covers the entire Paper
               color: "white",
@@ -94,7 +94,7 @@ const ActivityDetails = () => {
                   lineHeight: "20px",
                   textAlign: "center",
                   backgroundColor: "white",
-                  color: "#FFA500", // Color matching the gradient for contrast
+                  color: "#F95959", // Color matching the gradient for contrast
                   borderRadius: "50%",
                   marginRight: "8px",
                 }}
@@ -112,7 +112,7 @@ const ActivityDetails = () => {
                   lineHeight: "20px",
                   textAlign: "center",
                   backgroundColor: "white",
-                  color: "#FFA500", // Color matching the gradient for contrast
+                  color: "#F95959", // Color matching the gradient for contrast
                   borderRadius: "50%",
                   marginRight: "8px",
                 }}

@@ -250,7 +250,7 @@ console.log(rows)
           WebkitTextFillColor: "transparent",
         };
       default:
-        return "#FF952A"; // Default to a blue-like color
+        return "#F95959"; // Default to a blue-like color
     }
   };
 
@@ -606,7 +606,7 @@ console.log(rows)
     }
   }, [remainingTime, isSoundOn]);
 
-  const [selectedColor, setSelectedColor] = useState("#FF952A");
+  const [selectedColor, setSelectedColor] = useState("#F95959");
   const handleEventSelection = (event) => {
     switch (event) {
       case "violet":
@@ -635,7 +635,7 @@ console.log(rows)
         );
         break;
       default:
-        setSelectedColor("#FF952A");
+        setSelectedColor("#F95959");
     }
   };
   // console.log("Win loss is:",winloss);
@@ -1063,7 +1063,7 @@ console.log(rows)
             direction="column"
             sx={{
               height: "300px",
-              background: "rgb(255,142,40)",
+              background: "#F95959",
               borderRadius: "0 0 70px 70px",
               textAlign: "center",
             }}
@@ -1141,7 +1141,7 @@ console.log(rows)
                 }}
               >
                 <AccountBalanceWallet
-                  sx={{ marginRight: "10px", color: "#FF952A" }}
+                  sx={{ marginRight: "10px", color: "#F95959" }}
                 />
                 <Typography variant="subtitle2">Wallet Balance</Typography>
               </Grid>
@@ -1205,7 +1205,7 @@ console.log(rows)
               }}
             >
               <IconButton>
-                <VolumeUpIcon sx={{ color: "rgb(255,142,40)" }} />
+                <VolumeUpIcon sx={{ color: "#F95959" }} />
               </IconButton>
 
               <Box sx={{ flex: 1, overflow: "hidden", padding: "0 10px" }}>
@@ -1237,10 +1237,10 @@ console.log(rows)
                 variant="contained"
                 sx={{
                   background:
-                    "rgb(255,142,40)",
+                    "#F95959",
                   "&:hover": {
                     background:
-                      "rgb(255,142,40)",
+                      "#F95959",
                   },
                   borderRadius: "50px",
                   fontSize: "11px",
@@ -1382,7 +1382,7 @@ console.log(rows)
                   flex: "0 0 auto", // Fixed width without shrinking
                   width: "80px",
                   height: "25px",
-                  background: "rgb(255,142,40)",
+                  background: "#F95959",
                   color: "white",
                   border: "1px solid white",
                   borderRadius: "15px",
@@ -1408,7 +1408,7 @@ console.log(rows)
                   width: "120px",
                   height: "25px",
                   border: "1px solid white",
-                  background: "rgb(255,142,40)",
+                  background: "#F95959",
                   color: "white",
                   borderRadius: "15px",
                   display: "flex",
@@ -1617,7 +1617,7 @@ console.log(rows)
                 alignItems: "center",
                 justifyContent: "center",
                 overflow: "hidden",
-                color: "#FF952A",
+                color: "#F95959",
                 fontWeight: "bold",
                 textAlign: "center",
                 position: "absolute",
@@ -2155,7 +2155,7 @@ console.log(rows)
                       sx={{
                         height: "40px", // Adjust this value to change the tab height
                         backgroundColor:
-                          activeTab === index ? "rgb(255,142,40)" : "#ffffff",
+                          activeTab === index ? "#F95959" : "#ffffff",
                         color: activeTab === index ? "#ffffff" : "grey",
                         borderRadius: 1,
                         display: "flex",
@@ -2165,7 +2165,7 @@ console.log(rows)
                         transition: "all 0.3s",
                         "&:hover": {
                           backgroundColor:
-                            activeTab === index ? "rgb(255,142,40)" : "#f5f5f5",
+                            activeTab === index ? "#F95959" : "#f5f5f5",
                         },
                       }}
                     >

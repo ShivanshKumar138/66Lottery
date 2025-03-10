@@ -69,7 +69,7 @@
 //             display: "flex",
 //             justifyContent: "center",
 //             alignItems: "center",
-//             bgcolor: "#FF952A", // Change to yellow
+//             bgcolor: "#F95959", // Change to yellow
 //             borderTopLeftRadius: "15px",
 //             borderTopRightRadius: "15px",
 //             p: 2,
@@ -158,10 +158,10 @@
 //               borderRadius: "20px",
 //               px: 3,
 //               py: 1,
-//               background: "linear-gradient(90deg, #FF952A 0%, #FF952A 100%)", // Matching button color to yellow
+//               background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)", // Matching button color to yellow
 //               color: "#ffffff", // Black text
 //               "&:hover": {
-//                 background: "linear-gradient(90deg, #FF952A 0%, #FF952A 100%)", // Slightly darker yellow on hover
+//                 background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)", // Slightly darker yellow on hover
 //               },
 //             }}
 //             onClick={handleConfirm}

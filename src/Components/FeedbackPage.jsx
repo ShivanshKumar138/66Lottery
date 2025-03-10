@@ -26,7 +26,7 @@ const FeedbackPage = () => {
       >
         <Box
           sx={{
-            bgcolor: "#FE8123",
+            bgcolor: "#F95959",
             padding: "8px 10px",
             display: "flex",
             alignItems: "center",
@@ -97,7 +97,7 @@ const FeedbackPage = () => {
             fullWidth
             variant="contained"
             sx={{
-              bgcolor: "#FE8123",
+              bgcolor: "#F95959",
               color: "white",
               borderRadius: "50px",
               border: "none",

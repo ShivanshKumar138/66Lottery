@@ -426,7 +426,7 @@ const SubordinateDataMain = () => {
               <Box
                 sx={{
                   padding: "25px",
-                  background: "linear-gradient(90deg, #FF952A 0%, #FF952A 100%)",
+                  background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
                   width: "78%",
                   borderRadius: "16px",
                   boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
@@ -514,7 +514,7 @@ const SubordinateDataMain = () => {
               sx={{
                 width: "90%",
                 margin: "15px auto",
-                background: "linear-gradient(90deg, rgb(255,142,41) 0%, rgb(255,142,41) 100%)",
+                background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
                 borderRadius: "25px",
               }}
             >
@@ -525,7 +525,7 @@ const SubordinateDataMain = () => {
                 indicatorColor="primary"
                 variant="fullWidth"
                 sx={{
-                  background: "linear-gradient(90deg, rgb(255,142,41) 0%, rgb(255,142,41) 100%)",
+                  background: "linear-gradient(90deg, #F95959 0%, #F95959 100%)",
                   borderRadius: "5px",
                   color: "white",
                   "& .MuiTabs-indicator": {
@@ -844,7 +844,7 @@ const SubordinateDataMain = () => {
                           <Typography
                             variant="body2"
                             sx={{
-                              color: "#ff8c00", // Highlighted value color
+                              color: "#F95959", // Highlighted value color
                               fontWeight: "bold",
                               textAlign: "end",
                             }}
@@ -864,7 +864,7 @@ const SubordinateDataMain = () => {
                           <Typography
                             variant="body2"
                             sx={{
-                              color: "#ff8c00", // Highlighted value color
+                              color: "#F95959", // Highlighted value color
                               fontWeight: "bold",
                               textAlign: "end",
                             }}
@@ -884,7 +884,7 @@ const SubordinateDataMain = () => {
                           <Typography
                             variant="body2"
                             sx={{
-                              color: "#ff8c00", // Highlighted value color
+                              color: "#F95959", // Highlighted value color
                               fontWeight: "bold",
                               textAlign: "end",
                             }}

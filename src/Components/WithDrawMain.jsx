@@ -570,7 +570,7 @@ try {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                backgroundColor: "#FE8123",
+                backgroundColor: "#F95959",
                 padding: "7px 4px",
                 color: "white",
               }}
@@ -617,7 +617,7 @@ try {
               container
               mt={1}
               style={{
-                backgroundImage: `url(${walletCard})`,
+                backgroundImage: `url("https://www.66lottery9.com/static/deposit/diban.png")`,
                 borderRadius: 8,
                 padding: 8,
                 backgroundSize: "cover",
@@ -689,7 +689,7 @@ try {
                   onClick={() => setWithdrawalMethod("Bank Card")}
                   style={{
                     background:
-                      withdrawalMethod === "Bank Card" ? "#FE8123" : "#ffffff",
+                      withdrawalMethod === "Bank Card" ? "#F95959" : "#ffffff",
                     color:
                       withdrawalMethod === "Bank Card" ? "#ffffff" : "black",
                     borderRadius: 8,
@@ -723,7 +723,7 @@ try {
                   style={{
                     background:
                       withdrawalMethod === "USDT"
-                        ? "#FE8123"
+                        ? "#F95959"
                         : "#ffffff",
                     color: withdrawalMethod === "USDT" ? "#ffffff" : "black",
                     borderRadius: 8,
@@ -814,7 +814,7 @@ try {
                       >
                         {usdtDetails.walletAddress[0]?.address}
                       </Typography>
-                      <Typography variant="body2" sx={{ color: "#FFA500" }}>
+                      <Typography variant="body2" sx={{ color: "#F95959" }}>
                         {usdtDetails.walletAddress[0]?.alias || "No Alias"}
                       </Typography>
                     </Box>
@@ -983,13 +983,13 @@ try {
                         backgroundColor: "#ffffff",
                         "& .MuiOutlinedInput-root": {
                           "& fieldset": {
-                            borderColor: "rgb(255,142,41)",
+                            borderColor: "#F95959",
                           },
                           "&:hover fieldset": {
-                            borderColor: "rgb(255,142,41)",
+                            borderColor: "#F95959",
                           },
                           "&.Mui-focused fieldset": {
-                            borderColor: "rgb(255,142,41)",
+                            borderColor: "#F95959",
                           },
                           "& input": {
                             color: "black",
@@ -1004,7 +1004,7 @@ try {
                           <InputAdornment position="start">
                             <span
                               style={{
-                                color: "rgb(255,142,41)",
+                                color: "#F95959",
                                 fontSize: "20px",
                                 fontWeight: "bold",
                               }}
@@ -1060,10 +1060,10 @@ try {
   sx={{
     mt: 2,
     bgcolor:
-      "#FE8123",
+      "#F95959",
     "&:hover": {
       background:
-        "#FE8123",
+        "#F95959",
     },
     borderRadius: "20px",
     color: "black", // Ensure text color is white
@@ -1113,7 +1113,7 @@ try {
                           },
                         },
                         "& .MuiInputBase-input::placeholder": {
-                          color: "rgb(255,142,41)",
+                          color: "#F95959",
                           opacity: 1,
                         },
                       }}
@@ -1177,16 +1177,16 @@ try {
                           },
                         },
                         "& .MuiInputBase-input::placeholder": {
-                          color: "rgb(255,142,41)",
+                          color: "#F95959",
                           opacity: 1,
                         },
-                        color: "rgb(255,142,41)",
+                        color: "#F95959",
                       }}
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
                             <Typography
-                              sx={{ color: "rgb(255,142,41)", fontWeight: "bold" }}
+                              sx={{ color: "#F95959", fontWeight: "bold" }}
                             >
                               ₹
                             </Typography>
@@ -1228,8 +1228,8 @@ try {
                       variant="outlined"
                       size="small"
                       sx={{
-                        borderColor: "rgb(255,142,41)",
-                        color: "rgb(255,142,41)",
+                        borderColor: "#F95959",
+                        color: "#F95959",
                         minWidth: "60px",
                       }}
                       onClick={() => {
@@ -1248,10 +1248,10 @@ try {
                       variant="contained"
                       sx={{
                         background:
-                          "linear-gradient(180deg, #FF952A 0%, #FF952A 30%,#FF952A 100%)",
+                          "linear-gradient(180deg, #F95959 0%, #F95959 30%,#F95959 100%)",
                         "&:hover": {
                           background:
-                            "linear-gradient(180deg, #FF952A 0%, #FF952A 30%, #FF952A 100%)",
+                            "linear-gradient(180deg, #F95959 0%, #F95959 30%, #F95959 100%)",
                         },
                       }}
                       onClick={handleWithdraw}
@@ -1285,7 +1285,7 @@ try {
                         sx={{ minWidth: "unset", marginRight: "8px" }}
                       >
                         <RhombusIcon
-                          sx={{ fontSize: 10, color: "rgb(255,142,41)", mr: 1 }}
+                          sx={{ fontSize: 10, color: "#F95959", mr: 1 }}
                         />
                       </ListItemIcon>
                       <ListItemText
@@ -1320,7 +1320,7 @@ try {
                         sx={{ minWidth: "unset", marginRight: "8px" }}
                       >
                         <RhombusIcon
-                          sx={{ fontSize: 10, color: "rgb(255,142,41)", mr: 1 }}
+                          sx={{ fontSize: 10, color: "#F95959", mr: 1 }}
                         />
                       </ListItemIcon>
                       <ListItemText
@@ -1359,7 +1359,7 @@ try {
                         sx={{ minWidth: "unset", marginRight: "8px" }}
                       >
                         <RhombusIcon
-                          sx={{ fontSize: 10, color: "rgb(255,142,41)", mr: 1 }}
+                          sx={{ fontSize: 10, color: "#F95959", mr: 1 }}
                         />
                       </ListItemIcon>
                       <ListItemText
@@ -1394,7 +1394,7 @@ try {
                         sx={{ minWidth: "unset", marginRight: "8px" }}
                       >
                         <RhombusIcon
-                          sx={{ fontSize: 10, color: "rgb(255,142,41)", mr: 1 }}
+                          sx={{ fontSize: 10, color: "#F95959", mr: 1 }}
                         />
                       </ListItemIcon>
                       <ListItemText
@@ -1433,7 +1433,7 @@ try {
                         sx={{ minWidth: "unset", marginRight: "8px" }}
                       >
                         <RhombusIcon
-                          sx={{ fontSize: 10, color: "rgb(255,142,41)", mr: 1 }}
+                          sx={{ fontSize: 10, color: "#F95959", mr: 1 }}
                         />
                       </ListItemIcon>
                       <ListItemText
@@ -1456,7 +1456,7 @@ try {
                         sx={{ minWidth: "unset", marginRight: "8px" }}
                       >
                         <RhombusIcon
-                          sx={{ fontSize: 10, color: "rgb(255,142,41)", mr: 1 }}
+                          sx={{ fontSize: 10, color: "#F95959", mr: 1 }}
                         />
                       </ListItemIcon>
                       <ListItemText
@@ -1508,7 +1508,7 @@ try {
                             <Chip
                               label="Withdraw"
                               sx={{
-                                backgroundColor: "#FE8123",
+                                backgroundColor: "#F95959",
                                 color: "white",
                                 fontWeight: "bold",
                                 height: "24px", // Adjusting height to match the image
@@ -1633,10 +1633,10 @@ try {
                     textTransform: "initial",
                     borderRadius: "20px",
                     background:
-                      "#FE8123",
+                      "#F95959",
                     "&:hover": {
                       background:
-                        "l#FE8123",
+                        "l#F95959",
                     },
                   }}
                 >

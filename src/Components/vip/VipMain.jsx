@@ -105,7 +105,7 @@ function VipMain() {
 
   return (
     <div>
-      <div className="topbox" style={{backgroundColor:"#FE8123"}}>
+      <div className="topbox" style={{backgroundColor:"#F95959"}}>
       
         <div className="top-left">
           <div className="image-box">
