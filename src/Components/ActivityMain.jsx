@@ -20,22 +20,22 @@ const cardData = [
   {
     image: "../assets/banners/b4.jpg",
     text: "First Deposit Bonus",
-    url: "/banners",
+    url: "/banners/one",
   },
   {
     image: "../assets/banners/b3.jpg",
     text: "Activity Bonus",
-    url: "/banners",
+    url: "/banners/two",
   },
   {
     image: "../assets/banners/b2.jpg",
     text: "Weekly Bonus",
-    url: "/banners",
+    url: "/banners/three",
   },
   {
     image: "../assets/banners/b1.jpg",
     text: "VIP Bonus",
-    url: "/banners",
+    url: "/banners/four",
   },
 
 ];

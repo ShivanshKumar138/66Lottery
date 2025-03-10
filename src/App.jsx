@@ -89,6 +89,7 @@ import GameProblem from "./Pages/GameProblem";
 import RacingGame from "./Game/Racing";
 import InvitationRewardRules from "./Pages/InvitaionBonusPageActivity";
 import BannerDetail from "./Pages/BannerDetails";
+import InvitationRecordPage from "./Components/InvitationRecordPage";
 const gameData = [
   {
     id: 1,
@@ -347,7 +348,7 @@ const App = () => {
               }
             />
             <Route
-              path="/banners"
+              path="/banners/:id"
               element={
                 <ProtectedRoute>
                   <BannerDetail/>
@@ -375,6 +376,15 @@ const App = () => {
               element={
                 <ProtectedRoute>
                   <InvitationRewardRules />
+                </ProtectedRoute>
+              }
+            />
+
+<Route
+              path="/invitationRecordPage"
+              element={
+                <ProtectedRoute>
+                  <InvitationRecordPage />
                 </ProtectedRoute>
               }
             />

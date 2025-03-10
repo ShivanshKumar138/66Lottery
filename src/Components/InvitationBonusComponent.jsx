@@ -347,7 +347,7 @@ const InvitationBonusComponent = () => {
               alignItems: "center",
               gap: 1,
             }}
-            onClick={()=>{navigate("/invitationBonusPage")}}
+            onClick={()=>{navigate("/invitationRecordPage")}}
           >
             <Box
               sx={{
