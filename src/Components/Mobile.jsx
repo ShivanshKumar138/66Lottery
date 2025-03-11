@@ -156,6 +156,7 @@ const Mobile = ({ children }) => {
   const handleDragStart = (e, data) => {
     // For mouse events
     if (e.type.startsWith('mouse')) {
+      
       setTouchStart({ x: e.clientX, y: e.clientY });
     } 
     // For touch events

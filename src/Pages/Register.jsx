@@ -42,7 +42,9 @@ import { useAuth } from "../contexts/AuthContext";
 import { domain } from "../Components/config";
 import { InputAdornment } from "@mui/material";
 import { Select } from "@mui/material";
-
+import { RecaptchaVerifier,signInWithPhoneNumber,PhoneAuthProvider, signInWithCredential } from "firebase/auth";
+import { useTransition } from "react";
+import { auth } from "../firebase.config";
 const countryCodes = [{ code: "+91", country: "India" }];
 
 const Register = () => {
@@ -50,7 +52,98 @@ const Register = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [tabValue, setTabValue] = useState(0);
   const [showPassword, setShowPassword] = useState(false);
+  // const [otp, setOtp] = useState("");
+  const [mobile, setMobile] = useState("");
+  // const [potp,setPOtp]=useState("");
+  const [error,setError]=useState("");
+  const [success,setSuccess]=useState("");
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState('');
+  const [verificationId, setVerificationId] = useState('');
+  const [verifying, setVerifying] = useState(false);
+  const [verified, setVerified] = useState(false);
 
+  const [recaptchaVerifier,setRecaptchaVerifier]=useState(null);
+  const [confirmationResult,setConfirmationResult]=useState(null);
+  const [isPending,startTransition]=useTransition();
+
+  // useEffect(()=>{
+  //   let timer;
+  //   if(resendCountdown>0){
+  //     timer=setTimeout(()=>setResendCountdown(resendCountdown-1),1000);
+  //   }
+  //   return ()=>clearTimeout(timer);
+  // },[resendCountdown]);
+
+  useEffect(() => {
+    window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
+      'size': 'invisible',
+      'callback': (response) => {
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
+      }
+    });
+  }, []);
+
+
+  const sendOTP = async (e) => {
+    e.preventDefault();
+    
+    if (!mobile) {
+      alert("Please enter a valid phone number");
+      return;
+    }
+    
+    try {
+      setVerifying(true);
+      const phoneNumber = `${countryCode}${mobile}`;
+      const appVerifier = window.recaptchaVerifier;
+      
+      const confirmationResult = await signInWithPhoneNumber(auth, phoneNumber, appVerifier);
+      setVerificationId(confirmationResult.verificationId);
+      setOtpSent(true);
+      setVerifying(false);
+      alert("OTP has been sent to your mobile number");
+    } catch (error) {
+      console.log("Running into otp")
+      setVerifying(false);
+      console.error("Error sending OTP:", error);
+      alert(`Error sending OTP: ${error.message}`);
+      // Reset reCAPTCHA
+      window.recaptchaVerifier.render().then(function(widgetId) {
+        window.recaptchaVerifier.clear(widgetId);
+      });
+    }
+  };
+
+  const verifyOTP = async (e) => {
+    e.preventDefault();
+
+    if (!otp) {
+      alert("Please enter the OTP");
+      return;
+    }
+
+    try {
+      setVerifying(true);
+
+      // Create credential using `PhoneAuthProvider`
+      const credential = PhoneAuthProvider.credential(verificationId, otp);
+
+      // Sign in with the created credential
+      const result = await signInWithCredential(auth, credential);
+
+      setVerified(true);
+      setVerifying(false);
+      alert("Phone number verified successfully!");
+    } catch (error) {
+      console.error("Error verifying OTP:", error);
+      alert(`Error verifying OTP: ${error.message}`);
+      setVerifying(false);
+    }
+  };
+
+
+  
   const handleLanguageSelect = (language) => {
     setSelectedLanguage(language);
     setOpenDrawer(false);
@@ -75,8 +168,7 @@ const Register = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const initialInviteCode = query.get("invitecode");
-  const [otp, setOtp] = useState("");
-  const [mobile, setEmail] = useState("");
+
   const [email, setEmai] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -85,6 +177,13 @@ const Register = () => {
 
   const handleEmailRegister = async (e) => {
     e.preventDefault();
+
+
+    if (!otpVerified) {
+      alert("Please verify your phone number first");
+      return;
+    }
+    
 
     if (mobile.length !== 10) {
       alert("Please enter a valid 10-digit mobile number.");
@@ -185,8 +284,12 @@ const Register = () => {
 
   const handleRegistration = async (e) => {
     e.preventDefault();
-    const auth = getAuth();
-    const db = getFirestore();
+    // const auth = getAuth();
+    // const db = getFirestore();
+    if (!verified) {
+      alert("Please verify your phone number first");
+      return;
+    }
     if (otp !== "" && otp === serverOtp) {
       try {
         const userCredential = await createUserWithEmailAndPassword(
@@ -270,6 +373,7 @@ const Register = () => {
   return (
     <div>
       <Mobile>
+        <div id="recapthca-container"/>
         <Grid
           container
           alignItems="center"
@@ -432,56 +536,12 @@ const Register = () => {
             boxShadow: "0 -4px 8px rgba(0,0,0,0.1)",
           }}
         >
+          {/*Will need to modify it  */}
           <Grid item xs={12} sx={{ marginBottom: "50px" }}>
-            <form
-              onSubmit={
-                tabValue === 0 ? handleEmailRegister : handleRegistration
-              }
-            >
-              {/* <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  marginBottom: "20px",
-                }}
-              >
-                <Tabs
-                  value={tabValue}
-                  onChange={handleTabChange}
-                  TabIndicatorProps={{
-                    style: {
-                      backgroundColor: tabValue === 0 ? "#F95959" : "grey",
-                    },
-                  }}
-                  sx={{ display: "flex", justifyContent: "center" }}
-                >
-                  <Tab
-                    icon={
-                      <SendToMobileIcon
-                        style={{
-                          color: tabValue === 0 ? "#F95959" : "grey",
-                        }}
-                      />
-                    }
-                    label="Register With Mobile"
-                    style={{ color: tabValue === 0 ? "#F95959" : "grey" }}
-                  /> */}
-              {/* Uncomment and update this Tab if needed
-        <Tab
-          icon={<PhoneIcon style={{ color: tabValue === 1 ? 'rgb(42,50,112)' : 'grey' }} />}
-          label="Register Your Phone"
-          style={{ color: tabValue === 1 ? '#FF7172' : 'grey' }}
-        />
-        */}
-              {/* </Tabs>
-              </Box> */}
-
-<TabPanel value={tabValue} index={0}>
+      <form onSubmit={handleRegistration}>
+      <TabPanel value={tabValue} index={0}>
   <Box display="flex" alignItems="center" mt={2}>
-    {/* <SendToMobileIcon sx={{ color: "#F95959" }} /> */}
-    {/* <SendToMobileIcon sx={{ color: "#4782ff" }} />
-     */}
-     <img src="https://in.piccdn123.com/static/_template_/orange/img/sign/mobile.png" style={{width:"25px"}}/>
+    <img src="https://in.piccdn123.com/static/_template_/orange/img/sign/mobile.png" style={{width:"25px"}}/>
     <FormLabel sx={{
       color: "#666",
       fontSize: "15px",
@@ -491,101 +551,233 @@ const Register = () => {
     </FormLabel>
   </Box>
 
-  <TextField
-    label="Please enter phone number"
-    fullWidth
-    variant="outlined"
-    margin="normal"
-    type="tel"
-    value={mobile}
-    onChange={(e) => setEmail(e.target.value)}
-    required
-    placeholder="Please enter phone number"
-    sx={{
-      backgroundColor: "rgb(255,255,255)",
-      borderRadius: "10px",
-      boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-      transition: "box-shadow 0.3s ease-in-out",
-      "&:hover": {
-        boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
-      },
-      "& .MuiOutlinedInput-root": {
-        height: "45px",
-        "& fieldset": {
-          borderColor: "rgb(255,255,255) !important",
+  {/* Container for side-by-side layout */}
+  <Box display="flex" alignItems="flex-start" mt={2}>
+    {/* Text field */}
+    <TextField
+      label="Please enter phone number"
+      variant="outlined"
+      type="tel"
+      value={mobile}
+      onChange={(e) => setMobile(e.target.value)}
+      required
+      disabled={otpSent && verified}
+      placeholder="Please enter phone number"
+      sx={{
+        backgroundColor: "rgb(255,255,255)",
+        borderRadius: "10px",
+        boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+        transition: "box-shadow 0.3s ease-in-out",
+        flexGrow: 1,
+        marginRight: 2,
+        "&:hover": {
+          boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
         },
-        "&:hover fieldset": {
-          borderColor: "rgb(71,129,255) !important",
+        "& .MuiOutlinedInput-root": {
+          height: "45px",
+          "& fieldset": {
+            borderColor: "rgb(255,255,255) !important",
+          },
+          "&:hover fieldset": {
+            borderColor: "rgb(71,129,255) !important",
+          },
+          "&.Mui-focused fieldset": {
+            borderColor: "rgb(71,129,255) !important",
+          },
         },
-        "&.Mui-focused fieldset": {
-          borderColor: "rgb(71,129,255) !important",
+        "& .MuiInputLabel-root": {
+          color: "#666",
+          "&.Mui-focused": {
+            color: "rgb(71,129,255)",
+          },
         },
-      },
-      "& .MuiInputLabel-root": {
-        color: "#666",
-        "&.Mui-focused": {
-          color: "rgb(71,129,255)",
+        "& .MuiInputBase-input::placeholder": {
+          color: "#999",
+          opacity: 1,
         },
-      },
-      "& .MuiInputBase-input::placeholder": {
-        color: "#999",
-        opacity: 1,
-      },
-    }}
-    InputProps={{
-      style: { borderRadius: "10px", color: "#666" },
-      startAdornment: (
-        <InputAdornment position="start">
-          <Select
-            value={countryCode}
-            onChange={(e) => setCountryCode(e.target.value)}
-            variant="standard"
-            disableUnderline
-            sx={{
-              width: "80px",
-              "& .MuiSelect-select": {
-                color: "#666",
-                padding: "0 5px",
-              },
-              "& .MuiSelect-icon": {
-                color: "#666",
-              },
-            }}
-            MenuProps={{
-              PaperProps: {
-                sx: {
-                  backgroundColor: "rgb(255,255,255)",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-                  "& .MuiMenuItem-root": {
-                    color: "#666",
-                    "&:hover": {
-                      backgroundColor: "rgba(71,129,255,0.1)",
+      }}
+      InputProps={{
+        style: { borderRadius: "10px", color: "#666" },
+        startAdornment: (
+          <InputAdornment position="start">
+            <Select
+              value={countryCode}
+              onChange={(e) => setCountryCode(e.target.value)}
+              variant="standard"
+              disableUnderline
+              disabled={otpSent && verified}
+              sx={{
+                width: "60px",
+                "& .MuiSelect-select": {
+                  color: "#666",
+                  padding: "0 3px",
+                },
+                "& .MuiSelect-icon": {
+                  color: "#666",
+                },
+              }}
+              MenuProps={{
+                PaperProps: {
+                  sx: {
+                    backgroundColor: "rgb(255,255,255)",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+                    "& .MuiMenuItem-root": {
+                      color: "#666",
+                      "&:hover": {
+                        backgroundColor: "rgba(71,129,255,0.1)",
+                      },
                     },
                   },
                 },
-              },
-            }}
-          >
-            {countryCodes.map((item) => (
-              <MenuItem key={item.code} value={item.code}>
-                {item.code}
-              </MenuItem>
-            ))}
-          </Select>
-        </InputAdornment>
-      ),
-    }}
-    InputLabelProps={{
-      style: {
-        color: "#666",
-        fontSize: "15px",
-        fontWeight: 400,
-        fontFamily: "helvetica",
-      },
-      shrink: true
-    }}
-  />
+              }}
+            >
+              {countryCodes.map((item) => (
+                <MenuItem key={item.code} value={item.code}>
+                  {item.code}
+                </MenuItem>
+              ))}
+            </Select>
+          </InputAdornment>
+        ),
+        placeholder: "Please enter phone number", // Explicitly set placeholder
+      }}
+      InputLabelProps={{
+        style: {
+          color: "#666",
+          fontSize: "15px",
+          fontWeight: 400,
+          fontFamily: "helvetica",
+        },
+        shrink: true
+      }}
+    />
 
+    {/* Button positioned next to the text field - smaller with nowrap */}
+    {!otpSent ? (
+      <Button
+        variant="contained"
+        onClick={sendOTP}
+        disabled={verifying || !mobile}
+        style={{
+          background: "#F95959",
+          borderRadius: "200px",
+          fontSize: "12px", // Reduced font size
+          fontWeight: 500,
+          fontFamily: "helvetica",
+          padding: "3px 10px", // Reduced padding
+          height: "40px", // Reduced height
+          marginTop: "10px", // Adjusted to align with text field
+          whiteSpace: "nowrap", // Prevent text wrapping
+          minWidth: "80px", // Ensures button doesn't shrink too much
+          marginTop:-1,
+          // marginBottom:-2
+        }}
+        sx={{
+          color: "white",
+        }}
+      >
+        {verifying ? "Sending..." : "Send OTP"}
+      </Button>
+    ) : null}
+  </Box>
+
+  {/* Verification success message */}
+  {otpSent && verified ? (
+    <Box sx={{ mt: 1, mb: 1 }}>
+      <Typography sx={{ color: "#4CAF50", fontSize: "14px" }}>
+        ✓ Phone number verified successfully
+      </Typography>
+    </Box>
+  ) : null}
+
+  {/* OTP verification section */}
+  {otpSent && !verified ? (
+    <Box sx={{ mt: 2 }}>
+      {/* Container for side-by-side OTP field and verify button */}
+      <Box display="flex" alignItems="flex-start">
+        <TextField
+          label="Enter OTP"
+          variant="outlined"
+          type="text"
+          value={otp}
+          onChange={(e) => setOtp(e.target.value)}
+          required
+          placeholder="Enter 6-digit OTP"
+          sx={{
+            backgroundColor: "rgb(255,255,255)",
+            borderRadius: "10px",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+            flexGrow: 1,
+            marginRight: 2,
+            "& .MuiOutlinedInput-root": {
+              height: "45px",
+              "& fieldset": {
+                borderColor: "rgb(255,255,255) !important",
+              },
+              "&:hover fieldset": {
+                borderColor: "rgb(71,129,255) !important",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "rgb(71,129,255) !important",
+              },
+            },
+            "& .MuiInputBase-input::placeholder": {
+              color: "#999",
+              opacity: 1,
+            },
+          }}
+          InputProps={{
+            placeholder: "Enter 6-digit OTP", // Explicitly set placeholder
+          }}
+          InputLabelProps={{
+            style: {
+              color: "#666",
+              fontSize: "15px",
+              fontWeight: 400,
+              fontFamily: "helvetica",
+            },
+            shrink: true
+          }}
+        />
+        <Button
+          variant="contained"
+          onClick={verifyOTP}
+          disabled={verifying || !otp}
+          style={{
+            background: "#F95959",
+            borderRadius: "300px",
+            fontSize: "14px", // Reduced font size
+            fontWeight: 600,
+            fontFamily: "helvetica",
+            padding: "6px 16px", // Reduced padding
+            height: "40px", // Reduced height
+            marginTop: "10px", // Adjusted to align with text field
+            whiteSpace: "nowrap", // Prevent text wrapping
+            minWidth: "110px", // Ensures button doesn't shrink too much
+          }}
+          sx={{
+            color: "white",
+          }}
+        >
+          {verifying ? "Verifying..." : "Verify OTP"}
+        </Button>
+      </Box>
+      <Button
+        variant="text"
+        onClick={sendOTP}
+        disabled={verifying}
+        sx={{
+          color: "#F95959",
+          fontSize: "14px",
+          marginTop: "8px",
+          whiteSpace: "nowrap", // Prevent text wrapping
+        }}
+      >
+        Resend OTP
+      </Button>
+    </Box>
+  ) : null}
+          
   <Box alignItems="center" sx={{
     display: "flex",
     flexDirection: "column",
@@ -595,531 +787,314 @@ const Register = () => {
    
   </Box>
 </TabPanel>
-              <TabPanel value={tabValue} index={1}>
-                <Box display="flex" alignItems="center">
-                  <EmailIcon sx={{ color: "#ffffff" }} />
-                  <FormLabel sx={{ color: "#666" }}>Mobile No</FormLabel>
-                </Box>
-                <TextField
-                  label="Mobile Number"
-                  fullWidth
-                  variant="outlined"
-                  margin="normal"
-                  value={mobile}
-                  onChange={(e) => mobile(e.target.value)}
-                  required
-                  sx={{
-                    backgroundColor: "#ffffff",
-                    borderRadius: "10px",
-                    "& .MuiOutlinedInput-root": {
-                      "& fieldset": {
-                        borderColor: "#F95959 !important", // Initial border color
-                      },
-                      "&:hover fieldset": {
-                        borderColor: "#F95959 !important", // Border color on hover
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#F95959 !important", // Border color when focused
-                      },
-                    },
-                    "& .MuiInputBase-input": {
-                      color: "#666", // Text color
-                    },
-                    "& .MuiInputLabel-root": {
-                      color: "white", // Label color
-                    },
-                  }}
-                  InputProps={{
-                    style: { borderRadius: "10px", color: "#666" },
-                  }}
-                  InputLabelProps={{
-                    style: { color: "#666" },
-                  }}
-                />
-
-                <Box display="flex" alignItems="center" mt={2}>
-                  {/* <PhoneIcon sx={{ color: "#ffffff" }} /> */}
-                  <FormLabel
-                    sx={{
-                      color: "#666",
-                      fontSize: "15px",
-                      fontWeight: 400,
-                      fontFamily: "helvetica",
-                    }}
-                  >
-                    Phone Number
-                  </FormLabel>
-                </Box>
-                <TextField
-                  label="Phone"
-                  fullWidth
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  variant="outlined"
-                  margin="normal"
-                  sx={{
-                    backgroundColor: "rgb(255,255,255)",
-                    borderRadius: "10px",
-                    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                    transition: "box-shadow 0.3s ease-in-out",
-                    "&:hover": {
-                      boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
-                    },
-                    "& .MuiOutlinedInput-root": {
-                      height: "45px",
-                      "& fieldset": {
-                        borderColor: "rgb(255,255,255) !important",
-                      },
-                      "&:hover fieldset": {
-                        borderColor: "#F95959 !important",
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#F95959 !important",
-                      },
-                    },
-                    "& .MuiInputLabel-root": {
-                      top: "50%",
-                      transform: "translate(14px, -50%)",
-                      "&.Mui-focused, &.MuiInputLabel-shrink": {
-                        transform: "translate(14px, -140%) scale(0.75)",
-                      },
-                    },
-                    "& .MuiInputBase-input": {
-                      color: "#666",
-                      padding: "0 14px",
-                    },
-                  }}
-                  InputProps={{
-                    style: { borderRadius: "10px", color: "#666" },
-                  }}
-                  InputLabelProps={{
-                    style: {
-                      color: "#666",
-                      fontSize: "15px",
-                      fontWeight: 400,
-                      fontFamily: "helvetica",
-                    },
-                  }}
-                />
-
-                <Box display="flex" alignItems="center" mt={2}>
-                  <LockIcon sx={{ color: "#F95959" }} />
-                  <FormLabel sx={{ color: "#666" }}>Enter OTP</FormLabel>
-                </Box>
-                <TextField
-                  label="OTP"
-                  fullWidth
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  variant="outlined"
-                  margin="normal"
-                  sx={{
-                    backgroundColor: "#ffffff",
-                    borderRadius: "10px",
-                    "& .MuiOutlinedInput-root": {
-                      "& fieldset": {
-                        borderColor: "#F95959 !important", // Initial border color with increased specificity
-                      },
-                      "&:hover fieldset": {
-                        borderColor: "#F95959 !important", // Border color on hover with increased specificity
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "#F95959 !important", // Border color when focused with increased specificity
-                      },
-                    },
-                    "& .MuiInputBase-input": {
-                      color: "#666", // Text color
-                    },
-                    "& .MuiInputLabel-root": {
-                      color: "#666", // Label color
-                    },
-                  }}
-                  InputProps={{
-                    style: { borderRadius: "10px", color: "#666" },
-                  }}
-                  InputLabelProps={{
-                    style: { color: "#666" },
-                  }}
-                />
-
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handlePhoneRegister}
-                >
-                  Send OTP
-                </Button>
-
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleOtpVerification}
-                >
-                  Verify OTP
-                </Button>
-              </TabPanel>
-
-              <Box display="flex" alignItems="center">
-                {/* <LockIcon sx={{ color: "#F95959" }} /> */}
-                {/* <LockIcon sx={{ color: "#4782ff" }} />
-                 */}
-                 <img src="https://in.piccdn123.com/static/_template_/orange/img/sign/pwd.png" style={{width:"25px"}}/>
-                <FormLabel
-                  sx={{
-                    color: "#666",
-                    fontSize: "15px",
-                    fontWeight: 400,
-                    fontFamily: "helvetica",
-                  }}
-                >
-                  Set Password
-                </FormLabel>
-              </Box>
-              <TextField
-                label="Please enter password"
-                type={showPassword ? "text" : "password"}
-                fullWidth
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                variant="outlined"
-                margin="normal"
-                sx={{
-                  backgroundColor: "rgb(255,255,255)",
-                  borderRadius: "10px",
-                  boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                  transition: "box-shadow 0.3s ease-in-out",
-                  "&:hover": {
-                    boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
-                  },
-                  "& .MuiOutlinedInput-root": {
-                    height: "45px",
-                    "& fieldset": {
-                      borderColor: "rgb(255,255,255) !important",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "rgb(71,129,255) !important",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "rgb(71,129,255) !important",
-                    },
-                  },
-                  "& .MuiInputLabel-root": {
-                    top: "50%",
-                    transform: "translate(14px, -50%)",
-                    "&.Mui-focused, &.MuiInputLabel-shrink": {
-                      transform: "translate(14px, -140%) scale(0.75)",
-                    },
-                  },
-                  "& .MuiInputBase-input": {
-                    color: "#666",
-                    padding: "0 14px",
-                  },
-                }}
-                InputProps={{
-                  style: { borderRadius: "10px", color: "#666" },
-                  endAdornment: (
-                    <IconButton
-                      onClick={handleShowPassword}
-                      edge="end"
-                      sx={{ color: "rgb(214,214,214)" }}
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  ),
-                }}
-                InputLabelProps={{
-                  style: {
-                    color: "#666",
-                    fontSize: "15px",
-                    fontWeight: 400,
-                    fontFamily: "helvetica",
-                  },
-                }}
-              />
-              <Box
-                alignItems="center"
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  fontSize: "0.1rem",
-                }}
+              
+        <Box display="flex" alignItems="center">
+          <img src="https://in.piccdn123.com/static/_template_/orange/img/sign/pwd.png" style={{width:"25px"}}/>
+          <FormLabel
+            sx={{
+              color: "#666",
+              fontSize: "15px",
+              fontWeight: 400,
+              fontFamily: "helvetica",
+            }}
+          >
+            Set Password
+          </FormLabel>
+        </Box>
+        <TextField
+          label="Please enter password"
+          type={showPassword ? "text" : "password"}
+          fullWidth
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          variant="outlined"
+          margin="normal"
+          sx={{
+            backgroundColor: "rgb(255,255,255)",
+            borderRadius: "10px",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+            transition: "box-shadow 0.3s ease-in-out",
+            "&:hover": {
+              boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
+            },
+            "& .MuiOutlinedInput-root": {
+              height: "45px",
+              "& fieldset": {
+                borderColor: "rgb(255,255,255) !important",
+              },
+              "&:hover fieldset": {
+                borderColor: "rgb(71,129,255) !important",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "rgb(71,129,255) !important",
+              },
+            },
+            "& .MuiInputLabel-root": {
+              top: "50%",
+              transform: "translate(14px, -50%)",
+              "&.Mui-focused, &.MuiInputLabel-shrink": {
+                transform: "translate(14px, -140%) scale(0.75)",
+              },
+            },
+            "& .MuiInputBase-input": {
+              color: "#666",
+              padding: "0 14px",
+            },
+          }}
+          InputProps={{
+            style: { borderRadius: "10px", color: "#666" },
+            endAdornment: (
+              <IconButton
+                onClick={handleShowPassword}
+                edge="end"
+                sx={{ color: "rgb(214,214,214)" }}
               >
-            
-              </Box>
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            ),
+          }}
+          InputLabelProps={{
+            style: {
+              color: "#666",
+              fontSize: "15px",
+              fontWeight: 400,
+              fontFamily: "helvetica",
+            },
+          }}
+        />
+        <Box
+          alignItems="center"
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "flex-start",
+            fontSize: "0.1rem",
+          }}
+        >
+      
+        </Box>
 
-              <Box display="flex" alignItems="center">
-                {/* <LockIcon sx={{ color: "#F95959" }} /> */}
-                {/* <LockIcon sx={{ color: "#4782ff" }} /> */}
-                <img src="https://in.piccdn123.com/static/_template_/orange/img/sign/pwd.png" style={{width:"25px"}}/>
-                <FormLabel
-                  sx={{
-                    color: "#666",
-                    fontSize: "15px",
-                    fontWeight: 400,
-                    fontFamily: "helvetica",
-                  }}
-                >
-                  Confirm Password
-                </FormLabel>
-              </Box>
+        <Box display="flex" alignItems="center">
+          <img src="https://in.piccdn123.com/static/_template_/orange/img/sign/pwd.png" style={{width:"25px"}}/>
+          <FormLabel
+            sx={{
+              color: "#666",
+              fontSize: "15px",
+              fontWeight: 400,
+              fontFamily: "helvetica",
+            }}
+          >
+            Confirm Password
+          </FormLabel>
+        </Box>
 
-              <TextField
-                label="Please enter confirm password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                type={showPassword ? "text" : "password"}
-                fullWidth
-                variant="outlined"
-                margin="normal"
-                sx={{
-                  backgroundColor: "rgb(255,255,255)",
-                  borderRadius: "10px",
-                  boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                  transition: "box-shadow 0.3s ease-in-out",
-                  "&:hover": {
-                    boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
-                  },
-                  "& .MuiOutlinedInput-root": {
-                    height: "45px",
-                    "& fieldset": {
-                      borderColor: "rgb(255,255,255) !important",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "rgb(71,129,255) !important",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "rgb(71,129,255) !important",
-                    },
-                  },
-                  "& .MuiInputLabel-root": {
-                    top: "50%",
-                    transform: "translate(14px, -50%)",
-                    "&.Mui-focused, &.MuiInputLabel-shrink": {
-                      transform: "translate(14px, -140%) scale(0.75)",
-                    },
-                  },
-                  "& .MuiInputBase-input": {
-                    color: "#666",
-                    padding: "0 14px",
-                  },
-                }}
-                InputProps={{
-                  style: { borderRadius: "10px", color: "#666" },
-                  endAdornment: (
-                    <IconButton
-                      onClick={handleShowPassword}
-                      edge="end"
-                      sx={{ color: "rgb(214,214,214)" }}
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  ),
-                }}
-                InputLabelProps={{
-                  style: {
-                    color: "#666",
-                    fontSize: "15px",
-                    fontWeight: 400,
-                    fontFamily: "helvetica",
-                  },
-                }}
-              />
-              {/* 
-              <Box display="flex" alignItems="center" mt={2}>
-                <LockIcon sx={{ color: "#F95959" }} />
-                <FormLabel sx={{ color: "white" }}>Confirm Password</FormLabel>
-              </Box>
-              <TextField
-                label="Confirm Password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                type={showPassword ? "text" : "password"}
-                fullWidth
-                variant="outlined"
-                margin="normal"
-                sx={{
-                  backgroundColor: "#ffffff",
-                  borderRadius: "10px",
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": {
-                      borderColor: "#F95959", // Initial border color
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#F95959", // Border color on hover
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#F95959", // Border color when focused
-                    },
-                  },
-                  "& .MuiInputBase-input": {
-                    color: "white", // Text color
-                  },
-                  "& .MuiInputLabel-root": {
-                    color: "white", // Label color
-                  },
-                }}
-                InputProps={{
-                  style: { borderRadius: "10px", color: "white" },
-                  endAdornment: (
-                    <IconButton
-                      onClick={handleShowPassword}
-                      edge="end"
-                      sx={{ color: "white" }}
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  ),
-                }}
-                InputLabelProps={{
-                  style: { color: "white" },
-                }}
-              /> */}
-
-              <Box display="flex" alignItems="center" mt={2}>
-                {/* <MoveToInboxIcon sx={{ color: "#F95959" }} /> */}
-                {/* <MoveToInboxIcon sx={{ color: "#4782ff" }} /> */}
-                <img src="https://in.piccdn123.com/static/_template_/orange/img/sign/foget.png" style={{width:"25px"}}/>
-                <FormLabel
-                  sx={{
-                    color: "#666",
-                    fontSize: "15px",
-                    fontWeight: 400,
-                    fontFamily: "helvetica",
-                  }}
-                >
-                  Invitation Code
-                </FormLabel>
-              </Box>
-              <TextField
-                label="Please enter invitation code"
-                value={invitecode}
-                onChange={(e) => setInviteCode(e.target.value)}
-                fullWidth
-                variant="outlined"
-                margin="normal"
-                InputProps={{
-                  style: { borderRadius: "10px", color: "#666" },
-                }}
-                InputLabelProps={{
-                  style: {
-                    color: "#666",
-                    fontSize: "15px",
-                    fontWeight: 400,
-                    fontFamily: "helvetica",
-                  },
-                }}
-                sx={{
-                  backgroundColor: "rgb(255,255,255)",
-                  borderRadius: "10px",
-                  boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                  transition: "box-shadow 0.3s ease-in-out",
-                  "&:hover": {
-                    boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
-                  },
-                  "& .MuiOutlinedInput-root": {
-                    height: "45px",
-                    "& fieldset": {
-                      borderColor: "rgb(255,255,255) !important",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "rgb(71,129,255) !important",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "rgb(71,129,255) !important",
-                    },
-                  },
-                  "& .MuiInputLabel-root": {
-                    top: "50%",
-                    transform: "translate(14px, -50%)",
-                    "&.Mui-focused, &.MuiInputLabel-shrink": {
-                      transform: "translate(14px, -140%) scale(0.75)",
-                    },
-                  },
-                  "& .MuiInputBase-input": {
-                    color: "#666",
-                    padding: "0 14px",
-                  },
-                }}
-              />
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                }}
+        <TextField
+          label="Please enter confirm password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          type={showPassword ? "text" : "password"}
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          sx={{
+            backgroundColor: "rgb(255,255,255)",
+            borderRadius: "10px",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+            transition: "box-shadow 0.3s ease-in-out",
+            "&:hover": {
+              boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
+            },
+            "& .MuiOutlinedInput-root": {
+              height: "45px",
+              "& fieldset": {
+                borderColor: "rgb(255,255,255) !important",
+              },
+              "&:hover fieldset": {
+                borderColor: "rgb(71,129,255) !important",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "rgb(71,129,255) !important",
+              },
+            },
+            "& .MuiInputLabel-root": {
+              top: "50%",
+              transform: "translate(14px, -50%)",
+              "&.Mui-focused, &.MuiInputLabel-shrink": {
+                transform: "translate(14px, -140%) scale(0.75)",
+              },
+            },
+            "& .MuiInputBase-input": {
+              color: "#666",
+              padding: "0 14px",
+            },
+          }}
+          InputProps={{
+            style: { borderRadius: "10px", color: "#666" },
+            endAdornment: (
+              <IconButton
+                onClick={handleShowPassword}
+                edge="end"
+                sx={{ color: "rgb(214,214,214)" }}
               >
-                <RadioGroup row>
-                  <FormControlLabel
-                    value="remember"
-                    control={
-                      <Radio
-                        style={{
-                          fontSize: "13px",
-                          fontWeight: 400,
-                          fontFamily: "helvetica",
-                          color: "#666",
-                          textTransform: "lowercase",
-                        }}
-                      />
-                    }
-                    label="I have Read and Agree "
-                    labelPlacement="end"
-                    sx={{ color: "#666" }}
-                  />
-                </RadioGroup>
-              </Box>
-              <Button
-                variant="contained"
-                type="submit"
-                fullWidth
-                style={{
-                  marginBottom: "8px",
-                  background:
-                    "#F95959",
-                  borderRadius: "300px",
-                  fontSize: "19px",
-                  fontWeight: 700,
-                  fontFamily: "helvetica",
-                  maxWidth: "330px",
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </IconButton>
+            ),
+          }}
+          InputLabelProps={{
+            style: {
+              color: "#666",
+              fontSize: "15px",
+              fontWeight: 400,
+              fontFamily: "helvetica",
+            },
+          }}
+        />
 
-                  padding: "8px 30px",
-                }}
-                sx={{
-                  fontWeight: "bold",
-                  color: "white",
-                  fontSize: "18px", // Replace with the desired royal gold color if different
-                }}
-              >
-                Register
-              </Button>
-              <Button
-                onClick={handleLogin}
-                variant="outlined"
-                color="primary"
-                fullWidth
-                style={{
-                  borderRadius: "300px",
-                  borderColor: "#F95959",
-                  marginBottom: "150px",
-                  maxWidth: "330px",
-                  marginTop: "10px",
-                }}
-              >
-                <span
+        <Box display="flex" alignItems="center" mt={2}>
+          <img src="https://in.piccdn123.com/static/_template_/orange/img/sign/foget.png" style={{width:"25px"}}/>
+          <FormLabel
+            sx={{
+              color: "#666",
+              fontSize: "15px",
+              fontWeight: 400,
+              fontFamily: "helvetica",
+            }}
+          >
+            Invitation Code
+          </FormLabel>
+        </Box>
+        <TextField
+          label="Please enter invitation code"
+          value={invitecode}
+          onChange={(e) => setInviteCode(e.target.value)}
+          fullWidth
+          variant="outlined"
+          margin="normal"
+          InputProps={{
+            style: { borderRadius: "10px", color: "#666" },
+          }}
+          InputLabelProps={{
+            style: {
+              color: "#666",
+              fontSize: "15px",
+              fontWeight: 400,
+              fontFamily: "helvetica",
+            },
+          }}
+          sx={{
+            backgroundColor: "rgb(255,255,255)",
+            borderRadius: "10px",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+            transition: "box-shadow 0.3s ease-in-out",
+            "&:hover": {
+              boxShadow: "0 4px 8px rgba(0,0,0,0.15)",
+            },
+            "& .MuiOutlinedInput-root": {
+              height: "45px",
+              "& fieldset": {
+                borderColor: "rgb(255,255,255) !important",
+              },
+              "&:hover fieldset": {
+                borderColor: "rgb(71,129,255) !important",
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: "rgb(71,129,255) !important",
+              },
+            },
+            "& .MuiInputLabel-root": {
+              top: "50%",
+              transform: "translate(14px, -50%)",
+              "&.Mui-focused, &.MuiInputLabel-shrink": {
+                transform: "translate(14px, -140%) scale(0.75)",
+              },
+            },
+            "& .MuiInputBase-input": {
+              color: "#666",
+              padding: "0 14px",
+            },
+          }}
+        />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          {/* <RadioGroup row value={agreed} onChange={(e) => setAgreed(e.target.checked)}>
+            <FormControlLabel
+              value={true}
+              control={
+                <Radio
                   style={{
-                    color: "#F95959",
-                    marginLeft: "3px",
-                    fontSize: "19px",
-                    fontWeight: 600,
+                    fontSize: "13px",
+                    fontWeight: 400,
                     fontFamily: "helvetica",
+                    color: "#666",
+                    textTransform: "lowercase",
                   }}
-                >
-                  {" "}
-                  LOGIN
-                </span>
-              </Button>
-            </form>
-          </Grid>
+                />
+              }
+              label="I have Read and Agree "
+              labelPlacement="end"
+              sx={{ color: "#666" }}
+            />
+          </RadioGroup> */}
+        </Box>
+        
+        {/* Hidden recaptcha container for Firebase */}
+        <div id="recaptcha-container"></div>
+        
+        <Button
+          variant="contained"
+          type="submit"
+          fullWidth
+          disabled={!verified || !password || !confirmPassword}
+          style={{
+            marginBottom: "8px",
+            background: "#F95959",
+            borderRadius: "300px",
+            fontSize: "19px",
+            fontWeight: 700,
+            fontFamily: "helvetica",
+            maxWidth: "330px",
+            padding: "8px 30px",
+          }}
+          sx={{
+            fontWeight: "bold",
+            color: "white",
+            fontSize: "18px",
+          }}
+        >
+          Register
+        </Button>
+        <Button
+          onClick={handleLogin}
+          variant="outlined"
+          color="primary"
+          fullWidth
+          style={{
+            borderRadius: "300px",
+            borderColor: "#F95959",
+            marginBottom: "150px",
+            maxWidth: "330px",
+            marginTop: "10px",
+          }}
+        >
+          <span
+            style={{
+              color: "#F95959",
+              marginLeft: "3px",
+              fontSize: "19px",
+              fontWeight: 600,
+              fontFamily: "helvetica",
+            }}
+          >
+            {" "}
+            LOGIN
+          </span>
+        </Button>
+      </form>
+    </Grid>
         </Grid>
       </Mobile>
     </div>

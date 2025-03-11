@@ -12,7 +12,7 @@ import NoteIcon from '@mui/icons-material/Note';
 import { Tabs, Tab, Divider, Pagination, Card, CardHeader, CardContent } from '@mui/material';
 import { Drawer } from '@mui/material';
 import { doc, updateDoc, collection, addDoc, onSnapshot, serverTimestamp, getDoc, getDocs } from 'firebase/firestore';
-import { auth, db } from '../firebase/config'; // replace with your Firebase config file
+// import { auth, db } from '../firebase/config'; // replace with your Firebase config file
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
