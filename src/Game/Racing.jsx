@@ -2890,216 +2890,283 @@ useEffect(() => {
               Bet Succeed !
             </MuiAlert>
           </Snackbar>
+{
+drawerOpen &&  (<Box 
+  sx={{ 
+    position: "absolute", 
+    top: "-100px",   // Move slightly above to make it clearly visible
+    right: "10px",  
+    zIndex: 2500,   // Higher than Drawer
+    backgroundColor: "red",
+    width: "60px",
+    height: "60px",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    clipPath: "polygon(26% 0, 100% 0, 100% 100%, 0 99%)",
+    borderLeft: "1px solid #e0e0e0",
+    borderBottom: "1px solid #e0e0e0",
+    boxShadow: "0px 2px 4px rgba(0,0,0,0.1)",
+  }}
+>
+  <CloseIcon 
+    onClick={handleCloseDrawer} 
+    sx={{ 
+      cursor: "pointer", 
+      color: "#fff", 
+      fontSize: "20px",
+      marginRight: "-10px",
+      marginTop: "-10px"
+    }} 
+  />
+</Box>
+)
+}
 
           <Drawer
-            anchor="bottom"
-            open={drawerOpen}
-            onClose={handleCloseDrawer}
-            sx={{
-              "& .MuiDrawer-paper": {
-                width: "100%",
-                height: "auto",
-                margin: "0 auto",
-                maxWidth: isSmallScreen ? "600px" : "396px",
-                backgroundColor: "white",
-                color: "black",
-                borderTopLeftRadius: "16px",
-                borderTopRightRadius: "16px",
-              },
-            }}
-          >
-            <Grid
-              container
-              alignItems="center"
-              style={{
-                position: "relative",
-                color: "black",
-                backgroundColor: "#ffffff",
-              }}
-            >
-              <Grid
-                item
-                xs={12}
-                align="center"
-                style={{
-                  position: "relative",
-                  marginBottom: "-5px",
-                  height: "90px",
-                  color: "white",
-                  backgroundColor: "#ffffff",
+  anchor="bottom"
+  open={drawerOpen}
+  onClose={handleCloseDrawer}
+  sx={{
+    "& .MuiDrawer-paper": {
+      width: "100%",
+      height: "auto",
+      margin: "0 auto",
+      maxWidth: "396px",
+      backgroundColor: "transparent", // <=== REMOVE BACKGROUND
+      color: "black",
+      borderRadius: "0",
+      position: "absolute",
+      boxShadow: 'none',
+    },
+  }}
+>
+<img src="https://in.piccdn123.com/static/_template_/orange/img/clear.svg" style={{widht:"35px",height:"25px",
+    top:"-16px",
+    marginLeft:"auto"
+   }}/>
+  {/* Main container with black border */}
+  <Box 
+    sx={{
+      position: "relative",
+      width: "100%",
+      backgroundColor: "white",
+      // Black border around the entire drawer
+      // border: "2px solid black",
+      // Simple box shadow
+      boxShadow: '2px 2px 10px rgba(0,0,0,0.1)'
+    }}
+  >
+    {/* Close button in the angled corner */}
+
+
+    <Grid container padding={2} sx={{ mt: 2 }}>
+      {/* Header section - Select and selected item side by side */}
+      <Grid item xs={12} mb={2} sx={{ display: "flex", alignItems: "center" }}>
+        <Typography variant="body1" sx={{ color: "#666", fontWeight: "normal", mr: 1 }}>
+          Select:
+        </Typography>
+        <Typography 
+          variant="h6" 
+          sx={{ 
+            color: "#1976d2", 
+            mr: 1,
+            fontWeight: "bold" 
+          }}
+        >
+          {selectedItem || "big"}
+        </Typography>
+        <Button
+          size="small"
+          sx={{
+            backgroundColor: "#F8A81D",
+            color: "white",
+            fontSize: "0.75rem",
+            borderRadius: "4px",
+            padding: "2px 8px",
+            minWidth: "auto",
+            height: "24px"
+          }}
+        >
+          BIG
+        </Button>
+      </Grid>
+
+      {/* Balance Section */}
+      <Grid container item xs={12} mb={2}>
+        <Grid item xs={3} sx={{ display: "flex", alignItems: "center" }}>
+          <Typography variant="body1" sx={{ color: "#666" }}>
+            Balance:
+          </Typography>
+        </Grid>
+        <Grid item xs={9}>
+          <Box sx={{ display: "flex", gap: "8px" }}>
+            {[1, 10, 100, 1000].map((amount, index) => (
+              <Button
+                key={amount}
+                sx={{
+                  flex: 1,
+                  height: "32px",
+                  padding: "4px 8px",
+                  fontSize: "0.875rem",
+                  backgroundColor: index === 0 ? "#F8A81D" : "#f5f5f5",
+                  color: index === 0 ? "white" : "#666",
+                  "&:hover": {
+                    backgroundColor: index === 0 ? "#F8A81D" : "#e0e0e0",
+                  },
+                  borderRadius: "4px"
+                }}
+                onClick={() => {
+                  handleBetAmount(amount);
+                  setActiveBetAmount(amount);
                 }}
               >
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "70%",
-                    background: selectedColor,
-                    clipPath: "polygon(50.7% 100.3%, 100.1% 61%, 100.1% 0%, 0% 0%, 0.1% 71.3%)",
-                  }}
-                >
-                   <Typography variant="h6">{`Racing ${selectedTimer}`}</Typography>
-                   <Typography variant="body1">{`${selectedItem} is selected`}</Typography>
-                </div>
-                
-              </Grid>
-              <Grid container padding={1}>
-  {/* Balance Section */}
-  <Grid item xs={6}>
-    <Typography
-      variant="h6"
-      sx={{
-        color: "#666",
-        fontSize: "1rem",
-        marginTop: "5px",
-      }}
-    >
-      Balance
-    </Typography>
-  </Grid>
+                {amount}
+              </Button>
+            ))}
+          </Box>
+        </Grid>
+      </Grid>
 
-  {/* Bet Amount Buttons */}
-  <Grid item xs={6} sx={{ display: "flex", justifyContent: "flex-end" }}>
-    <Box sx={{ display: "flex", gap: "5px" }}>
-      {[1, 10, 100, 1000].map((amount) => (
-        <Button
-          key={amount}
-          sx={{
-            minWidth: "40px",
-            height: "25px",
-            padding: "2px 4px",
-            fontSize: "0.75rem",
-            backgroundColor: activeBetAmount === amount ? selectedColor : "#f2f2f1",
-            color: activeBetAmount === amount ? "white" : "#666",
-            "&:hover": {
-              backgroundColor: activeBetAmount === amount ? selectedColor : "#f2f2f1",
-            },
-          }}
-          onClick={() => {
-            handleBetAmount(amount);
-            setActiveBetAmount(amount);
-          }}
-        >
-          {amount}
-        </Button>
-      ))}
-    </Box>
-  </Grid>
+      {/* Quantity Section */}
+      <Grid container item xs={12} mb={2}>
+        <Grid item xs={3} sx={{ display: "flex", alignItems: "center" }}>
+          <Typography variant="body1" sx={{ color: "#666" }}>
+            Quantity:
+          </Typography>
+        </Grid>
+        <Grid item xs={9}>
+          <Box sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center" }}>
+            <Button
+              sx={{
+                minWidth: "32px",
+                height: "32px",
+                padding: 0,
+                backgroundColor: "#777",
+                color: "white"
+              }}
+              onClick={() => setMultiplier(multiplier > 1 ? multiplier - 1 : 1)}
+            >
+              <RemoveIcon fontSize="small" />
+            </Button>
 
-  {/* Quantity Section */}
-  <Grid item xs={6} mt={2}>
-    <Typography
-      variant="h6"
-      sx={{ color: "#666", fontSize: "1rem" }}
-    >
-      Quantity
-    </Typography>
-  </Grid>
+            <TextField
+              value={multiplier || "1"}
+              onChange={(e) => {
+                const value = e.target.value;
+                if (/^\d*$/.test(value)) {
+                  setMultiplier(value === "" ? "" : Math.max(1, Number(value)));
+                }
+              }}
+              sx={{
+                width: "80px",
+                margin: "0 8px",
+                "& .MuiOutlinedInput-root": {
+                  borderRadius: "4px",
+                  backgroundColor: "white",
+                  color: "#666",
+                  height: "32px",
+                  "& input": {
+                    textAlign: "center",
+                    padding: "4px 8px",
+                  },
+                },
+              }}
+              variant="outlined"
+              inputProps={{ min: 1, style: { textAlign: "center" } }}
+            />
 
-  {/* Quantity Controls */}
-  <Grid item xs={6} mt={2} sx={{ display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
-    <IconButton onClick={() => setMultiplier(multiplier > 1 ? multiplier - 1 : 1)}>
-      <RemoveIcon fontSize="small" sx={{ color: selectedColor, fontSize: 30 }} />
-    </IconButton>
+            <Button
+              sx={{
+                minWidth: "32px",
+                height: "32px",
+                padding: 0,
+                backgroundColor: "#F8A81D",
+                color: "white",
+                "&:hover": {
+                  backgroundColor: "#F8A81D",
+                }
+              }}
+              onClick={() => setMultiplier(multiplier + 1)}
+            >
+              <AddIcon fontSize="small" />
+            </Button>
+          </Box>
+        </Grid>
+      </Grid>
 
-    <TextField
-      value={multiplier}
-      onChange={(e) => {
-        const value = e.target.value;
-        if (/^\d*$/.test(value)) {
-          setMultiplier(value === "" ? "" : Math.max(1, Number(value)));
-        }
-      }}
-      sx={{
-        width: "50px",
-        textAlign: "center",
-        "& .MuiOutlinedInput-root": {
-          borderRadius: "4px",
-          backgroundColor: "white",
-          color: "#666",
-          textAlign: "center",
-          fontSize: "1rem",
-          "& input": {
-            textAlign: "center",
-            padding: "4px 8px",
-          },
-        },
-      }}
-      variant="outlined"
-      inputProps={{ min: 1, style: { textAlign: "center" } }}
-    />
+      {/* Multiplier Buttons */}
+      <Grid item xs={12} mb={2}>
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+          {[1, 5, 10, 20, 50, 100, 200].map((mult, index) => (
+            <Button
+              key={mult}
+              onClick={() => {
+                handleMultiplier(mult);
+                setActiveButton(mult);
+              }}
+              variant="contained"
+              sx={{
+                flex: "1 0 calc(25% - 8px)",
+                height: "32px",
+                padding: "4px 8px",
+                fontSize: "0.875rem",
+                backgroundColor: index === 0 ? "#F8A81D" : "#f5f5f5",
+                color: index === 0 ? "white" : "#666",
+                "&:hover": {
+                  backgroundColor: index === 0 ? "#F8A81D" : "#e0e0e0",
+                },
+                boxShadow: "none",
+                borderRadius: "4px"
+              }}
+            >
+              X{mult}
+            </Button>
+          ))}
+        </Box>
+      </Grid>
 
-    <IconButton onClick={() => setMultiplier(multiplier + 1)}>
-      <AddIcon fontSize="small" sx={{ color: selectedColor, fontSize: 30 }} />
-    </IconButton>
-  </Grid>
-
-  {/* Multiplier Buttons */}
-  <Grid item xs={12} mt={2}>
-    <Grid container justifyContent="flex-end" sx={{ color: "#666" }}>
-      {[1, 5, 10, 20, 50, 100].map((mult) => (
-        <div
-          key={mult}
-          className={`button ${activeButton === mult ? "active" : ""}`}
-          onClick={() => {
-            handleMultiplier(mult);
-            setActiveButton(mult);
-          }}
-          style={
-            activeButton === mult
-              ? { backgroundColor: selectedColor, color: "white" }
-              : { backgroundColor: "#f2f2f1", color: "#666" }
-          }
-        >
-          X{mult}
-        </div>
-      ))}
+      {/* Action Buttons */}
+      <Grid item xs={12}>
+        <Grid container spacing={1}>
+          <Grid item xs={4}>
+            <Button
+              onClick={handleCancelBet}
+              fullWidth
+              sx={{ 
+                backgroundColor: "#f5f5f5", 
+                color: "#666",
+                height: "40px",
+                boxShadow: "none",
+                "&:hover": {
+                  backgroundColor: "#e0e0e0",
+                },
+              }}
+              variant="contained"
+            >
+              RESET
+            </Button>
+          </Grid>
+          <Grid item xs={8}>
+            <Button
+              onClick={handlePlaceBet}
+              fullWidth
+              sx={{ 
+                background: "#F8A81D",
+                height: "40px",
+                "&:hover": {
+                  background: "#F8A81D",
+                  opacity: 0.9
+                },
+              }}
+              variant="contained"
+            >{`TOTAL AMOUNT ₹${betAmount * multiplier || 1}`}</Button>
+          </Grid>
+        </Grid>
+      </Grid>
     </Grid>
-  </Grid>
-</Grid>
-
-
-<FormControlLabel
-      control={
-        <Radio
-          checked={agree}
-          onChange={() => setAgree(!agree)}
-          icon={<RadioButtonUncheckedIcon />}
-          checkedIcon={<CheckCircleIcon sx={{ color: "#4caf50" }} />} // Green check when selected
-        />
-      }
-      label="I Agree"
-      sx={{ color: "#666", fontSize: "1rem",marginLeft:1}}
-    />
-
-
-
-              <Grid item xs={12} mt={2}>
-                <Grid container justifyContent="space-around" spacing={0}>
-                  <Grid item xs={3}>
-                    <Button
-                      onClick={handleCancelBet}
-                      fullWidth
-                      style={{ backgroundColor: "#f2f2f1", color: "grey" }}
-                      variant="contained"
-                    >
-                      Cancel
-                    </Button>
-                  </Grid>
-                  <Grid item xs={9}>
-                    <Button
-                      onClick={handlePlaceBet}
-                      fullWidth
-                      style={{ background: selectedColor }}
-                      variant="contained"
-                    >{`Total Amount: ${betAmount * multiplier}`}</Button>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </Grid>
-          </Drawer>
+  </Box>
+</Drawer>
 
           <Grid
             mt={2}
